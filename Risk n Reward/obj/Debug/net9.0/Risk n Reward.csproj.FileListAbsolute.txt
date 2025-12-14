@@ -1,0 +1,15 @@
+/Users/pauljeansartre/Desktop/ Virtual Arcade/Risk n Reward/Risk n Reward/obj/Debug/net9.0/Risk n Reward.GeneratedMSBuildEditorConfig.editorconfig
+/Users/pauljeansartre/Desktop/ Virtual Arcade/Risk n Reward/Risk n Reward/obj/Debug/net9.0/Risk n Reward.AssemblyInfoInputs.cache
+/Users/pauljeansartre/Desktop/ Virtual Arcade/Risk n Reward/Risk n Reward/obj/Debug/net9.0/Risk n Reward.AssemblyInfo.cs
+/Users/pauljeansartre/Desktop/ Virtual Arcade/Risk n Reward/Risk n Reward/obj/Debug/net9.0/Risk n Reward.csproj.CoreCompileInputs.cache
+/Users/pauljeansartre/Desktop/ Virtual Arcade/Risk n Reward/Risk n Reward/obj/Debug/net9.0/Risk n Reward.sourcelink.json
+/Users/pauljeansartre/Desktop/ Virtual Arcade/Risk n Reward/Risk n Reward/bin/Debug/net9.0/Risk n Reward
+/Users/pauljeansartre/Desktop/ Virtual Arcade/Risk n Reward/Risk n Reward/bin/Debug/net9.0/Risk n Reward.deps.json
+/Users/pauljeansartre/Desktop/ Virtual Arcade/Risk n Reward/Risk n Reward/bin/Debug/net9.0/Risk n Reward.runtimeconfig.json
+/Users/pauljeansartre/Desktop/ Virtual Arcade/Risk n Reward/Risk n Reward/bin/Debug/net9.0/Risk n Reward.dll
+/Users/pauljeansartre/Desktop/ Virtual Arcade/Risk n Reward/Risk n Reward/bin/Debug/net9.0/Risk n Reward.pdb
+/Users/pauljeansartre/Desktop/ Virtual Arcade/Risk n Reward/Risk n Reward/obj/Debug/net9.0/Risk n Reward.dll
+/Users/pauljeansartre/Desktop/ Virtual Arcade/Risk n Reward/Risk n Reward/obj/Debug/net9.0/refint/Risk n Reward.dll
+/Users/pauljeansartre/Desktop/ Virtual Arcade/Risk n Reward/Risk n Reward/obj/Debug/net9.0/Risk n Reward.pdb
+/Users/pauljeansartre/Desktop/ Virtual Arcade/Risk n Reward/Risk n Reward/obj/Debug/net9.0/Risk n Reward.genruntimeconfig.cache
+/Users/pauljeansartre/Desktop/ Virtual Arcade/Risk n Reward/Risk n Reward/obj/Debug/net9.0/ref/Risk n Reward.dll

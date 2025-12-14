@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/pauljeansartre/Desktop/ Virtual Arcade/Risk n Reward/Risk n Reward/Risk n Reward.csproj": {}
+    "/Users/pauljeansartre/Desktop/Risk_n_Reward/Risk n Reward/Risk n Reward/Risk n Reward.csproj": {}
   },
   "projects": {
-    "/Users/pauljeansartre/Desktop/ Virtual Arcade/Risk n Reward/Risk n Reward/Risk n Reward.csproj": {
+    "/Users/pauljeansartre/Desktop/Risk_n_Reward/Risk n Reward/Risk n Reward/Risk n Reward.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/pauljeansartre/Desktop/ Virtual Arcade/Risk n Reward/Risk n Reward/Risk n Reward.csproj",
+        "projectUniqueName": "/Users/pauljeansartre/Desktop/Risk_n_Reward/Risk n Reward/Risk n Reward/Risk n Reward.csproj",
         "projectName": "Risk n Reward",
-        "projectPath": "/Users/pauljeansartre/Desktop/ Virtual Arcade/Risk n Reward/Risk n Reward/Risk n Reward.csproj",
+        "projectPath": "/Users/pauljeansartre/Desktop/Risk_n_Reward/Risk n Reward/Risk n Reward/Risk n Reward.csproj",
         "packagesPath": "/Users/pauljeansartre/.nuget/packages/",
-        "outputPath": "/Users/pauljeansartre/Desktop/ Virtual Arcade/Risk n Reward/Risk n Reward/obj/",
+        "outputPath": "/Users/pauljeansartre/Desktop/Risk_n_Reward/Risk n Reward/Risk n Reward/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/pauljeansartre/.nuget/NuGet/NuGet.Config"
