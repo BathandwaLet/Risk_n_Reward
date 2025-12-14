@@ -1,10 +1,10 @@
 RISK N REWARD
 
-PROJECT TITLE
+PROJECT TITLE <br>
 Risk n Reward <br>
 A C# console-based application exploring probability-based games, risk and reward mechanics 
 
-PROJECT DESCRIPTION
+PROJECT DESCRIPTION <br>
 Risk n Reward is a game logic written in C#. <br>
 Its scope focuses on probability-based decision-making, betting mechanisms and reward mechanics/balancing. <br>
 The current implementation is a console-based application with the intention of being expanded into a full platform. 
