@@ -21,7 +21,7 @@ public class WalletService
     }
 
     public void Payout(decimal amount)
-    {
+    { 
         _wallet.Credit(amount);
     }
 }

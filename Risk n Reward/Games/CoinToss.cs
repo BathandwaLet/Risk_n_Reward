@@ -11,7 +11,7 @@ public class CoinToss : IGame
         Console.WriteLine($"Place your bet. You currently have {wallet.Balance} VMali.");
         decimal.TryParse(Console.ReadLine(), out var playerBet);
 
-        if (playerBet > wallet.Balance)
+        if (!wallet.PlaceBet(playerBet))
         {
             Console.WriteLine("Insufficient Funds!");
             return;
@@ -33,7 +33,6 @@ public class CoinToss : IGame
         }
         else
         {
-            wallet.Payout(playerBet * -1m);
             Console.WriteLine($"You lost!");
         }
         
