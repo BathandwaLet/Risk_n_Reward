@@ -97,7 +97,7 @@ public class PickFive : IGame
             Console.WriteLine("Unlucky this time.");
         }
         
-        Console.WriteLine($"Your new balance is {wallet.Balance}");
+        Console.WriteLine($"Your new balance is {wallet.Balance} VMali");
         Console.ReadKey();
     }
 
