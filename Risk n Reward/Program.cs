@@ -11,37 +11,59 @@ class Program
         Console.WriteLine("Welcome to Risk n' Reward!");
         Console.Clear();
         
-        Console.WriteLine("What game do you want to play? \n Enter the number corresponding with the game");
-        Console.WriteLine("1.Coin Toss \n 2.Black Jack \n 3.Crash \n 4.Pick Five \n 5.Rock, Paper, Scissors");
-        
-        int.TryParse(Console.ReadLine(), out var choiceNumber);
-        IGame? game = null;
-        
         var walletService = new WalletService();
-        
-        switch (choiceNumber)
+
+        while (true)
         {
-            case 1:
-                game = new CoinToss();
-                break;
-            case 2:
-                game = new BlackJack();
-                break;
-            case 3:
-                game = new Crash();
-                break;
-            case 4:
-                game = new PickFive();
-                break;
-            case 5:
-                game = new RockPaperScissors();
-                break;
-            default:
-                Console.WriteLine("Invalid choice");
-                break;
-        }
+            Console.WriteLine("What game do you want to play? \n Enter the number corresponding with the game");
+            Console.WriteLine("1.Coin Toss \n 2.Black Jack \n 3.Crash \n 4.Pick Five \n 5.Rock, Paper, Scissors" + 
+                              "\n0.Exit");
         
-        game.Start(walletService);
+            int.TryParse(Console.ReadLine(), out var choiceNumber);
+            IGame? game = null;
+        
+            switch (choiceNumber)
+            {
+                case 1:
+                    game = new CoinToss();
+                    break;
+                case 2:
+                    game = new BlackJack();
+                    break;
+                case 3:
+                    game = new Crash();
+                    break;
+                case 4:
+                    game = new PickFive();
+                    break;
+                case 5:
+                    game = new RockPaperScissors();
+                    break;
+                case 0:
+                    Console.WriteLine("Thank you for visiting Risk n Reward!");
+                    return;
+                default:
+                    Console.WriteLine("Invalid choice");
+                    break;
+            }
+        
+            game.Start(walletService);
+            
+            Console.WriteLine("Would you like to play again? Y/N");
+            var playAgain = Console.ReadLine().ToUpper();
+
+            if (playAgain == "N")
+            {
+                Console.WriteLine("Press any key to return to menu.");
+                Console.ReadKey();
+            }
+            else if (playAgain == "Y")
+            {
+                game.Start(walletService);
+            }
+            
+            
+        }
         
         
     }
