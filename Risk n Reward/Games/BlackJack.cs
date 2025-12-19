@@ -20,8 +20,12 @@ public class BlackJack : IGame
         }
 
         Deck deck = new Deck();
-
+        
+        Console.WriteLine("Shuffling the deck");
+        Thread.Sleep(1000);
+        
         Console.WriteLine("Dealing cards");
+        Thread.Sleep(1000);
 
         List<Card> playerHand = new();
         List<Card> dealerHand = new();
@@ -43,6 +47,7 @@ public class BlackJack : IGame
         {
             Console.WriteLine("Press H to hit, S to stand.");
             playerChoice = Console.ReadLine().ToUpper();
+            
             if (playerChoice == "H")
             {
                 playerHand.Add(deck.Draw());
@@ -64,7 +69,7 @@ public class BlackJack : IGame
 
         if (CalculateHandValue(playerHand) > 21)
         {
-            Console.WriteLine("BUST!");
+            Console.WriteLine("BUST! \n You lose!");
             Console.WriteLine($"Your new balance is {wallet.Balance} VMali");
             return;
         }
@@ -82,8 +87,7 @@ public class BlackJack : IGame
             wallet.Payout(playerBet * 1.5m);
             Console.WriteLine($"Your new balance is {wallet.Balance} VMali");
         }
-
-        if (CalculateHandValue(playerHand) > CalculateHandValue(dealerHand))
+        else if (CalculateHandValue(playerHand) > CalculateHandValue(dealerHand))
         {
             Console.WriteLine("YOU WIN!");
             wallet.Payout(playerBet * 1.5m);
@@ -103,6 +107,11 @@ public class BlackJack : IGame
 
     }
 
+    void GameLogic(int player, int computer)
+    {
+        
+    }
+
     public static int CalculateHandValue(List<Card> hand)
     {
         int total = hand.Sum(c => c.GetValue());
@@ -120,7 +129,7 @@ public class BlackJack : IGame
     void ShowDealerInitialHand(List<Card> dealerHand)
     {
         Console.WriteLine("\nDealer's Hand:");
-        Console.WriteLine(dealerHand[0]); // visible card
+        Console.WriteLine(dealerHand[0]);
 
         int visibleValue = (int)dealerHand[0].Rank;
         Console.WriteLine($"Dealer shows: {visibleValue}");

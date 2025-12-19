@@ -20,7 +20,12 @@ public class RockPaperScissors : IGame
         }
         
         Console.WriteLine($"Press R for rock, P for Paper and S for Scissors.");
-        string playerChoice = Console.ReadLine();
+        string playerChoice = Console.ReadLine().ToUpper();
+
+        if (playerChoice != "R" || playerChoice != "P" || playerChoice != "S")
+        {
+            Console.WriteLine("Error! \n Incorrect selection!");
+        }
 
         Random rnd = new Random();
         string computerChoice = "";
