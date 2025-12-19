@@ -18,16 +18,51 @@ public class Crash : IGame
             Console.WriteLine("Insufficient Funds!");
             return;
         }
+        Console.Clear();
         
         Console.WriteLine("Press any key to continue...");
         Console.ReadKey();
         
-        Console.WriteLine("Press C to cash out");
-        string cashout =  "";
+        Console.WriteLine("\n Press C to cash out \n");
+        bool cashout = false;
 
         decimal multiplier = 1.00m;
-        
-        
+
+        var crashPoint = CrashPoint();
+
+        while (multiplier < crashPoint)
+        {
+            multiplier *= 1.01m;
+            multiplier = Math.Round(multiplier, 2);
+            
+            Thread.Sleep(200);
+            Console.WriteLine(multiplier);
+            
+            if (Console.KeyAvailable)
+            {
+                var key = Console.ReadKey(true).Key;
+                if (key == ConsoleKey.C)
+                {
+                    if (multiplier < crashPoint)
+                    {
+                        Console.Clear();
+                        Console.WriteLine($"\n CONGRATULATIONS\n you cashed out at {multiplier}x and " +
+                                          $"earned {playerBet*multiplier} VMali.");
+                        wallet.Payout(playerBet * multiplier);
+                        Console.WriteLine($"Your new balance is {wallet.Balance} VMali.");
+                        cashout = true;
+                    }
+
+                    break;
+                }
+            }
+        }
+
+        if (cashout == false)
+        {
+            Console.Clear();
+            Console.WriteLine($"\nCRASH!\n at {multiplier}x");
+        }
         
 
     }
@@ -48,7 +83,7 @@ public class Crash : IGame
 
             if (crashPoint > 1m)
             {
-                return crashPoint;
+                return Math.Round(crashPoint,2);
             }
         }
 
