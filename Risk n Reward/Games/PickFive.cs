@@ -70,19 +70,20 @@ public class PickFive : IGame
         }
         
         Console.WriteLine("\n Let's see our Pick Five draw!");
+        Thread.Sleep(2000);
 
         int[] computerDraw = QuickPick();
 
         for (int i = 0; i < 6; i++)
         {
-            if (i == 5)
-            {
-                Console.WriteLine($"And you bonus ball is {computerDraw[i]}");
-            }
-            else
+            if (i != 5)
             {
                 Console.Write(computerDraw[i] + " ");
                 Thread.Sleep(2000);
+            }
+            else
+            {
+                Console.WriteLine($"And you bonus ball is {computerDraw[i]}");
             }
             
         }

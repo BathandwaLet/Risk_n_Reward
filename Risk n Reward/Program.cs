@@ -39,6 +39,9 @@ class Program
                 case 5:
                     game = new RockPaperScissors();
                     break;
+                case 6:
+                    game = new LuckyDice();
+                    break;
                 case 0:
                     Console.WriteLine("Thank you for visiting Risk n Reward!");
                     return;
