@@ -49,17 +49,24 @@ class Program
         
             game.Start(walletService);
             
-            Console.WriteLine("Would you like to play again? Y/N");
-            var playAgain = Console.ReadLine().ToUpper();
+            bool Gamestate = true;
+            
+            while (Gamestate)
+            {
+                Console.WriteLine("Would you like to play again? Y/N");
 
-            if (playAgain == "N")
-            {
-                Console.WriteLine("Press any key to return to menu.");
-                Console.ReadKey();
-            }
-            else if (playAgain == "Y")
-            {
-                game.Start(walletService);
+                if (Console.KeyAvailable)
+                {
+                    var key = Console.ReadKey(true).Key;
+                    if (key == ConsoleKey.Y) ;
+                    {
+                        game.Start(walletService);
+                    }
+                    if (ConsoleKey.N == key)
+                    {
+                        Gamestate = false;
+                    }
+                }
             }
             
             

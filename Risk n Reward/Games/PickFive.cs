@@ -69,7 +69,7 @@ public class PickFive : IGame
             Console.Write(num + " ");
         }
         
-        Console.WriteLine();
+        Console.WriteLine("\n Let's see our Pick Five draw!");
 
         int[] computerDraw = QuickPick();
 
@@ -106,11 +106,18 @@ public class PickFive : IGame
         SortedSet<int> quickPick = new SortedSet<int>();
         
         Random rnd = new Random();
+
+        int number = 0;
         
-        for (int i = 0; i < 5; i++)
+        do
         {
-            quickPick.Add(rnd.Next(1, 51));
-        }
+            number = rnd.Next(1, 51);
+
+            if (number != 0)
+            {
+                quickPick.Add(number);
+            }
+        } while (quickPick.Count < 5);
 
         int index = 0;
         int[] quickPickArr = new  int [6];
@@ -121,7 +128,16 @@ public class PickFive : IGame
             index++;
         }
 
-        quickPickArr[5] = rnd.Next(1, 51);
+        number = 0;
+        
+        while (number == 0)
+        {
+            number = rnd.Next(1, 51);
+            if (number != 0)
+            {
+                quickPickArr[5] = number;
+            }
+        }
 
         return quickPickArr;
     }
