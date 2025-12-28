@@ -1,6 +1,6 @@
 using Risk_n_Reward.Wallet;
 
-namespace Risk_n_Reward.Games;
+namespace Risk_n_Reward.Games.CoinToss;
 
 public class CoinToss : IGame
 {
@@ -9,19 +9,36 @@ public class CoinToss : IGame
         Console.WriteLine("Welcome to Coin Toss");
         
         Console.WriteLine($"Place your bet. You currently have {wallet.Balance} VMali.");
-        decimal.TryParse(Console.ReadLine(), out var playerBet);
+        decimal playerBet;
+        if (!decimal.TryParse(Console.ReadLine(), out playerBet))
+        {
+            throw new ArgumentException("Invalid input!");
+        }
 
         if (!wallet.PlaceBet(playerBet))
         {
-            Console.WriteLine("Insufficient Funds!");
+            throw new ArgumentException("Insufficient funds!");
             return;
         }
         
         Console.WriteLine("Heads(H) or Tails(T)");
-        var playerChoice = Console.ReadLine().ToUpper();
+        var playerInput = Console.ReadLine().ToUpper();
+        CoinSide playerChoice;
+        if (playerInput == "H")
+        {
+            playerChoice = CoinSide.H;
+        }
+        else if (playerInput == "T")
+        {
+            playerChoice = CoinSide.T;
+        }
+        else
+        {
+            throw new ArgumentException("Invalid input");
+        }
         
         Random rnd = new Random();
-        var  computerChoice =  (rnd.Next(0, 2) == 0)? "H" : "T";
+        var  computerChoice =  (rnd.Next(0, 2) == 0)? CoinSide.H : CoinSide.T;
 
         Console.WriteLine($"You chose {playerChoice}");
         Console.WriteLine($"The computer chose {computerChoice}");
@@ -42,3 +59,9 @@ public class CoinToss : IGame
 
     
 }
+
+public enum CoinSide
+{
+    H,
+    T, 
+} 

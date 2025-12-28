@@ -1,6 +1,6 @@
 using Risk_n_Reward.Wallet;
 
-namespace Risk_n_Reward.Games;
+namespace Risk_n_Reward.Games.Crash;
 
 public class Crash : IGame
 {
@@ -11,11 +11,15 @@ public class Crash : IGame
         Console.WriteLine($"You currently have {wallet.Balance} VMali.");
 
         Console.WriteLine("Place your bet:");
-        decimal.TryParse(Console.ReadLine(), out decimal playerBet);
+        decimal playerBet;
+        if (!decimal.TryParse(Console.ReadLine(), out playerBet))
+        {
+            throw new ArgumentException("Invalid input!");
+        }
 
         if (!wallet.PlaceBet(playerBet))
         {
-            Console.WriteLine("Insufficient Funds!");
+            throw new ArgumentException("Insufficient funds!");
             return;
         }
         Console.Clear();

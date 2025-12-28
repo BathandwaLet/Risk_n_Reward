@@ -6,7 +6,7 @@ public class WalletService
 
     public WalletService()
     {
-        _wallet = new Wallet(1000); // starting credits
+        _wallet = new Wallet(1000); 
     }
 
     public decimal Balance => _wallet.Balance;

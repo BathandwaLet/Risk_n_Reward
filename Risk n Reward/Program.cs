@@ -1,7 +1,12 @@
 ﻿namespace Risk_n_Reward;
 
 using System.Diagnostics;
-using Risk_n_Reward.Games;
+using Risk_n_Reward.Games.BlackJack;
+using Risk_n_Reward.Games.Crash;
+using Risk_n_Reward.Games.CoinToss;
+using Risk_n_Reward.Games.RockPaperScissors;
+using Risk_n_Reward.Games.PickFive;
+using Risk_n_Reward.Games.LuckyDice;
 using Risk_n_Reward.Wallet;
 
 class Program
@@ -16,8 +21,8 @@ class Program
         while (true)
         {
             Console.WriteLine("What game do you want to play? \n Enter the number corresponding with the game");
-            Console.WriteLine("1.Coin Toss \n 2.Black Jack \n 3.Crash \n 4.Pick Five \n 5.Rock, Paper, Scissors" + 
-                              "\n0.Exit");
+            Console.WriteLine(" 1.Coin Toss \n 2.Black Jack \n 3.Crash \n 4.Pick Five \n 5.Rock, Paper, Scissors" + 
+                              "\n 6.Lucky Dice \n 0.Exit");
         
             int.TryParse(Console.ReadLine(), out var choiceNumber);
             IGame? game = null;
@@ -52,30 +57,31 @@ class Program
         
             game.Start(walletService);
             
-            bool Gamestate = true;
-            
-            while (Gamestate)
+            while (PlayAgain())
             {
-                Console.WriteLine("Would you like to play again? Y/N");
-
-                if (Console.KeyAvailable)
-                {
-                    var key = Console.ReadKey(true).Key;
-                    if (key == ConsoleKey.Y) ;
-                    {
-                        game.Start(walletService);
-                    }
-                    if (ConsoleKey.N == key)
-                    {
-                        Gamestate = false;
-                    }
-                }
+                game.Start(walletService);
             }
             
             
         }
         
         
+    }
+
+    private static bool PlayAgain()
+    {
+        Console.WriteLine("Would you like to play again? Y/N");
+
+        while (true)
+        {
+            var key = Console.ReadKey(true).Key;
+        
+            if (key == ConsoleKey.Y) return true;
+            if (ConsoleKey.N == key) return false;
+
+            Console.WriteLine("Invalid input!");
+        }
+
     }
 }
 
