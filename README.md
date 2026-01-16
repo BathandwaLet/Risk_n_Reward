@@ -26,7 +26,7 @@ PLANNED FEATURES
 TECH STACK <br>
 1) Programming language: C# <br>
 2) Framework: .NET 9.0 <br>
-3) Frontend (Planned): Angular <br>
+3) Frontend (Planned): Blazor <br>
 4) Version control: Git
 
 HOW TO RUN <br>
