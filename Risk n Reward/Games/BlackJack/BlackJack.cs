@@ -1,4 +1,7 @@
 using Risk_n_Reward.Wallet;
+using static Risk_n_Reward.Games.BlackJack.Deck;
+using static Risk_n_Reward.Games.BlackJack.Card;
+using static Risk_n_Reward.Core.Engines.BlackJackEngine;
 
 namespace Risk_n_Reward.Games.BlackJack;
 
@@ -27,9 +30,11 @@ public class BlackJack : IGame
         
         Console.WriteLine("Shuffling the deck");
         Thread.Sleep(1000);
+        Console.Clear();
         
         Console.WriteLine("Dealing cards");
         Thread.Sleep(1000);
+        Console.Clear();
 
         List<Card> playerHand = new();
         List<Card> dealerHand = new();
@@ -110,26 +115,7 @@ public class BlackJack : IGame
         }
 
     }
-
-    void GameLogic(int player, int computer)
-    {
-        
-    }
-
-    public static int CalculateHandValue(List<Card> hand)
-    {
-        int total = hand.Sum(c => c.GetValue());
-        int aceCount = hand.Count(c => c.Rank == Rank.Ace);
-
-        while (total > 21 && aceCount > 0)
-        {
-            total -= 10;
-            aceCount--;
-        }
-
-        return total;
-    }
-
+    
     void ShowDealerInitialHand(List<Card> dealerHand)
     {
         Console.WriteLine("\nDealer's Hand:");
@@ -139,7 +125,7 @@ public class BlackJack : IGame
         Console.WriteLine($"Dealer shows: {visibleValue}");
 
     }
-
+    
     public enum Suits
     {
         Clubs,
@@ -164,77 +150,5 @@ public class BlackJack : IGame
         Queen,
         King,
         Ace
-    }
-
-
-    public class Card
-    {
-        public Suits Suit { get; private set; }
-        public Rank Rank { get; private set; }
-
-        public Card(Suits suit, Rank rank)
-        {
-            Suit = suit;
-            Rank = rank;
-        }
-
-        public override string ToString()
-        {
-            return $"{Rank} of {Suit}";
-        }
-        
-        public int GetValue()
-        {
-            return Rank switch
-            {
-                Rank.Jack or Rank.Queen or Rank.King => 10,
-                Rank.Ace => 11,
-                _ => (int)Rank + 2
-            };
-        }
-
-    }
-
-    public class Deck
-    {
-        private readonly List<Card> _cards;
-        private readonly Random _random = new();
-
-        public Deck()
-        {
-            _cards = new List<Card>();
-            GenerateDeck();
-            Shuffle();
-        }
-
-        private void GenerateDeck()
-        {
-            foreach (Suits suit in Enum.GetValues(typeof(Suits)))
-            {
-                foreach (Rank rank in Enum.GetValues(typeof(Rank)))
-                {
-                    _cards.Add(new Card(suit, rank));
-                }
-            }
-        }
-
-        public void Shuffle()
-        {
-            for (int i = _cards.Count - 1; i > 0; i--)
-            {
-                int j = _random.Next(i + 1);
-                (_cards[i], _cards[j]) = (_cards[j], _cards[i]);
-            }
-        }
-
-        public Card Draw()
-        {
-            if (_cards.Count == 0)
-                throw new InvalidOperationException("Deck is empty");
-
-            Card card = _cards[0];
-            _cards.RemoveAt(0);
-            return card;
-        }
     }
 }

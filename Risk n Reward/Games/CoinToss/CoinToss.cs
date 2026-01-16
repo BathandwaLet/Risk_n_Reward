@@ -1,4 +1,7 @@
+using Risk_n_Reward.Core.Engines;
+using Risk_n_Reward.Core.Models;
 using Risk_n_Reward.Wallet;
+using static Risk_n_Reward.Games.CoinToss.ComputerToss;
 
 namespace Risk_n_Reward.Games.CoinToss;
 
@@ -36,9 +39,11 @@ public class CoinToss : IGame
         {
             throw new ArgumentException("Invalid input");
         }
+
+        CoinSide computerChoice = ComputerToss.computer();
         
-        Random rnd = new Random();
-        var  computerChoice =  (rnd.Next(0, 2) == 0)? CoinSide.H : CoinSide.T;
+        var engine = new CoinTossEngine();
+        CoinTossResult result = engine.Result(playerChoice, computerChoice);
 
         Console.WriteLine($"You chose {playerChoice}");
         Console.WriteLine($"The computer chose {computerChoice}");
