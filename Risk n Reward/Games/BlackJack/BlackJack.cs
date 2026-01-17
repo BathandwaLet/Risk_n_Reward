@@ -1,7 +1,6 @@
+using Risk_n_Reward.Core.Models.CardDeck;
 using Risk_n_Reward.Wallet;
-using static Risk_n_Reward.Games.BlackJack.Deck;
-using static Risk_n_Reward.Games.BlackJack.Card;
-using static Risk_n_Reward.Core.Engines.BlackJackEngine;
+using static Risk_n_Reward.Core.Engines.BlackJackEngine.BlackJackEngine;
 
 namespace Risk_n_Reward.Games.BlackJack;
 
@@ -126,29 +125,4 @@ public class BlackJack : IGame
 
     }
     
-    public enum Suits
-    {
-        Clubs,
-        Diamonds,
-        Hearts,
-        Spades,
-
-    }
-
-    public enum Rank
-    {
-        Two,
-        Three,
-        Four,
-        Five,
-        Six,
-        Seven,
-        Eight,
-        Nine,
-        Ten,
-        Jack,
-        Queen,
-        King,
-        Ace
-    }
 }

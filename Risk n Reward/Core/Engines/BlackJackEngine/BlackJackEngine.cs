@@ -1,7 +1,8 @@
-using Risk_n_Reward.Core.Models;
-using Risk_n_Reward.Games.BlackJack;
+using Risk_n_Reward.Core.Models.BlackJackModels.Outcomes;
+using Risk_n_Reward.Core.Models.BlackJackModels.Results;
+using Risk_n_Reward.Core.Models.CardDeck;
 
-namespace Risk_n_Reward.Core.Engines;
+namespace Risk_n_Reward.Core.Engines.BlackJackEngine;
 
 public class BlackJackEngine
 {
@@ -20,10 +21,8 @@ public class BlackJackEngine
         };
     }
 
-    public BlackJackOutcome GameResult(int player, int computer)
+    private BlackJackOutcome GameResult(int player, int computer)
     {
-        bool[] gameResult = new bool[2];
-
         if (player > 21) 
         {
             return BlackJackOutcome.Lose;
@@ -32,7 +31,7 @@ public class BlackJackEngine
         {
             return BlackJackOutcome.Win;
         }
-        else if (player <= 21 && player > computer) 
+        else if (player > computer) 
         {
             return BlackJackOutcome.Win;
         }
@@ -45,7 +44,7 @@ public class BlackJackEngine
     }
 
 
-    public decimal Payout(BlackJackOutcome outcome)
+    private decimal Payout(BlackJackOutcome outcome)
     {
         if (outcome == BlackJackOutcome.Win)
         {
@@ -62,7 +61,7 @@ public class BlackJackEngine
     public static int CalculateHandValue(List<Card> hand)
     {
         int total = hand.Sum(c => c.GetValue());
-        int aceCount = hand.Count(c => c.Rank == BlackJack.Rank.Ace);
+        int aceCount = hand.Count(c => c.Rank == Rank.Ace);
 
         while (total > 21 && aceCount > 0)
         {

@@ -1,4 +1,5 @@
-using Risk_n_Reward.Core.Models;
+using Risk_n_Reward.Core.Models.RockPaperScissorsModels;
+using Risk_n_Reward.Core.Models.RockPaperScissorsModels.Results;
 using Risk_n_Reward.Core.Results;
 using  Risk_n_Reward.Games.RockPaperScissors;
 using static Risk_n_Reward.Games.RockPaperScissors.ComputerRPS;

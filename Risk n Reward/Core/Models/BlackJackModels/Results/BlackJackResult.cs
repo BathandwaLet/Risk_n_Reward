@@ -1,4 +1,6 @@
-namespace Risk_n_Reward.Core.Models;
+using Risk_n_Reward.Core.Models.BlackJackModels.Outcomes;
+
+namespace Risk_n_Reward.Core.Models.BlackJackModels.Results;
 
 public class BlackJackResult
 {

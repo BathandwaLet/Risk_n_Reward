@@ -1,5 +1,6 @@
 using System.Diagnostics;
-
+using Risk_n_Reward.Core.Models.RockPaperScissorsModels;
+    
 namespace Risk_n_Reward.Games.RockPaperScissors;
 
 public class ComputerRPS
@@ -26,12 +27,4 @@ public class ComputerRPS
         return computerChoice;
     }
 
-}
-
-public enum RPS
-{
-    Null,
-    Rock,
-    Paper,
-    Scissors
 }

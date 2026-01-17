@@ -1,4 +1,4 @@
-namespace Risk_n_Reward.Core.Models;
+namespace Risk_n_Reward.Core.Models.PickFiveModels.Results;
 
 public class PickFiveResult
 {

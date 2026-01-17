@@ -1,6 +1,4 @@
-using static Risk_n_Reward.Games.RockPaperScissors.ComputerRPS;
-
-namespace Risk_n_Reward.Core.Models;
+namespace Risk_n_Reward.Core.Models.RockPaperScissorsModels.Results;
 
 public class RockPaperScissorsResult
 {

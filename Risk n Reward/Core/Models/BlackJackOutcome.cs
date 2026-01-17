@@ -1,8 +1,0 @@
-namespace Risk_n_Reward.Core.Models;
-
-public enum BlackJackOutcome
-{
-    Win,
-    Push,
-    Lose
-}

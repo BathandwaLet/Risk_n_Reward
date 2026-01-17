@@ -1,6 +1,7 @@
 using Risk_n_Reward.Wallet;
 using Risk_n_Reward.Core.Engines;
-using Risk_n_Reward.Core.Models;
+using Risk_n_Reward.Core.Models.RockPaperScissorsModels;
+using Risk_n_Reward.Core.Models.RockPaperScissorsModels.Results;
 using static Risk_n_Reward.Games.RockPaperScissors.ComputerRPS;
 
 namespace Risk_n_Reward.Games.RockPaperScissors;

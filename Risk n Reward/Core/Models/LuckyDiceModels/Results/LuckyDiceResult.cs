@@ -1,6 +1,4 @@
-using static Risk_n_Reward.Core.Engines.LuckyDiceEngine;
-
-namespace Risk_n_Reward.Core.Models;
+namespace Risk_n_Reward.Core.Models.LuckyDiceModels.Results;
 
 public class LuckyDiceResult
 {

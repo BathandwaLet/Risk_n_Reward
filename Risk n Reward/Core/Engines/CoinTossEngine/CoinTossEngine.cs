@@ -1,6 +1,7 @@
 using Risk_n_Reward.Core.Results;
 using Risk_n_Reward.Games.CoinToss;
 using Risk_n_Reward.Core.Models;
+using Risk_n_Reward.Core.Models.CoinTossModels.Results;
 
 namespace Risk_n_Reward.Core.Engines;
 

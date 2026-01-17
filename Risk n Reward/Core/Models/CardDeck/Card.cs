@@ -1,6 +1,4 @@
-using static Risk_n_Reward.Games.BlackJack.BlackJack;
-
-namespace Risk_n_Reward.Games.BlackJack;
+namespace Risk_n_Reward.Core.Models.CardDeck;
 
 public class Card
 {

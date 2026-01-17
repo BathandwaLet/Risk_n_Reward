@@ -1,6 +1,7 @@
 using Risk_n_Reward.Wallet;
 using Risk_n_Reward.Core.Engines;
-using Risk_n_Reward.Core.Models;
+using Risk_n_Reward.Core.Models.LuckyDiceModels;
+using Risk_n_Reward.Core.Models.LuckyDiceModels.Results;
 using Risk_n_Reward.Core.Results;
 using static Risk_n_Reward.Games.LuckyDice.DiceRoll;
 

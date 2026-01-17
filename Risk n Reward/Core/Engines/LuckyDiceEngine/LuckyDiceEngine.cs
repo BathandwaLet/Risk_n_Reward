@@ -1,6 +1,7 @@
-using Risk_n_Reward.Core.Models;
+using Risk_n_Reward.Core.Models.LuckyDiceModels;
+using Risk_n_Reward.Core.Models.LuckyDiceModels.Results;
 using Risk_n_Reward.Games.LuckyDice;
-using static Risk_n_Reward.Core.Models.LuckyDiceResult;
+using static Risk_n_Reward.Core.Models.LuckyDiceModels.Results.LuckyDiceResult;
 
 
 namespace Risk_n_Reward.Core.Engines;

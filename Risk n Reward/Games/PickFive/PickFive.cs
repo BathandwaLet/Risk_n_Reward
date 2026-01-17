@@ -1,5 +1,6 @@
 using Risk_n_Reward.Core.Engines;
 using Risk_n_Reward.Core.Models;
+using Risk_n_Reward.Core.Models.PickFiveModels.Results;
 using Risk_n_Reward.Wallet;
 
 namespace Risk_n_Reward.Games.PickFive;
