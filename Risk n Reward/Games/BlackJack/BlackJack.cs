@@ -1,6 +1,7 @@
 using Risk_n_Reward.Core.Models.CardDeck;
 using Risk_n_Reward.Wallet;
 using static Risk_n_Reward.Core.Engines.BlackJackEngine.BlackJackEngine;
+using Risk_n_Reward.Games.BlackJack;
 
 namespace Risk_n_Reward.Games.BlackJack;
 
@@ -123,6 +124,16 @@ public class BlackJack : IGame
         int visibleValue = (int)dealerHand[0].Rank;
         Console.WriteLine($"Dealer shows: {visibleValue}");
 
+    }
+    
+    private static BJ ParsePlayerChoice(string input)
+    {
+        return input switch
+        {
+            "H" => BJ.Hit ,
+            "S" => BJ.Stand,
+            _ => BJ.Null,
+        };
     }
     
 }

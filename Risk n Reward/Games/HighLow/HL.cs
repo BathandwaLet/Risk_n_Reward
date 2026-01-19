@@ -5,4 +5,5 @@ public enum HL
     Null,
     Higher,
     Lower,
+    Same,
 }

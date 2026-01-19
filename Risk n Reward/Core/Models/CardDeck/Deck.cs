@@ -37,7 +37,9 @@ public class Deck
     public Card Draw()
     {
         if (_cards.Count == 0)
+        {
             throw new InvalidOperationException("Deck is empty");
+        }
 
         Card card = _cards[0];
         _cards.RemoveAt(0);

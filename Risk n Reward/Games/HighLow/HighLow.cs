@@ -1,6 +1,7 @@
 using Risk_n_Reward.Core.Engines.HighLowEngine;
 using Risk_n_Reward.Core.Models.CardDeck;
 using Risk_n_Reward.Core.Models;
+using Risk_n_Reward.Core.Models.HighLowModels.Outcomes;
 using Risk_n_Reward.Core.Models.HighLowModels.Results;
 using Risk_n_Reward.Wallet;
 
@@ -39,13 +40,13 @@ public class HighLow : IGame
         Thread.Sleep(1000);
         Console.Clear();
 
-        Card[] firstCard = new Card[1];
-        Card[] nextCard = new Card[1];
+        Card firstCard;
+        Card nextCard;
         
-        firstCard[0] = deck.Draw();
-        nextCard[0] = deck.Draw();
+        firstCard = deck.Draw();
+        nextCard = deck.Draw();
 
-        Console.WriteLine($"Your card is {firstCard[0]} \nIs the next card higher or lower?");
+        Console.WriteLine($"Your card is {firstCard} \nIs the next card higher or lower?");
         Console.WriteLine("Press H for higher or L for lower.");
         HL playerChoice = ParsePlayerChoice(Console.ReadLine().ToUpper());
 
@@ -55,7 +56,29 @@ public class HighLow : IGame
         }
         
         var engine = new HighLowEngine(); 
-        HighLowResult result = engine.Result(playerChoice,actualChoice);
+        HighLowResult result = engine.Result(firstCard, nextCard, playerChoice);
+        
+        Console.WriteLine($"The next card is {nextCard}");
+        
+        if (result.Outcome == HighLowOutcome.Win)
+        {
+            wallet.Payout(result.PayoutMultiplier * playerBet);
+            Console.WriteLine($"\nCONGRATULATIONS!");
+            Console.WriteLine($"You won {result.PayoutMultiplier * playerBet} VMali!");
+        }
+        else if (result.Outcome == HighLowOutcome.Draw)
+        {
+            wallet.Payout(playerBet);
+            Console.WriteLine("\nIt's a Draw");
+            Console.WriteLine("Your bet amount was returned");
+        }
+        else
+        {
+            Console.WriteLine("\nNo win this time.");
+        }
+
+        Console.WriteLine($"Your new balance is: {wallet.Balance} VMali");
+        Console.ReadKey();
 
     }
 

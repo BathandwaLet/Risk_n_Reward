@@ -25,5 +25,17 @@ public class Card
             _ => (int)Rank + 2
         };
     }
+    
+    public int CalculateCardValue()
+    {
+        return this.Rank switch
+        {
+            Rank.Ace => 1,
+            Rank.Jack => 11,
+            Rank.Queen => 12,
+            Rank.King => 13,
+            _ => ((int)this.Rank) + 2
+        };
+    }
 
 }

@@ -1,4 +1,6 @@
-﻿namespace Risk_n_Reward;
+﻿using Risk_n_Reward.Games.HighLow;
+
+namespace Risk_n_Reward;
 
 using System.Diagnostics;
 using Risk_n_Reward.Games.BlackJack;
@@ -22,7 +24,7 @@ class Program
         {
             Console.WriteLine("What game do you want to play? \n Enter the number corresponding with the game");
             Console.WriteLine(" 1.Coin Toss \n 2.Black Jack \n 3.Crash \n 4.Pick Five \n 5.Rock, Paper, Scissors" + 
-                              "\n 6.Lucky Dice \n 0.Exit");
+                              "\n 6.Lucky Dice \n 7.High Low \n 0.Exit");
         
             int.TryParse(Console.ReadLine(), out var choiceNumber);
             IGame? game = null;
@@ -46,6 +48,9 @@ class Program
                     break;
                 case 6:
                     game = new LuckyDice();
+                    break;
+                case 7:
+                    game = new HighLow();
                     break;
                 case 0:
                     Console.WriteLine("Thank you for visiting Risk n Reward!");

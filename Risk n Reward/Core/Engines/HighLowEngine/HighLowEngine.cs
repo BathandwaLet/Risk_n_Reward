@@ -8,8 +8,9 @@ namespace Risk_n_Reward.Core.Engines.HighLowEngine;
 public class HighLowEngine
 {
     
-    public HighLowResult Result(HL player, HL actual)
+    public HighLowResult Result(Card firstCard, Card nextCard, HL player)
     {
+        var actual = Actual(firstCard, nextCard);
         var gameResult = Outcome(player, actual);
         var payout = Payout(gameResult);
         return new HighLowResult
@@ -26,6 +27,11 @@ public class HighLowEngine
             return HighLowOutcome.Win;
         }
 
+        if (actual == HL.Same)
+        {
+            return HighLowOutcome.Draw;
+        }
+
         return HighLowOutcome.Lose;
     }
 
@@ -37,29 +43,19 @@ public class HighLowEngine
         }
         return 0;
     }
-    
-    public static int CalculateCardValue(Card[] cards)
+
+    private static HL Actual(Card firstCard, Card nextCard)
     {
-        int total = cards.Sum(c => c.GetValue());
-        int aceCount = cards.Count(c => c.Rank == Rank.Ace);
+        var firstCardValue = firstCard.CalculateCardValue();
+        var nextCardValue = nextCard.CalculateCardValue();
 
-        while (aceCount > 0)
-        {
-            total -= 10;
-            aceCount--;
-        }
-
-        return total;
-    }
-
-    public static HL Actual(Card[] firstCard, Card[] nextCard)
-    {
-        var firstCardValue = CalculateCardValue(firstCard);
-        var nextCardValue = CalculateCardValue(nextCard);
-
-        if (firstCardValue > nextCardValue)
+        if (nextCardValue > firstCardValue)
         {
             return HL.Higher;
+        }
+        else if (firstCardValue == nextCardValue)
+        {
+            return HL.Same;
         }
 
         return HL.Lower;
