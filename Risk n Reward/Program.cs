@@ -1,4 +1,11 @@
-﻿using Risk_n_Reward.Games.HighLow;
+﻿using Risk_n_Reward.Games.Baccarat;
+using Risk_n_Reward.Games.HighLow;
+using Risk_n_Reward.Games.Roulette;
+using Risk_n_Reward.Games.TexasHoldemPoker;
+using Risk_n_Reward.Games.Slots;
+using Risk_n_Reward.Games.LuckyDice;
+
+
 
 namespace Risk_n_Reward;
 
@@ -51,6 +58,18 @@ class Program
                     break;
                 case 7:
                     game = new HighLow();
+                    break;
+                case 8:
+                    game = new Roulette();
+                    break;
+                case 9:
+                    game = new Baccarat();
+                    break;
+                case 10:
+                    game = new Slots();
+                    break;
+                case 11:
+                    game = new TexasHoldem();
                     break;
                 case 0:
                     Console.WriteLine("Thank you for visiting Risk n Reward!");
