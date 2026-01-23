@@ -7,18 +7,34 @@ namespace Risk_n_Reward.Core.Engines.SlotsEngine;
 
 public class SlotsEngine
 {
-    public SlotsResult Result(SlotsSymbols[] slots)
+    private static readonly Random _random = new Random();
+    
+    public SlotsResult Result()
     {
-        SlotsOutcome result = GameResult(slots);
+        var reels = new []
+        {
+            RandomSymbol(),
+            RandomSymbol(),
+            RandomSymbol(),
+            RandomSymbol(),
+            RandomSymbol(),
+        };
+        SlotsOutcome result = GameResult(reels);
         decimal payout = Payout(result);
         
         return new SlotsResult()
         {
+            ReelsOutcome = reels,
             Result = result,
             PayoutMultiplier = payout,
         };
     }
 
+    private SlotsSymbols RandomSymbol()
+    {
+        return (SlotsSymbols)_random.Next(Enum.GetValues(typeof(SlotsSymbols)).Length);
+    }
+    
     private SlotsOutcome GameResult(SlotsSymbols[] slotReels)
     {
         if (slotReels.All(r => r == SlotsSymbols.Seven))
@@ -46,6 +62,11 @@ public class SlotsEngine
             return SlotsOutcome.MediumWin;
         }
 
+        if (slotReels.All(r => r == SlotsSymbols.Clover))
+        {
+            return SlotsOutcome.MediumWin;
+        }
+        
         if (slotReels.Distinct().Count() == 2)
         {
             return SlotsOutcome.SmallWin;

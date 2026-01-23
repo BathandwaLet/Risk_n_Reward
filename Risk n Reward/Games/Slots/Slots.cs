@@ -23,10 +23,32 @@ public class Slots : IGame
             throw new ArgumentException("Insufficient funds!");
         }
         
-        //player choices
-        
         var engine = new SlotsEngine();
         SlotsResult result = engine.Result();
+        
+        Console.WriteLine("Spinning...");
+        Thread.Sleep(1000);
+
+        foreach (var reel in result.ReelsOutcome)
+        {
+            Console.Write($"{reel} ");
+            Thread.Sleep(500);
+        }
+        
+        Console.WriteLine();
+        
+        if (result.IsWin)
+        {
+            Console.WriteLine($"CONGRATULATIONS!\nYou won {playerBet * result.PayoutMultiplier}VMali!");
+            wallet.Payout(playerBet * result.PayoutMultiplier);
+        }
+        else
+        {
+            Console.WriteLine("No win this time");
+        }
+        
+        Console.WriteLine($"Your new balance is {wallet.Balance} VMali");
+        Console.ReadKey();
 
     }
 }
