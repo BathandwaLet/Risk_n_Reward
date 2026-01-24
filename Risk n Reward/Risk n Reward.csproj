@@ -12,7 +12,6 @@
       <Folder Include="Core\Models\CoinTossModels\Outcomes\" />
       <Folder Include="Core\Models\LuckyDiceModels\Outcomes\" />
       <Folder Include="Core\Models\PickFiveModels\Outcomes\" />
-      <Folder Include="Core\Models\RouletteModels\Outcomes\" />
       <Folder Include="Core\Models\TexasHoldemModels\Outcomes\" />
       <Folder Include="User_Interface\" />
     </ItemGroup>

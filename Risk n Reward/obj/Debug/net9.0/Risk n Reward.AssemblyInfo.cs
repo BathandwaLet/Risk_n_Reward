@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Risk n Reward")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+598b2712272973a56d337b83a2d2d3bd6b1f4689")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+85afc16760e0c0aa19345b60bf9fae1843cc7ef5")]
 [assembly: System.Reflection.AssemblyProductAttribute("Risk n Reward")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Risk n Reward")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

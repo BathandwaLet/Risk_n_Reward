@@ -30,8 +30,9 @@ class Program
         while (true)
         {
             Console.WriteLine("What game do you want to play? \n Enter the number corresponding with the game");
-            Console.WriteLine(" 1.Coin Toss \n 2.Black Jack \n 3.Crash \n 4.Pick Five \n 5.Rock, Paper, Scissors" + 
-                              "\n 6.Lucky Dice \n 7.High Low \n 0.Exit");
+            Console.WriteLine(" 1. Coin Toss \n 2. Black Jack \n 3. Crash \n 4. Pick Five \n 5. Rocks, Paper, Scissors" + 
+                              "\n 6. Lucky Dice \n 7. High Low \n 8. Roulette \n 9. Baccarat \n 10. Slots " +
+                              "\n 11. TexasHoldem \n 0. Exit");
         
             int.TryParse(Console.ReadLine(), out var choiceNumber);
             IGame? game = null;
