@@ -7,26 +7,29 @@ A C# console-based application exploring probability-based games, risk and rewar
 PROJECT DESCRIPTION <br>
 Risk n Reward is a game logic written in C#. <br>
 Its scope focuses on probability-based decision-making, betting mechanisms and reward mechanics/balancing. <br>
-The current implementation is a console-based application with the intention of being expanded into a full platform. 
+The current implementation is a console-based application intended to be expanded into a full platform. 
 
 
 FEATURES
-1) Risk vs reward game mechanics <br>
-2) Randomised outcomes <br>
-3) Modular game logic <br>
-4) Console-based interface 
+1) Risk vs reward game mechanics. <br>
+2) Randomised outcomes. <br>
+3) Modular game logic. <br>
+4) Console-based interface. <br>
+5) Centralised betting and payout logic. <br>
+6) Balance and wager management.
+7) Multiple mini games ()
 
-PLANNED FEATURES
-1) Multiple mini games <br>
-2) Player balance tracking <br>
-3) Odds and payment tuning <br>
-4) Frontend User Interface (Angular) <br>
-5) Backend services (C#) 
+PLANNED FEATURES (Updated)
+1) Baccarat mini-game <br>
+2) Simplified Texas Hold'em Poker mini game. <br>
+3) Win streak system with bonus multipliers. <br>
+4) Blazor WebAssembly frontend UI. <br>
+5) Improved game ochrestration. 
 
 TECH STACK <br>
 1) Programming language: C# <br>
 2) Framework: .NET 9.0 <br>
-3) Frontend (Planned): Blazor <br>
+3) Frontend (Planned): Blazor WebAssembly (WASM) <br>
 4) Version control: Git
 
 HOW TO RUN <br>
@@ -35,12 +38,59 @@ HOW TO RUN <br>
 3) Build the solution <br>
 4) Run the application in console (browser support coming soon) 
 
-PROJECT STRUCTURE
-1) Games: Deals with game logic <br>
-2) Core: Shared game mechanics and utilities <br>
-3) ConsoleApp: Program entry point 
+PROJECT STRUCTURE<br>
+1) Games: Deals with game logic and game ochrestration <br>  
+    • Initialises game engine. <br>
+    • Updates player wallet. <br>
+2. Core (Game Mechanics and Utilities)<br>
+    i - Engine<br>
+    Responsible for game-specific logic, including:<br>
+    • Rule enforcement<br>
+    • Outcome calculation<br>
+    • Probability handling<br>
+    • Payout determination<br>
+    Each casino game has its own engine implementation.<br>
 
-LICENSE
+    ii - Models<br>
+    Defines the data structures used across the system, such as:<br>
+    • Bet types<br>
+    • Outcomes and results<br>
+    • Game states<br>
+    • Player actions<br>
+
+4. Interfaces<br>
+Acts as the contract between games and the system, ensuring:<br>
+• Consistent interaction between engines<br>
+• Interchangeable game implementations<br>
+• Decoupling of logic from UI<br>
+
+5. User Interface<br>
+Console-based UI for testing and development<br>
+Blazor WebAssembly UI (planned) for interactive web gameplay<br>
+
+6. Wallet and WalletService<br>
+i - Wallet<br>
+• Represents the player’s balance and transaction history.<br>
+
+ii - WalletService<br>
+Handles:<br>
+Deposits and withdrawals<br>
+Bet deductions<br>
+Winnings and payouts<br>
+Validation of sufficient funds<br>
+
+HIGH LEVEL ARCHITECTURE DIAGRAM<br>
+<img width="121" height="881" alt="RnRCompleteHighLevelArch drawio" src="https://github.com/user-attachments/assets/97beedf5-886d-463f-b6b3-d4367005ddb2" />
+
+
+ROADMAP<br>
+• Complete Baccarat and Texas Hold'em mini-games. <br>
+• Complete Winstreak bonus system. <br>
+• Add unit and probalbility tests. <br>
+• Implement Blazor WebAssembly frontend. <br>
+• Prepare for deployment.
+
+LICENSE<br>
 This project is licensed under the MIT License. <br>
 See the LICENSE file for further information
 
