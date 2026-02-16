@@ -1,15 +1,10 @@
-﻿using Risk_n_Reward.Games.Baccarat;
+﻿using System.Diagnostics;
+using Risk_n_Reward.Games.Baccarat;
 using Risk_n_Reward.Games.HighLow;
 using Risk_n_Reward.Games.Roulette;
 using Risk_n_Reward.Games.TexasHoldemPoker;
 using Risk_n_Reward.Games.Slots;
 using Risk_n_Reward.Games.LuckyDice;
-
-
-
-namespace Risk_n_Reward;
-
-using System.Diagnostics;
 using Risk_n_Reward.Games.BlackJack;
 using Risk_n_Reward.Games.Crash;
 using Risk_n_Reward.Games.CoinToss;
@@ -17,6 +12,8 @@ using Risk_n_Reward.Games.RockPaperScissors;
 using Risk_n_Reward.Games.PickFive;
 using Risk_n_Reward.Games.LuckyDice;
 using Risk_n_Reward.Wallet;
+
+namespace Risk_n_Reward;
 
 class Program
 {
