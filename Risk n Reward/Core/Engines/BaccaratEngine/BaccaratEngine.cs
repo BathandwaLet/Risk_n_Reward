@@ -8,16 +8,20 @@ namespace Risk_n_Reward.Core.Engines.BaccaratEngine;
 
 public class BaccaratEngine
 {
-    public BaccaratResult Result(List<Card> player, List<Card> dealer, decimal playerBet, BaccaratBetType betType)
+    public BaccaratResult Result(int player, int dealer, BaccaratBetType betType)
     {
         
-        return new  BaccaratResult();
+        BaccaratOutcome gameOutcome = GameOutcome(player,dealer);
+        decimal payoutMultiplier =  Payout(gameOutcome, betType);
+        
+        return new  BaccaratResult()
         {
-            
-        }
+            Outcome = gameOutcome,
+            PayoutMultiplier= payoutMultiplier,
+        };
     }
     
-    private int HandValue(List<Card> hand)
+    public int HandValue(List<Card> hand)
     {
         int sum = 0;
         
@@ -55,7 +59,7 @@ public class BaccaratEngine
         return BaccaratOutcome.Tie;
     }
 
-    private decimal PayoutMultiplier (BaccaratOutcome gameOutcome, BaccaratBetType betType)
+    private decimal Payout (BaccaratOutcome gameOutcome, BaccaratBetType betType)
     {
         
         return (gameOutcome, betType) switch
