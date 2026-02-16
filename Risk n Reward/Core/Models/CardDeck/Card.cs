@@ -38,4 +38,17 @@ public class Card
         };
     }
 
+    public int BaccaratCardValue()
+    {
+        return this.Rank switch
+        {
+            Rank.Ace => 1,
+            Rank.Ten => 0,
+            Rank.Jack => 0,
+            Rank.Queen => 0,
+            Rank.King => 0,
+            _ => ((int)this.Rank) + 2
+        };
+    }
+
 }
