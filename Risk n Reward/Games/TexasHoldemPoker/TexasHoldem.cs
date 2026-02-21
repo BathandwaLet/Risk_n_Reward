@@ -28,7 +28,7 @@ public class TexasHoldem : IGame
 
         List<Card> playerHand = new();
         List<Card> dealerHand = new();
-        List<Card> communityHand = new();
+        List<Card> communityCards = new();
         
         Console.WriteLine("Shuffling the deck");
         Thread.Sleep(1000);
@@ -50,15 +50,15 @@ public class TexasHoldem : IGame
         //community pile
         for (int i = 0; i < 5; i++)
         {
-            communityHand.Add(deck.Draw());
+            communityCards.Add(deck.Draw());
         }
         
         //prints *card* *card* for dealer
         Console.WriteLine("Card Card");
         
         //prints community hand
-        Console.Write("\nCommunity Pile: ");
-        ShowHand(communityHand);
+        Console.Write("\nCommunity Cards: ");
+        ShowHand(communityCards);
         
         //prints player hand
         Console.Write("\nPlayer Hand: ");
