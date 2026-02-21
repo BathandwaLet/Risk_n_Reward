@@ -78,4 +78,12 @@ public class TexasHoldem : IGame
         Console.WriteLine($"Your new balance is: {wallet.Balance} VMali");
         Console.ReadKey();
     }
+
+    void ShowHand(List<Card> hand)
+    {
+        foreach (Card card in hand)
+        {
+            Console.Write(card + " ");
+        }
+    }
 }
