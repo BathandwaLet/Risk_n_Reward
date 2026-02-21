@@ -58,17 +58,11 @@ public class TexasHoldem : IGame
         
         //prints community hand
         Console.Write("\nCommunity Pile: ");
-        foreach (Card card in communityHand)
-        {
-            Console.Write(card + " ");
-        }
+        ShowHand(communityHand);
         
         //prints player hand
         Console.Write("\nPlayer Hand: ");
-        foreach (Card card in playerHand)
-        {
-            Console.Write(card + " ");
-        }
+        ShowHand(playerHand);
         
         // call engine
         
