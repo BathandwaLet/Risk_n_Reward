@@ -48,7 +48,7 @@ public class TexasHoldem : IGame
         dealerHand.Add(deck.Draw());
         
         //community pile
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 5; i++)
         {
             communityHand.Add(deck.Draw());
         }
