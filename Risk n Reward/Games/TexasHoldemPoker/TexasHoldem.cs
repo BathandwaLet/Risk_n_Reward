@@ -1,5 +1,8 @@
+using Risk_n_Reward.Core.Engines.TexasHoldemEngine;
 using Risk_n_Reward.Wallet;
 using Risk_n_Reward.Core.Models.CardDeck;
+using Risk_n_Reward.Core.Models.TexasHoldemModels.Outcomes.GameResult;
+using Risk_n_Reward.Core.Models.TexasHoldemModels.Outcomes.HandType;
 
 namespace Risk_n_Reward.Games.TexasHoldemPoker;
 
@@ -23,6 +26,8 @@ public class TexasHoldem : IGame
             throw new ArgumentException("Insufficient funds!");
             return;
         }
+        
+        Console.WriteLine("No more bets.");
         
         Deck deck = new Deck();
 
@@ -53,9 +58,6 @@ public class TexasHoldem : IGame
             communityCards.Add(deck.Draw());
         }
         
-        //prints *card* *card* for dealer
-        Console.WriteLine("Card Card");
-        
         //prints community hand
         Console.Write("\nCommunity Cards: ");
         ShowHand(communityCards);
@@ -64,9 +66,42 @@ public class TexasHoldem : IGame
         Console.Write("\nPlayer Hand: ");
         ShowHand(playerHand);
         
-        // call engine
+        // call engine and evaluate game
+        var engine = new TexasHoldemEngine();
+        var result = engine.Result(playerHand,dealerHand,communityCards);
+        
+        Console.Clear();
+        
+        //Present hands and type of hand:
+        //prints dealer hand
+        Console.WriteLine("Dealer Hand");
+        ShowHand(dealerHand);
+        Console.WriteLine(ParseHandType(result.DealerHandType));
+        
+        //prints community card
+        Console.Write("\nCommunity Cards: ");
+        ShowHand(communityCards);
+        
+        //prints player hand
+        Console.Write("\nPlayer Hand: ");
+        ShowHand(playerHand);
+        Console.WriteLine(ParseHandType(result.PlayerHandType));
         
         //results presentation and wallet update
+        if (result.Outcome == GameResult.Win)
+        {
+            Console.WriteLine($"Congratulations!, You won {result.PayoutMultiplier*playerBet}VMali!");
+            wallet.Payout(result.PayoutMultiplier*playerBet);
+        }
+        else if (result.Outcome == GameResult.Push)
+        {
+            Console.WriteLine($"Push.\nYour bet of {playerBet}VMali was returned.");
+            wallet.Payout(result.PayoutMultiplier*playerBet);
+        }
+        else
+        {
+            Console.WriteLine("Unfortunately, you lost.");
+        }
         
         //wallet updated, show balance.
         Console.WriteLine($"Your new balance is: {wallet.Balance} VMali");
@@ -79,5 +114,22 @@ public class TexasHoldem : IGame
         {
             Console.Write(card + " ");
         }
+    }
+
+    private static string ParseHandType(THHandType hand)
+    {
+        return hand switch
+        {
+            (THHandType.RoyalFlush) => "Royal Flush",
+            (THHandType.StraightFlush) => "Straight Flush",
+            (THHandType.FourOfAKind) => "Four of a Kind",
+            (THHandType.FullHouse) => "Full House",
+            (THHandType.Flush) => "Flush",
+            (THHandType.Straight) => "Straight",
+            (THHandType.ThreeOfAKind) => "Three of a Kind",
+            (THHandType.TwoPair) => "Two Pair",
+            (THHandType.Pair) => "Pair",
+            (THHandType.HighCard) => "High Card "
+        };
     }
 }
