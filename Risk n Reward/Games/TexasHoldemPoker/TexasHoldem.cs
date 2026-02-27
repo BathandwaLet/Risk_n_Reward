@@ -74,9 +74,9 @@ public class TexasHoldem : IGame
         
         //Present hands and type of hand:
         //prints dealer hand
-        Console.WriteLine("Dealer Hand");
+        Console.Write("Dealer Hand: ");
         ShowHand(dealerHand);
-        Console.WriteLine(ParseHandType(result.DealerHandType));
+        Console.WriteLine($"\nHand type: {ParseHandType(result.DealerHandType)}");
         
         //prints community card
         Console.Write("\nCommunity Cards: ");
@@ -85,7 +85,7 @@ public class TexasHoldem : IGame
         //prints player hand
         Console.Write("\nPlayer Hand: ");
         ShowHand(playerHand);
-        Console.WriteLine(ParseHandType(result.PlayerHandType));
+        Console.WriteLine($"\nHand type: {ParseHandType(result.PlayerHandType)}");
         
         //results presentation and wallet update
         if (result.Outcome == GameResult.Win)
