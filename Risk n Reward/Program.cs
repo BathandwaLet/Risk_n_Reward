@@ -8,7 +8,6 @@ using Risk_n_Reward.Games.LuckyDice;
 using Risk_n_Reward.Games.BlackJack;
 using Risk_n_Reward.Games.Crash;
 using Risk_n_Reward.Games.CoinToss;
-using Risk_n_Reward.Games.RockPaperScissors;
 using Risk_n_Reward.Games.PickFive;
 using Risk_n_Reward.Games.LuckyDice;
 using Risk_n_Reward.Wallet;
@@ -27,9 +26,9 @@ class Program
         while (true)
         {
             Console.WriteLine("What game do you want to play? \n Enter the number corresponding with the game");
-            Console.WriteLine(" 1. Coin Toss \n 2. Black Jack \n 3. Crash \n 4. Pick Five \n 5. Rocks, Paper, Scissors" + 
-                              "\n 6. Lucky Dice \n 7. High Low \n 8. Roulette \n 9. Baccarat \n 10. Slots " +
-                              "\n 11. TexasHoldem \n 0. Exit");
+            Console.WriteLine(" 1. Coin Toss \n 2. Black Jack \n 3. Crash \n 4. Pick Five" + 
+                              "\n 5. Lucky Dice \n 6. High Low \n 7. Roulette \n 8. Baccarat \n 9. Slots " +
+                              "\n 10. TexasHoldem \n 0. Exit");
         
             int.TryParse(Console.ReadLine(), out var choiceNumber);
             IGame? game = null;
@@ -49,24 +48,21 @@ class Program
                     game = new PickFive();
                     break;
                 case 5:
-                    game = new RockPaperScissors();
-                    break;
-                case 6:
                     game = new LuckyDice();
                     break;
-                case 7:
+                case 6:
                     game = new HighLow();
                     break;
-                case 8:
+                case 7:
                     game = new Roulette();
                     break;
-                case 9:
+                case 8:
                     game = new Baccarat();
                     break;
-                case 10:
+                case 9:
                     game = new Slots();
                     break;
-                case 11:
+                case 10:
                     game = new TexasHoldem();
                     break;
                 case 0:
