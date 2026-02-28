@@ -1,103 +1,123 @@
-RISK N REWARD
+# RISK N REWARD  
 
-PROJECT TITLE <br>
-Risk n Reward <br>
-A C# console-based application exploring probability-based games, risk and reward mechanics 
+## PROJECT TITLE  
+**Risk n Reward**  
 
-PROJECT DESCRIPTION <br>
-Risk n Reward is a game logic written in C#. <br>
-Its scope focuses on probability-based decision-making, betting mechanisms and reward mechanics/balancing. <br>
-The current implementation is a console-based application intended to be expanded into a full platform. 
+A C# console-based application exploring probability-based games, risk and reward mechanics.  
 
+## PROJECT DESCRIPTION  
+Risk n Reward is a virtual arcade/casino with its games and game logic written in C#.  
 
-FEATURES
-1) Risk vs reward game mechanics. <br>
-2) Randomised outcomes. <br>
-3) Modular game logic. <br>
-4) Console-based interface. <br>
-5) Centralised betting and payout logic. <br>
-6) Balance and wager management.
-7) Multiple mini games ()
+Its scope focuses on:  
+- Probability-based decision-making.  
+- Betting mechanisms.
+- Reward mechanics and balancing.
 
-PLANNED FEATURES (Updated)
-1) Baccarat mini-game <br>
-2) Simplified Texas Hold'em Poker mini game. <br>
-3) Win streak system with bonus multipliers. <br>
-4) Blazor WebAssembly frontend UI. <br>
-5) Improved game ochrestration. 
+The current implementation is a console-based application and will be expanded into a full platform.  
 
-TECH STACK <br>
-1) Programming language: C# <br>
-2) Framework: .NET 9.0 <br>
-3) Frontend (Planned): Blazor WebAssembly (WASM) <br>
-4) Version control: Git
+## FEATURES
+- Risk vs reward game mechanics.  
+- Randomised but fair outcomes.
+- Modular game logic.
+- Console-based UI.
+- Centralised betting and payout logic.
+- Balance and wager management.
+- Multiple casino-style mini games.
 
-HOW TO RUN <br>
-1) Clone Repository <br>
-2) Open on any IDE that supports C# with .NET 9.0, e.g Visual Studio, Rider, etc. <br>
-3) Build the solution <br>
-4) Run the application in console (browser support coming soon) 
+### Deprecated
+- Rock, Paper, Scissors (removed as it no longer aligns with the casino focus of the project)
 
-PROJECT STRUCTURE<br>
-1) Games: Deals with game logic and game ochrestration <br>  
-    • Initialises game engine. <br>
-    • Updates player wallet. <br>
-2. Core (Game Mechanics and Utilities)<br>
-    i - Engine<br>
-    Responsible for game-specific logic, including:<br>
-    • Rule enforcement<br>
-    • Outcome calculation<br>
-    • Probability handling<br>
-    • Payout determination<br>
-    Each casino game has its own engine implementation.<br>
+## PLANNED FEATURES (Updated)
+- Refactor of Crash mini game into separate modules.
+- Win streak system with bonus multipliers.
+- Game persistence.  
+- Database integration.
+- Blazor WebAssembly frontend UI
+- Improved game ochrestration and performance.
 
-    ii - Models<br>
-    Defines the data structures used across the system, such as:<br>
-    • Bet types<br>
-    • Outcomes and results<br>
-    • Game states<br>
-    • Player actions<br>
+## TECH STACK
+- Programming Language(s): **C#**.
+- Framework(s): **.NET 10.0**.
+- Database (Planned): **PostgreSQL**.
+- Authentication (Planned): **ASP.NET Core Identity**
+- Frontend (Planned): **Blazor WebAssembly (WASM)**
+- Version Control: **Git**
 
-4. Interfaces<br>
-Acts as the contract between games and the system, ensuring:<br>
-• Consistent interaction between engines<br>
-• Interchangeable game implementations<br>
-• Decoupling of logic from UI<br>
+## HOW TO RUN  
+- Clone the repository.  
+- Open in any IDE that supports C# with .NET 10.0 (Visual Studio, Rider, etc).
+- Build the solution.
+- Run the application in the console window.
 
-5. User Interface<br>
-Console-based UI for testing and development<br>
-Blazor WebAssembly UI (planned) for interactive web gameplay<br>
+## PROJECT STRUCTURE  
 
-6. Wallet and WalletService<br>
-i - Wallet<br>
-• Represents the player’s balance and transaction history.<br>
+### 1. Games-Game Logic and Ochrestration  
+- Console UI
+- Manages gameplay and game flow.
+- Initialises game engine.  
+- Updates player wallet.
 
-ii - WalletService<br>
-Handles:<br>
-Deposits and withdrawals<br>
-Bet deductions<br>
-Winnings and payouts<br>
-Validation of sufficient funds<br>
+### 2. Core - Game Mechanics and Utilities  
 
-HIGH LEVEL ARCHITECTURE DIAGRAM<br>
-<img width="121" height="881" alt="RnRCompleteHighLevelArch drawio" src="https://github.com/user-attachments/assets/97beedf5-886d-463f-b6b3-d4367005ddb2" />
+#### Engine
+Responsible for game-specific logic, including:
+- Rule enforcement.  
+- Outcome calculation.  
+- Probability handling.  
+- Payout (multiplier) determination.
 
+Each mini-game has its own game engine implementation.  
 
-ROADMAP<br>
-• Complete Baccarat and Texas Hold'em mini-games. <br>
-• Complete Winstreak bonus system. <br>
-• Add unit and probalbility tests. <br>
-• Implement Blazor WebAssembly frontend. <br>
-• Prepare for deployment.
+#### Models
+Defines shared data structures used across the system, such as:
+- Bet types.  
+- Outcomes and results.  
+- Game states.  
+- Player actions.  
 
-LICENSE<br>
-This project is licensed under the MIT License. <br>
-See the LICENSE file for further information
+### 3. Interfaces
+Acts as the contract between games and the system, ensuring:
+- Consistent interaction between games, game engines and models.
+- Interchangeable game implementations.
+- Decoupling of logic from UI.  
 
-DISCLAIMER
-Risk n Reward is a virtual arcade simulation, a personal programming project created for educational and portfolio purposes. It utilises a virtual currency, VMali, and there is no intent to switch to actual currency or other items of value that can be deposited, wagered or won. This project is solely to demonstrate technical skills and as practice in software development. This is not intended to promote, facilitate or simulate gambling. Use of the simulation is for educational and experimental purposes only.
+### 4. User Interface
+- Blazor WebAssembly UI (planned) for interactive web gameplay.  
 
-AUTHOR <br>
-Bathandwa L Maphumulo <br>
-Email: bmap750@gmail.com <br>
-LinkedIn: in/bathandwa-maphumulo-216177180
+### 5. Wallet and WalletService  
+
+#### Wallet
+Represents the player's balance.
+
+#### WalletService  
+Handles:  
+- Deposits and withdrawals into the user's wallet.
+- Bet deductions.
+- Winnings and Payouts.
+- Validation of sufficient funds to play.  
+
+## HIGH LEVEL ARCHITECTURE DIAGRAM
+![Risk n Reward High Level Architecture](https://github.com/user-attachments/assets/97beedf5-886d-463f-b6b3-d4367005ddb2)
+
+## ROADMAP  
+- Refactor Crash mini-game into modular components.  
+- Add unit and probability tests.  
+- Implement WinStreak bonus multiplier system.  
+- Implement basic Blazor WebAssembly frontend.
+- Implement game persistence and a database.  
+- Implement user login and authentication.
+- Improve frontend.
+- Implement a History log, player wins, losses and favourite game.
+- Prepare for deployment.  
+
+## LICENSE
+This project is licensed under the MIT License.  
+See the LICENSE file for further information.  
+
+## DISCLAIMER
+Risk n Reward is a virtual arcade simulation, a personal programming project created for educational and portfolio purposes. It utilises a virtual currency, VMali, and there is no intent to switch to actual currency or other items of value that can be deposited, wagered or won. This project is solely to demonstrate technical skills and as practice in software development. This is not intended to promote, facilitate or simulate gambling. Use of the simulation is for educational and experimental purposes only.  
+
+## AUTHOR
+**Bathandwa L Maphumulo**  
+Email: bmap750@gmail.com  
+LinkedIn: [in/bathandwa-maphumulo-216177180](https://www.linkedin.com/in/bathandwa-maphumulo-216177180/)
