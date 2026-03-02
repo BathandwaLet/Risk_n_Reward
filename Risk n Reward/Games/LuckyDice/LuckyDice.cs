@@ -16,7 +16,7 @@ public class LuckyDice : IGame
         Console.WriteLine("Press any key to continue...");
         Console.ReadKey();
         
-        Console.WriteLine("Place your bet");
+        
         const decimal minBetAmount = 10.0m;
         decimal playerBet = TryPlaceBet(minBetAmount, wallet);
         

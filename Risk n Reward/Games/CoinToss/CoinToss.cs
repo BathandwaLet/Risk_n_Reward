@@ -12,7 +12,7 @@ public class CoinToss : IGame
     {
         Console.WriteLine("Welcome to Coin Toss");
         
-        Console.WriteLine($"Place your bet. You currently have {wallet.Balance} VMali.");
+        Console.WriteLine($"You currently have {wallet.Balance} VMali.");
         const decimal minBetAmount = 10.0m;
         decimal playerBet = TryPlaceBet(minBetAmount, wallet);
         

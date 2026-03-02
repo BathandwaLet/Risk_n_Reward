@@ -11,8 +11,6 @@ public class Baccarat : IGame
     public void Start(WalletService wallet)
     {
         Console.WriteLine("Welcome to Baccarat!");
-
-        Console.WriteLine($"You currently have {wallet.Balance} VMali.");
         
         Console.WriteLine("Select the corresponding number for the bet type" +
                           "\n1. Player \n2. Banker \n3. Tie");
@@ -39,6 +37,7 @@ public class Baccarat : IGame
                 throw new ArgumentException("Please select a number from 1 to 3");
         }
         
+        Console.WriteLine($"You currently have {wallet.Balance} VMali.");
         const decimal minBetAmount = 50.0m;
         decimal playerBet = TryPlaceBet(minBetAmount, wallet);
         
