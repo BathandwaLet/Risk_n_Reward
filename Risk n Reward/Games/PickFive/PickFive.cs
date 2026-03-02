@@ -13,19 +13,8 @@ public class PickFive : IGame
         
         Console.WriteLine($"You currently have {wallet.Balance} VMali.");
         
-        Console.WriteLine($"One ticket costs 10 VMali. \n press Y to continue");
-        decimal playerBet = 10;
-
-        if (Console.ReadLine()?.ToUpper() != "Y")
-        {
-            Console.WriteLine("Invalid input!");
-        }
         
-        if (!wallet.PlaceBet(playerBet))
-        {
-            Console.WriteLine("Insufficient Funds!");
-            return;
-        }
+        decimal playerBet = TryPlaceBet(wallet);
         
         Console.Clear();
         
@@ -109,6 +98,34 @@ public class PickFive : IGame
 
         Console.WriteLine($"Your new balance is: {wallet.Balance} VMali");
         Console.ReadKey();
+        
+    }
+    
+    public decimal TryPlaceBet(WalletService wallet)
+    {
+        decimal validBet;
+        
+        Console.WriteLine($"One ticket costs 10 VMali. \n press Y to continue");
+        validBet = 10m;
+        while (true)
+        {
+            if (Console.KeyAvailable)
+            {
+                var key = Console.ReadKey(true).Key;
+                if (key == ConsoleKey.Y)
+                {
+                    if (!wallet.PlaceBet(validBet))
+                    {
+                        Console.WriteLine($"Insufficient funds!");
+                        continue;
+                    }
+                    
+                    Console.WriteLine("Bet placed sucessfully!");
+                    return validBet;
+                }
+            }
+            
+        }
         
     }
 }

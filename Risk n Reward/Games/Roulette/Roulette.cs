@@ -80,16 +80,8 @@ public class Roulette : IGame
         
         Console.WriteLine("Place your bet:");
         
-        decimal playerBet;
-        if (!decimal.TryParse(Console.ReadLine(), out playerBet))
-        {
-            throw new ArgumentException("Invalid input!");
-        }
-
-        if (!wallet.PlaceBet(playerBet))
-        {
-            throw new ArgumentException("Insufficient funds!");
-        }
+        const decimal minBetAmount = 50.0m;
+        decimal playerBet = TryPlaceBet(minBetAmount, wallet);
 
         int playerNumber = 0;
         
@@ -135,5 +127,44 @@ public class Roulette : IGame
         Console.WriteLine($"Your new balance is {wallet.Balance} VMali");
         Console.WriteLine("Press any key to continue.");
         Console.ReadKey();
+    }
+    
+    public decimal TryPlaceBet(decimal minBetAmount,WalletService wallet)
+    {
+        decimal validBet;
+        
+        while (true)
+        {
+            Console.WriteLine("Place your bet: ");
+            string betAmount = Console.ReadLine();
+            
+            if (string.IsNullOrWhiteSpace(betAmount))
+            {
+                Console.WriteLine("You did not enter anything.");
+                continue;
+            }
+            
+            if (!decimal.TryParse(betAmount, out validBet))
+            {
+                Console.WriteLine("Please enter a value between 0 and 999999 as a bet amount.");
+                continue;
+            }
+            
+            if (validBet < minBetAmount)
+            {
+                Console.WriteLine($"Please enter an amount greater than {minBetAmount} VMali.");
+                continue;
+            }
+            
+            if (!wallet.PlaceBet(validBet))
+            {
+                Console.WriteLine($"Insufficient funds!");
+                continue;
+            }
+            
+            Console.WriteLine("Bet placed sucessfully!");
+            return validBet;
+        }
+        
     }
 }

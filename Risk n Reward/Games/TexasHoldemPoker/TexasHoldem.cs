@@ -14,20 +14,8 @@ public class TexasHoldem : IGame
 
         Console.WriteLine($"You currently have {wallet.Balance} VMali.");
 
-        Console.WriteLine("Place your bet:");
-        decimal playerBet;
-        if (!decimal.TryParse(Console.ReadLine(), out playerBet))
-        {
-            throw new ArgumentException("Invalid input!");
-        }
-
-        if (!wallet.PlaceBet(playerBet))
-        {
-            throw new ArgumentException("Insufficient funds!");
-            return;
-        }
-        
-        Console.WriteLine("No more bets.");
+        const decimal minBetAmount = 0.01m;
+        decimal playerBet = TryPlaceBet(minBetAmount, wallet);
         
         Deck deck = new Deck();
 
@@ -43,51 +31,40 @@ public class TexasHoldem : IGame
         Thread.Sleep(1000);
         Console.Clear();
         
-        //draw the cards
-        //player cards
         playerHand.Add(deck.Draw());
         playerHand.Add(deck.Draw());
         
-        //dealer cards
         dealerHand.Add(deck.Draw());
         dealerHand.Add(deck.Draw());
         
-        //community pile
         for (int i = 0; i < 5; i++)
         {
             communityCards.Add(deck.Draw());
         }
         
-        //prints community hand
         Console.Write("\nCommunity Cards: ");
         ShowHand(communityCards);
         
-        //prints player hand
         Console.Write("\nPlayer Hand: ");
         ShowHand(playerHand);
         
-        // call engine and evaluate game
         var engine = new TexasHoldemEngine();
         var result = engine.Result(playerHand,dealerHand,communityCards);
         
         Console.Clear();
         
-        //Present hands and type of hand:
-        //prints dealer hand
         Console.Write("Dealer Hand: ");
         ShowHand(dealerHand);
         Console.WriteLine($"\nHand type: {ParseHandType(result.DealerHandType)}");
         
-        //prints community card
         Console.Write("\nCommunity Cards: ");
         ShowHand(communityCards);
         
-        //prints player hand
+        
         Console.Write("\nPlayer Hand: ");
         ShowHand(playerHand);
         Console.WriteLine($"\nHand type: {ParseHandType(result.PlayerHandType)}");
         
-        //results presentation and wallet update
         if (result.Outcome == GameResult.Win)
         {
             Console.WriteLine($"Congratulations!, You won {result.PayoutMultiplier*playerBet}VMali!");
@@ -103,11 +80,49 @@ public class TexasHoldem : IGame
             Console.WriteLine("Unfortunately, you lost.");
         }
         
-        //wallet updated, show balance.
         Console.WriteLine($"Your new balance is: {wallet.Balance} VMali");
         Console.ReadKey();
     }
 
+    public decimal TryPlaceBet(decimal minBetAmount,WalletService wallet)
+    {
+        decimal validBet;
+        
+        while (true)
+        {
+            Console.WriteLine("Place your bet: ");
+            string betAmount = Console.ReadLine();
+            
+            if (string.IsNullOrWhiteSpace(betAmount))
+            {
+                Console.WriteLine("You did not enter anything.");
+                continue;
+            }
+            
+            if (!decimal.TryParse(betAmount, out validBet))
+            {
+                Console.WriteLine("Please enter a value between 0 and 999999 as a bet amount.");
+                continue;
+            }
+            
+            if (validBet < minBetAmount)
+            {
+                Console.WriteLine($"Please enter an amount greater than {minBetAmount} VMali.");
+                continue;
+            }
+            
+            if (!wallet.PlaceBet(validBet))
+            {
+                Console.WriteLine($"Insufficient funds!");
+                continue;
+            }
+            
+            Console.WriteLine("Bet placed sucessfully!");
+            return validBet;
+        }
+        
+    }
+    
     void ShowHand(List<Card> hand)
     {
         foreach (Card card in hand)
