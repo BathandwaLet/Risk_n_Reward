@@ -16,8 +16,7 @@ public class HighLow : IGame
         Console.WriteLine("Welcome to High Low!");
 
         Console.WriteLine($"You currently have {wallet.Balance} VMali.");
-
-        Console.WriteLine("Place your bet:");
+        
         const decimal minBetAmount = 50.0m;
         decimal playerBet = TryPlaceBet(minBetAmount, wallet);
         

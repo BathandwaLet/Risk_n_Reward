@@ -1,4 +1,6 @@
 using Risk_n_Reward.Wallet;
+using Risk_n_Reward.Core.Engines.CrashEngine;
+using Risk_n_Reward.Core.Models.CrashModels.GameOutcomes;
 
 namespace Risk_n_Reward.Games.Crash;
 
@@ -19,47 +21,30 @@ public class Crash : IGame
         Console.ReadKey();
         
         Console.WriteLine("\n Press C to cash out \n");
-        bool cashout = false;
+        
+        var engine = new CrashEngine();
+        var result = engine.Result();
+        
+        var multiplier = result.PayoutMultiplier;
+        var crashPointMultiplier = result.CrashPointMultiplier;
+        var outcome = result.Outcome;
 
-        decimal multiplier = 1.00m;
-
-        var crashPoint = CrashPoint();
-
-        while (multiplier < crashPoint)
-        {
-            multiplier *= 1.01m;
-            multiplier = Math.Round(multiplier, 2);
-            
-            Thread.Sleep(200);
-            Console.WriteLine(multiplier);
-            
-            if (Console.KeyAvailable)
-            {
-                var key = Console.ReadKey(true).Key;
-                if (key == ConsoleKey.C)
-                {
-                    if (multiplier < crashPoint)
-                    {
-                        Console.Clear();
-                        Console.WriteLine($"\n CONGRATULATIONS\n you cashed out at {multiplier}x and " +
-                                          $"earned {playerBet*multiplier} VMali.");
-                        wallet.Payout(playerBet * multiplier);
-                        Console.WriteLine($"Your new balance is {wallet.Balance} VMali.");
-                        cashout = true;
-                    }
-
-                    break;
-                }
-            }
-        }
-
-        if (cashout == false)
+        if (result.Outcome == CrashOutcomes.Win)
         {
             Console.Clear();
-            Console.WriteLine($"\nCRASH!\n at {multiplier}x");
+            Console.WriteLine($"\n CONGRATULATIONS\n you cashed out at {multiplier}x and " +
+                              $"earned {playerBet*multiplier} VMali.");
+            wallet.Payout(playerBet * multiplier);
+        }
+
+        if (result.Outcome == CrashOutcomes.Lose)
+        {
+            Console.Clear();
+            Console.WriteLine($"\nCRASH!\n at {crashPointMultiplier}x");
         }
         
-
+        Console.WriteLine($"Your new balance is {wallet.Balance} VMali.");
+        
     }
 
     public decimal TryPlaceBet(decimal minBetAmount,WalletService wallet)
@@ -99,29 +84,6 @@ public class Crash : IGame
             return validBet;
         }
         
-    }
-    
-    public static decimal CrashPoint()
-    {
-        Random rnd = new Random();
-        
-        const decimal houseEdge = 0.05m;
-        
-        var r = rnd.NextDouble();
-
-        var crashPoint = 0m;
-
-        while (crashPoint < 1)
-        {
-            crashPoint = (1 - houseEdge) / (decimal)r;
-
-            if (crashPoint > 1m)
-            {
-                return Math.Round(crashPoint,2);
-            }
-        }
-
-        return 0;
     }
     
 }
