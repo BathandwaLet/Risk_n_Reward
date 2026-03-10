@@ -18,14 +18,6 @@ public class BlackJack : IGame
 
         Deck deck = new Deck();
         
-        Console.WriteLine("Shuffling the deck");
-        Thread.Sleep(1000);
-        Console.Clear();
-        
-        Console.WriteLine("Dealing cards");
-        Thread.Sleep(1000);
-        Console.Clear();
-
         List<Card> playerHand = new();
         List<Card> dealerHand = new();
 
@@ -163,6 +155,17 @@ public class BlackJack : IGame
             "S" => BJ.Stand,
             _ => BJ.Null,
         };
+    }
+
+    private static void CardShuffle()
+    {
+        Console.WriteLine("Shuffling the deck");
+        Thread.Sleep(1000);
+        Console.Clear();
+        
+        Console.WriteLine("Dealing cards");
+        Thread.Sleep(1000);
+        Console.Clear();
     }
     
 }
