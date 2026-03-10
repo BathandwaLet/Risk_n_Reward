@@ -18,34 +18,7 @@ public class BlackJackEngine
         };
     }
 
-    /*
-     * int index = 2;
-       string playerChoice = "";
-       
-       while (CalculateHandValue(playerHand) < 21 && playerChoice != "S")
-       {
-           Console.WriteLine("Press H to hit, S to stand.");
-           playerChoice = Console.ReadLine().ToUpper();
-           
-           if (playerChoice == "H")
-           {
-               playerHand.Add(deck.Draw());
-
-               for (int i = 0; i <= index; i++)
-               {
-                   Console.Write(playerHand[i] + " ");
-               }
-               Console.WriteLine(CalculateHandValue(playerHand));
-               Console.WriteLine();
-
-               index++;
-           }
-           else
-           {
-               Console.WriteLine("Invalid input");
-           }
-       }
-     */
+    
     public BlackJackOutcome PlayGame(List<Card> player, List<Card> computer, Deck deck)
     {
         CardShuffle();
@@ -53,51 +26,39 @@ public class BlackJackEngine
         computer = InitialDrawCards(computer, deck);
         
         ShowDealerInitialHand(computer);
-        PrintHand(player,1);
+        PrintHand(player,PlayerOrComputer.Player);
         
-        if (Console.KeyAvailable)
+        while (true)
         {
-            var playerKey = Console.ReadKey(true).Key;
-            
-            while (CalculateHandValue(player) <= 21 && playerKey != ConsoleKey.S)
+            if (CalculateHandValue(player) > 21)
+                return BlackJackOutcome.Lose;
+
+            Console.WriteLine("Press H to hit, S to stand.");
+            var playerKey = Console.ReadKey(true).Key; // blocks until a key is pressed
+
+            if (playerKey == ConsoleKey.H)
             {
-                
-                if (CalculateHandValue(player) > 21)
+                player.Add(deck.Draw());
+                PrintHand(player, PlayerOrComputer.Player);
+            }
+            else if (playerKey == ConsoleKey.S)
+            {
+                PrintHand(player, PlayerOrComputer.Player);
+                PrintHand(computer, PlayerOrComputer.Computer);
+
+                if (CalculateHandValue(computer) < 17)
                 {
-                    return BlackJackOutcome.Lose;
+                    computer.Add(deck.Draw());
+                    PrintHand(computer, PlayerOrComputer.Computer);
                 }
 
-                Console.WriteLine("Press H to hit, S to stand.");
-                
-                if (playerKey == ConsoleKey.H)
-                {
-                    player.Add(deck.Draw());
-                    PrintHand(player, 1);
-                }
-            
-                if (playerKey == ConsoleKey.S)
-                {
-                    PrintHand(player,1);
-                    PrintHand(computer,2);
-                    
-                    if (CalculateHandValue(computer) < 17)
-                    {
-                        computer.Add(deck.Draw());
-                        PrintHand(computer, 2);
-                    }
+                if (CalculateHandValue(computer) > 21)
+                    return BlackJackOutcome.Win;
 
-                    if (CalculateHandValue(computer) > 21)
-                    {
-                        return BlackJackOutcome.Win;
-                    }
-                    
-                    return GameResult(CalculateHandValue(player), CalculateHandValue(computer));
-                }
-            
+                return GameResult(CalculateHandValue(player), CalculateHandValue(computer));
             }
         }
-
-        return BlackJackOutcome.Push;
+        
     }
     
     private BlackJackOutcome GameResult(int player, int computer)
@@ -121,7 +82,7 @@ public class BlackJackEngine
 
         return BlackJackOutcome.Lose;
     }
-
+    
 
     private decimal Payout(BlackJackOutcome outcome)
     {
@@ -151,9 +112,9 @@ public class BlackJackEngine
         return total;
     }
 
-    private void PrintHand(List<Card> Cards, int playerOrComputer)
+    private void PrintHand(List<Card> Cards, PlayerOrComputer playerOrComputer)
     {
-        if (playerOrComputer == 1)
+        if (playerOrComputer == PlayerOrComputer.Player)
         {
             Console.WriteLine("\nThe player cards: ");
             foreach (var card in Cards)
@@ -163,7 +124,7 @@ public class BlackJackEngine
             Console.WriteLine(" " + CalculateHandValue(Cards));
         }
 
-        if (playerOrComputer == 2)
+        if (playerOrComputer == PlayerOrComputer.Computer)
         {
             Console.WriteLine("\nThe dealer cards: ");
             foreach (var card in Cards)
@@ -179,8 +140,8 @@ public class BlackJackEngine
     {
         Console.WriteLine("\nDealer's Hand:");
         Console.WriteLine(dealerHand[0]);
-
-        int visibleValue = (int)dealerHand[0].Rank;
+        
+        int visibleValue = dealerHand[0].CalculateCardValue();
         Console.WriteLine($"Dealer shows: {visibleValue}");
 
     }
@@ -204,5 +165,11 @@ public class BlackJackEngine
         Console.WriteLine("Dealing cards");
         Thread.Sleep(1000);
         Console.Clear();
+    }
+
+    private enum PlayerOrComputer
+    {
+        Player,
+        Computer
     }
 }
