@@ -1,6 +1,7 @@
 using Risk_n_Reward.Wallet;
 using Risk_n_Reward.Core.Engines.CrashEngine;
 using Risk_n_Reward.Core.Models.CrashModels.GameOutcomes;
+using Risk_n_Reward.Core.Models.TexasHoldemModels.Outcomes.GameResult;
 
 namespace Risk_n_Reward.Games.Crash;
 
@@ -29,21 +30,8 @@ public class Crash : IGame
         var crashPointMultiplier = result.CrashPointMultiplier;
         var outcome = result.Outcome;
 
-        if (result.Outcome == CrashOutcomes.Win)
-        {
-            Console.Clear();
-            Console.WriteLine($"\n CONGRATULATIONS\n you cashed out at {multiplier}x and " +
-                              $"earned {playerBet*multiplier} VMali.");
-            wallet.Payout(playerBet * multiplier);
-        }
-
-        if (result.Outcome == CrashOutcomes.Lose)
-        {
-            Console.Clear();
-            Console.WriteLine($"\nCRASH!\n at {crashPointMultiplier}x");
-        }
+        GameOutcome(outcome, wallet, playerBet, multiplier, crashPointMultiplier);
         
-        Console.WriteLine($"Your new balance is {wallet.Balance} VMali.");
         
     }
 
@@ -85,5 +73,33 @@ public class Crash : IGame
         }
         
     }
-    
+
+    private void GameOutcome(CrashOutcomes gameOutcome, WalletService wallet, decimal playerBet, decimal multiplier, decimal crashPointMultiplier)
+    {
+        switch (gameOutcome)
+        {
+            case CrashOutcomes.Win:
+                Console.Clear();
+                CashOut(wallet, playerBet, multiplier);
+                break;
+            case CrashOutcomes.Lose:
+                Console.Clear();
+                CrashOut(wallet, crashPointMultiplier);
+                break;
+        }
+    }
+
+    private void CashOut(WalletService wallet, decimal playerBet, decimal multiplier)
+    {
+        Console.WriteLine($"\n CONGRATULATIONS\n you cashed out at {multiplier}x and " +
+                          $"earned {playerBet * multiplier} VMali.");
+        wallet.Payout(playerBet*multiplier);
+        Console.WriteLine($"Your new balance is {wallet.Balance} VMali.");
+    }
+
+    private void CrashOut( WalletService wallet, decimal crashPointMultiplier)
+    {
+        Console.WriteLine($"\nCRASH!\n at {crashPointMultiplier}x");
+        Console.WriteLine($"Your new balance is {wallet.Balance} VMali.");
+    }
 }
