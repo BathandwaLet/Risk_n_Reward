@@ -55,14 +55,17 @@ public class Baccarat : IGame
         List<Card> player = new();
         List<Card> dealer = new();
         
+        /*
         player.Add(deck.Draw());
         player.Add(deck.Draw());
         dealer.Add(deck.Draw());
         dealer.Add(deck.Draw());
+        */
 
         var engine = new BaccaratEngine();
 
-        int playerHandValue = engine.HandValue(player);
+        /*
+         int playerHandValue = engine.HandValue(player);
         int dealerHandValue = engine.HandValue(dealer);
         
         if (playerHandValue <= 5)
@@ -76,6 +79,7 @@ public class Baccarat : IGame
             dealer.Add(deck.Draw());
             dealerHandValue = engine.HandValue(dealer);
         }
+        */
         
         var result = engine.Result(playerHandValue, dealerHandValue,betType);
         

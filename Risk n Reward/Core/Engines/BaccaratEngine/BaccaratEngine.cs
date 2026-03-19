@@ -20,8 +20,23 @@ public class BaccaratEngine
             PayoutMultiplier= payoutMultiplier,
         };
     }
+
+    public BaccaratOutcome PlayGame(List<Card> player, List<Card>computer, Deck deck)
+    {
+        player = IsNatural(DealCards(player, deck), deck);
+        computer = IsNatural(DealCards(computer, deck), deck);
+
+        int playerValue = HandValue(player);
+        int computerValue = HandValue(computer);
+        
+        Console.WriteLine("Player hand:");
+        PrintHand(player);
+        
+        Console.WriteLine("Dealer hand:");
+        PrintHand(computer);
+    }
     
-    public int HandValue(List<Card> hand)
+    private int HandValue(List<Card> hand)
     {
         int sum = 0;
         
@@ -34,14 +49,17 @@ public class BaccaratEngine
         return sum;
     }
 
-    public bool Natural(int handValue)
+    private List<Card> IsNatural(List<Card> card, Deck deck)
     {
+        int handValue = HandValue(card);
+        
         if (handValue == 8 || handValue == 9)
         {
-            return true;
+            return card;
         }
-        
-        return false;
+
+        card.Add(deck.Draw());
+        return card;
     }
     
     
@@ -69,5 +87,24 @@ public class BaccaratEngine
             (BaccaratOutcome.Tie, BaccaratBetType.Tie) => 8.0m,
             _ => 0m,
         };
+    }
+
+    private List<Card> DealCards(List <Card> cards, Deck deck)
+    {
+        cards.Add(deck.Draw());
+        cards.Add(deck.Draw());
+        
+        return cards;
+    }
+
+    private void PrintHand(List<Card>cards)
+    {
+        foreach (var card in cards)
+        {
+            Console.Write(card);
+            Console.Write(" ");
+            Thread.Sleep(1000);
+        }
+        Console.WriteLine($"\nScore:{HandValue(cards)}");
     }
 }
