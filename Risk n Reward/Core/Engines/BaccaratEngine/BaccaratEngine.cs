@@ -8,20 +8,22 @@ namespace Risk_n_Reward.Core.Engines.BaccaratEngine;
 
 public class BaccaratEngine
 {
-    public BaccaratResult Result(int player, int dealer, BaccaratBetType betType)
+    public BaccaratResult Result(List<Card> player, List <Card> computer, BaccaratBetType betType, Deck deck)
     {
         
-        BaccaratOutcome gameOutcome = GameOutcome(player,dealer);
+        BaccaratOutcome gameOutcome = PlayGame(player, computer, deck);
         decimal payoutMultiplier =  Payout(gameOutcome, betType);
+        BaccaratOutcome winningSelection = Winningselection(payoutMultiplier, betType, gameOutcome);
         
         return new  BaccaratResult()
         {
             Outcome = gameOutcome,
-            PayoutMultiplier= payoutMultiplier,
+            PayoutMultiplier = payoutMultiplier,
+            WinningOutcome = winningSelection,
         };
     }
 
-    public BaccaratOutcome PlayGame(List<Card> player, List<Card>computer, Deck deck)
+    private BaccaratOutcome PlayGame(List<Card> player, List<Card>computer, Deck deck)
     {
         player = IsNatural(DealCards(player, deck), deck);
         computer = IsNatural(DealCards(computer, deck), deck);
@@ -29,11 +31,14 @@ public class BaccaratEngine
         int playerValue = HandValue(player);
         int computerValue = HandValue(computer);
         
+        Console.Clear();
         Console.WriteLine("Player hand:");
         PrintHand(player);
         
         Console.WriteLine("Dealer hand:");
         PrintHand(computer);
+
+        return GameOutcome(playerValue, computerValue);
     }
     
     private int HandValue(List<Card> hand)
@@ -106,5 +111,16 @@ public class BaccaratEngine
             Thread.Sleep(1000);
         }
         Console.WriteLine($"\nScore:{HandValue(cards)}");
+    }
+
+    private BaccaratOutcome Winningselection(decimal payoutMultiplier, BaccaratBetType betType, BaccaratOutcome gameOutcome)
+    {
+        return (payoutMultiplier, betType, gameOutcome) switch
+        {
+            (0, BaccaratBetType.Player, BaccaratOutcome.BankerWin) => BaccaratOutcome.BankerWin,
+            (0, BaccaratBetType.Banker, BaccaratOutcome.PlayerWin) => BaccaratOutcome.PlayerWin,
+            (0, BaccaratBetType.Player, BaccaratOutcome.Tie) => BaccaratOutcome.Tie,
+            (0, BaccaratBetType.Banker, BaccaratOutcome.Tie) => BaccaratOutcome.Tie,
+        };
     }
 }

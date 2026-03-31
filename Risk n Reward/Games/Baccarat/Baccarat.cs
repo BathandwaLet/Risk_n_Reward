@@ -63,64 +63,15 @@ public class Baccarat : IGame
         */
 
         var engine = new BaccaratEngine();
+        var result = engine.Result(player, dealer, betType, deck);
 
-        /*
-         int playerHandValue = engine.HandValue(player);
-        int dealerHandValue = engine.HandValue(dealer);
+        decimal payoutMultiplier = result.PayoutMultiplier;
+        BaccaratOutcome winningSelection = result.WinningOutcome;
+        BaccaratOutcome gameOutcome = result.Outcome;
+        bool isWin = result.IsWin;
         
-        if (playerHandValue <= 5)
-        {
-            player.Add(deck.Draw());
-            playerHandValue = engine.HandValue(player);
-        }
+        Results(gameOutcome, winningSelection, wallet, playerBet, payoutMultiplier, isWin);
 
-        if (dealerHandValue <= 5)
-        {
-            dealer.Add(deck.Draw());
-            dealerHandValue = engine.HandValue(dealer);
-        }
-        */
-        
-        var result = engine.Result(playerHandValue, dealerHandValue,betType);
-        
-        Console.Clear();
-        
-        Console.WriteLine("Player hand:");
-        foreach (var card in player)
-        {
-            Console.Write(card);
-            Console.Write(" ");
-            Thread.Sleep(1000);
-        }
-        Console.WriteLine($"\nScore:{playerHandValue}");
-        
-        Console.WriteLine();
-        Console.WriteLine("Dealer hand:");
-        foreach (var card in dealer)
-        {
-            Console.Write(card);
-            Console.Write(" ");
-            Thread.Sleep(1000);
-        }
-        Console.WriteLine($"\nScore:{dealerHandValue}");
-        
-        
-        Console.WriteLine($"The winning bet selction was {WininingSelection(result.Outcome)}.");
-        
-        if (result.IsWin)
-        {
-            Console.WriteLine($"CONGRATULATIONS!\nYou won {playerBet * result.PayoutMultiplier}VMali!");
-            wallet.Payout(playerBet * result.PayoutMultiplier);
-        }
-        else
-        {
-            Console.WriteLine("No win this time");
-        }
-        
-        Console.WriteLine($"Your new balance is {wallet.Balance} VMali");
-        Console.WriteLine("Press any key to continue.");
-        Console.ReadKey();
-        
     }
 
     
@@ -163,13 +114,46 @@ public class Baccarat : IGame
         
     }
     
-    private string WininingSelection(BaccaratOutcome outcome)
+    private string ParseWininingSelection(BaccaratOutcome winningSelection)
     {
-        return (outcome) switch
+        return (winningSelection) switch
         {
             (BaccaratOutcome.PlayerWin) =>"Player",
             (BaccaratOutcome.BankerWin) =>"Banker",
             (BaccaratOutcome.Tie) =>"Tie",
         };
     }
+
+    private void Results(BaccaratOutcome outcome, BaccaratOutcome winningSelection, WalletService wallet, decimal playerBet, decimal payoutMultiplier, bool isWin)
+    {
+        
+        switch (isWin)
+        {
+            case true:
+                WinningMessage(playerBet, payoutMultiplier, wallet);
+                break;
+            case false:
+                LossingMessage(winningSelection);
+                break;
+            
+        }
+        
+        Console.WriteLine($"Your new balance is {wallet.Balance} VMali");
+        Console.WriteLine("Press any key to continue.");
+        Console.ReadKey();
+    }
+
+    private void WinningMessage(decimal playerBet, decimal payoutMultiplier, WalletService wallet)
+    {
+        Console.WriteLine($"CONGRATULATIONS!\nYou won {playerBet * payoutMultiplier}VMali!");
+        wallet.Payout(playerBet * payoutMultiplier);
+        
+    }
+
+    private void LossingMessage(BaccaratOutcome winningSelection)
+    {
+        Console.WriteLine($"The winning bet selction was {ParseWininingSelection(winningSelection)}.");
+        Console.WriteLine("No win this time");
+    }
+    
 }
