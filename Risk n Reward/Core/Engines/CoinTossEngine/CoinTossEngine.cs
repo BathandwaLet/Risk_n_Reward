@@ -19,6 +19,23 @@ public class CoinTossEngine
         };
     }
 
+    public bool PlayGame()
+    {
+        if (Console.KeyAvailable)
+        {
+            var key = Console.ReadKey(true).Key;
+
+            if (key == ConsoleKey.H)
+            {
+                
+            }
+            else if (key == ConsoleKey.T)
+            {
+                
+            }
+        }
+    }
+    
     private bool GameResult(CoinSide player, CoinSide computer)
     {
         if (player == computer)
