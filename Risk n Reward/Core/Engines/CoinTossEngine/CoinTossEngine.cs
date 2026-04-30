@@ -14,7 +14,7 @@ public class CoinTossEngine
         
         return new CoinTossResult 
         {
-            win = result,
+            Win = result,
             Payout = payoutMultiplier,
         };
     }
