@@ -4,5 +4,4 @@ public class CoinTossResult
 { 
     public bool Win;
     public decimal Payout;
-    public decimal PayoutMultiplier;
 }

@@ -9,7 +9,7 @@ public class CoinTossEngine
 {
     public CoinTossResult Result(CoinSide player, CoinSide computer)
     {
-        bool result = GameResult(player, computer);
+        bool result = PlayGame(player, computer);
         decimal payoutMultiplier = Payout(player, computer);
         
         return new CoinTossResult 
@@ -19,7 +19,7 @@ public class CoinTossEngine
         };
     }
 
-    public bool PlayGame()
+    public bool PlayGame(CoinSide playerChoice, CoinSide computerChoice)
     {
         if (Console.KeyAvailable)
         {
@@ -27,13 +27,19 @@ public class CoinTossEngine
 
             if (key == ConsoleKey.H)
             {
-                
+                playerChoice = CoinSide.H;
             }
             else if (key == ConsoleKey.T)
             {
-                
+                playerChoice = CoinSide.T;
             }
+            
+            computerChoice =  ComputerSelection();
         }
+
+        var result = GameResult(playerChoice, computerChoice);
+        
+        return result;
     }
     
     private bool GameResult(CoinSide player, CoinSide computer)
@@ -56,5 +62,13 @@ public class CoinTossEngine
         }
 
         return 0m;
+    }
+    
+    public static CoinSide ComputerSelection()
+    {
+        Random rnd = new Random();
+        CoinSide  computerChoice =  (rnd.Next(0, 2) == 0)? CoinSide.H : CoinSide.T;
+
+        return computerChoice;
     }
 }
