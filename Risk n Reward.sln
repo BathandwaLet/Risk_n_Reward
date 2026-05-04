@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Risk n Reward", "Risk n Reward\Risk n Reward.csproj", "{D38F0A4B-280D-4228-AF99-D58114445057}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Risk_n_Reward.Web", "Risk_n_Reward.Web\Risk_n_Reward.Web.csproj", "{7D35D444-9996-476D-91C2-717FC0CB0645}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{D38F0A4B-280D-4228-AF99-D58114445057}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D38F0A4B-280D-4228-AF99-D58114445057}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D38F0A4B-280D-4228-AF99-D58114445057}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D35D444-9996-476D-91C2-717FC0CB0645}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D35D444-9996-476D-91C2-717FC0CB0645}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D35D444-9996-476D-91C2-717FC0CB0645}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D35D444-9996-476D-91C2-717FC0CB0645}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
