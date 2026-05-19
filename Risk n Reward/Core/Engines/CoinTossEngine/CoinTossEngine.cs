@@ -1,6 +1,7 @@
 using Risk_n_Reward.Core.Results;
 using Risk_n_Reward.Games.CoinToss;
 using Risk_n_Reward.Core.Models;
+using Risk_n_Reward.Core.Models.CoinTossModels.Outcomes;
 using Risk_n_Reward.Core.Models.CoinTossModels.Results;
 
 namespace Risk_n_Reward.Core.Engines;
@@ -10,7 +11,7 @@ public class CoinTossEngine
     public CoinTossResult Result(CoinSide player, CoinSide computer)
     {
         bool result = PlayGame(player, computer);
-        decimal payoutMultiplier = Payout(player, computer);
+        decimal payoutMultiplier = Payout(result);
         
         return new CoinTossResult 
         {
@@ -37,26 +38,26 @@ public class CoinTossEngine
             computerChoice =  ComputerSelection();
         }
 
-        var result = GameResult(playerChoice, computerChoice);
+        bool result = (GameResult(playerChoice, computerChoice) == CoinTossOutcomes.Win )? true: false;
         
         return result;
     }
     
-    private bool GameResult(CoinSide player, CoinSide computer)
+    private CoinTossOutcomes GameResult(CoinSide player, CoinSide computer)
     {
         if (player == computer)
         {
-            return true;
+            return CoinTossOutcomes.Win;
         }
         else
         {
-            return false;
+            return CoinTossOutcomes.Lose;
         }
     }
 
-    private decimal Payout(CoinSide player, CoinSide computer)
+    private decimal Payout(bool gameResult)
     {
-        if (GameResult(player, computer))
+        if (gameResult)
         {
             return 1.5m;
         }
