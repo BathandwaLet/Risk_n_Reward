@@ -32,7 +32,7 @@ public class CoinToss : IGame
             throw new ArgumentException("Invalid input");
         }
 
-        CoinSide computerChoice = ComputerToss.computer();
+        CoinSide computerChoice = ComputerToss.Computer();
         
         var engine = new CoinTossEngine();
         CoinTossResult result = engine.Result(playerChoice, computerChoice);
