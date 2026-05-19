@@ -27,11 +27,11 @@ public class CoinTossEngine
 
             if (key == ConsoleKey.H)
             {
-                playerChoice = CoinSide.H;
+                playerChoice = CoinSide.Heads;
             }
             else if (key == ConsoleKey.T)
             {
-                playerChoice = CoinSide.T;
+                playerChoice = CoinSide.Tails;
             }
             
             computerChoice =  ComputerSelection();
@@ -67,7 +67,7 @@ public class CoinTossEngine
     public static CoinSide ComputerSelection()
     {
         Random rnd = new Random();
-        CoinSide  computerChoice =  (rnd.Next(0, 2) == 0)? CoinSide.H : CoinSide.T;
+        CoinSide  computerChoice =  (rnd.Next(0, 2) == 0)? CoinSide.Heads : CoinSide.Tails;
 
         return computerChoice;
     }
