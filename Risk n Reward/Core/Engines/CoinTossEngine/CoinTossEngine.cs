@@ -8,9 +8,12 @@ namespace Risk_n_Reward.Core.Engines;
 
 public class CoinTossEngine
 {
-    public CoinTossResult Result(CoinSide player, CoinSide computer)
+    public CoinTossResult Result()
     {
-        bool result = PlayGame(player, computer);
+        CoinSide playerChoice = CoinSide.Null;
+        CoinSide computerChoice = CoinSide.Null;
+        
+        bool result = PlayGame(playerChoice, computerChoice);
         decimal payoutMultiplier = Payout(result);
         
         return new CoinTossResult 
@@ -20,24 +23,38 @@ public class CoinTossEngine
         };
     }
 
-    public bool PlayGame(CoinSide playerChoice, CoinSide computerChoice)
+    public bool PlayGame(CoinSide playerChoice,CoinSide computerChoice)
     {
-        if (Console.KeyAvailable)
+        PlayGameScript(1);
+        do
         {
-            var key = Console.ReadKey(true).Key;
-
-            if (key == ConsoleKey.H)
+            if (Console.KeyAvailable)
             {
-                playerChoice = CoinSide.Heads;
-            }
-            else if (key == ConsoleKey.T)
-            {
-                playerChoice = CoinSide.Tails;
-            }
+                
+                computerChoice =  ComputerSelection();
             
-            computerChoice =  ComputerSelection();
-        }
+                var key = Console.ReadKey(true).Key;
+            
+                if (key == ConsoleKey.H)
+                {
+                    playerChoice = CoinSide.Heads;
+                
+                }
+                else if (key == ConsoleKey.T)
+                {
+                    playerChoice = CoinSide.Tails;
+                }
+                else if (key != ConsoleKey.H || key != ConsoleKey.T)
+                {
+                    PlayGameScript(2);    
+                }
+            
+            }
+        } while (playerChoice == CoinSide.Null || computerChoice == CoinSide.Null);
 
+        PlayGameScript(1,playerChoice,computerChoice);
+        PlayGameScript(2,playerChoice,computerChoice);
+        
         bool result = (GameResult(playerChoice, computerChoice) == CoinTossOutcomes.Win )? true: false;
         
         return result;
@@ -71,5 +88,23 @@ public class CoinTossEngine
         CoinSide  computerChoice =  (rnd.Next(0, 2) == 0)? CoinSide.Heads : CoinSide.Tails;
 
         return computerChoice;
+    }
+
+    private void PlayGameScript(int messageNumber)
+    {
+        switch (messageNumber)
+        {
+            case 1: Console.WriteLine("Please select H for heads of T for Tails"); break;
+            case 2: Console.WriteLine("Invalid input!\nPlease select H for heads of T for Tails"); break;
+        }
+    }
+    
+    private void PlayGameScript(int messageNumber, CoinSide playerChoice, CoinSide computerChoice)
+    {
+        switch (messageNumber)
+        {
+            case 1: Console.WriteLine($"You chose {playerChoice}"); break;
+            case 2: Console.WriteLine($"The computer chose {computerChoice}"); break;
+        }
     }
 }
