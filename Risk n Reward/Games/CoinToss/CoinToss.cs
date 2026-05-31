@@ -16,38 +16,17 @@ public class CoinToss : IGame
         const decimal minBetAmount = 10.0m;
         decimal playerBet = TryPlaceBet(minBetAmount, wallet);
         
-        Console.WriteLine("Heads(H) or Tails(T)");
-        var playerInput = Console.ReadLine().ToUpper();
-        CoinSide playerChoice;
-        if (playerInput == "H")
-        {
-            playerChoice = CoinSide.Heads;
-        }
-        else if (playerInput == "T")
-        {
-            playerChoice = CoinSide.Tails;
-        }
-        else
-        {
-            throw new ArgumentException("Invalid input");
-        }
-
-        CoinSide computerChoice = ComputerToss.Computer();
-        
         var engine = new CoinTossEngine();
-        CoinTossResult result = engine.Result(playerChoice, computerChoice);
+        CoinTossResult result = engine.Result();
 
-        Console.WriteLine($"You chose {playerChoice}");
-        Console.WriteLine($"The computer chose {computerChoice}");
-
-        if (playerChoice == computerChoice)
+        if (result.Win)
         {
+            Messages(1);
             wallet.Payout(playerBet * 1.5m);
-            Console.WriteLine($"You won! {playerBet * 1.5m}");
         }
-        else
+        else if (!result.Win)
         {
-            Console.WriteLine($"You lost!");
+            Messages(2);
         }
         
         Console.WriteLine($"Your new balance is {wallet.Balance}");
@@ -93,6 +72,14 @@ public class CoinToss : IGame
         
     }
 
+    void Messages(int messageNumber)
+    {
+        switch (messageNumber)
+        {
+            case 1: Console.WriteLine("You have won!"); break;
+            case 2: Console.WriteLine("You have Lost"); break;
+        }
+    }
     void Messages(int messageNumber, decimal minBetAmount)
     {
         switch (messageNumber)
@@ -113,4 +100,5 @@ public enum CoinSide
 {
     Heads,
     Tails, 
+    Null
 } 
