@@ -16,38 +16,17 @@ public class CoinToss : IGame
         const decimal minBetAmount = 10.0m;
         decimal playerBet = TryPlaceBet(minBetAmount, wallet);
         
-        Console.WriteLine("Heads(H) or Tails(T)");
-        var playerInput = Console.ReadLine().ToUpper();
-        CoinSide playerChoice;
-        if (playerInput == "H")
-        {
-            playerChoice = CoinSide.H;
-        }
-        else if (playerInput == "T")
-        {
-            playerChoice = CoinSide.T;
-        }
-        else
-        {
-            throw new ArgumentException("Invalid input");
-        }
-
-        CoinSide computerChoice = ComputerToss.computer();
-        
         var engine = new CoinTossEngine();
-        CoinTossResult result = engine.Result(playerChoice, computerChoice);
+        CoinTossResult result = engine.Result();
 
-        Console.WriteLine($"You chose {playerChoice}");
-        Console.WriteLine($"The computer chose {computerChoice}");
-
-        if (playerChoice == computerChoice)
+        if (result.Win)
         {
+            Messages(1);
             wallet.Payout(playerBet * 1.5m);
-            Console.WriteLine($"You won! {playerBet * 1.5m}");
         }
-        else
+        else if (!result.Win)
         {
-            Console.WriteLine($"You lost!");
+            Messages(2);
         }
         
         Console.WriteLine($"Your new balance is {wallet.Balance}");
@@ -60,43 +39,66 @@ public class CoinToss : IGame
         
         while (true)
         {
-            Console.WriteLine("Place your bet: ");
+            Messages(1, minBetAmount);
             string betAmount = Console.ReadLine();
             
             if (string.IsNullOrWhiteSpace(betAmount))
             {
-                Console.WriteLine("You did not enter anything.");
+                Messages(2, minBetAmount);
                 continue;
             }
             
             if (!decimal.TryParse(betAmount, out validBet))
             {
-                Console.WriteLine("Please enter a value between 0 and 999999 as a bet amount.");
+                Messages(3, minBetAmount);
                 continue;
             }
             
             if (validBet < minBetAmount)
             {
-                Console.WriteLine($"Please enter an amount greater than {minBetAmount} VMali.");
+                Messages(4, minBetAmount);
                 continue;
             }
             
             if (!wallet.PlaceBet(validBet))
             {
-                Console.WriteLine($"Insufficient funds!");
+                Messages(5, minBetAmount);
                 continue;
             }
             
-            Console.WriteLine("Bet placed sucessfully!");
+            Messages(6, minBetAmount);
             return validBet;
         }
         
+    }
+
+    void Messages(int messageNumber)
+    {
+        switch (messageNumber)
+        {
+            case 1: Console.WriteLine("You have won!"); break;
+            case 2: Console.WriteLine("You have Lost"); break;
+        }
+    }
+    void Messages(int messageNumber, decimal minBetAmount)
+    {
+        switch (messageNumber)
+        {
+            case 1: Console.WriteLine("Place your bet: "); break;
+            case 2: Console.WriteLine("You did not enter anything."); break;
+            case 3: Console.WriteLine("Please enter a value between 0 and 999999 as a bet amount."); break;
+            case 4: Console.WriteLine($"Please enter an amount greater than {minBetAmount} VMali."); break;
+            case 5: Console.WriteLine($"Insufficient funds!"); break;
+            case 6: Console.WriteLine("Bet placed sucessfully!"); break;
+            
+        }
     }
     
 }
 
 public enum CoinSide
 {
-    H,
-    T, 
+    Heads,
+    Tails, 
+    Null
 } 
