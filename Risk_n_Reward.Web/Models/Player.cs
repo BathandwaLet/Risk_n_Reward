@@ -6,15 +6,16 @@ namespace Risk_n_Reward.Web.Models;
 public class Player
 {
     [Key]
-    public Guid PlayerId { get; set; }
+    public Guid PlayerId { get; set; } = Guid.NewGuid();
     
     [Required]
     [MaxLength(50)]
     public string Username { get; set; }
 
-    [Required] 
+    [Required] //To be hashed
     public string Password { get; set; } = string.Empty;
     
+    [Range(0, 10000000)]
     public decimal WalletBalance { get; set; }
     
     public int? FavouriteGameId { get; set; }
