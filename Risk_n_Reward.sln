@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Risk n Reward", "Risk n Reward\Risk n Reward.csproj", "{D38F0A4B-280D-4228-AF99-D58114445057}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Risk_n_Reward", "Risk_n_Reward\Risk_n_Reward.csproj", "{D38F0A4B-280D-4228-AF99-D58114445057}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

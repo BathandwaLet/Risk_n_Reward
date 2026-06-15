@@ -66,7 +66,7 @@ class Program
                     game = new TexasHoldem();
                     break;
                 case 0:
-                    Console.WriteLine("Thank you for visiting Risk n Reward!");
+                    Console.WriteLine("Thank you for visiting Risk_n_Reward!");
                     return;
                 default:
                     Console.WriteLine("Invalid choice");
