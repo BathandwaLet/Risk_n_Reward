@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Risk_n_Reward", "Risk_n_Reward\Risk_n_Reward.csproj", "{D38F0A4B-280D-4228-AF99-D58114445057}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Risk_n_Reward.Web", "Risk_n_Reward.Web\Risk_n_Reward.Web.csproj", "{FD956587-9011-452B-90B0-4043C820FC6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Risk_n_Reward.Core", "Risk_n_Reward.Core\Risk_n_Reward.Core.csproj", "{E7840801-7359-4BD2-9C22-1CABAEB062FD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{D38F0A4B-280D-4228-AF99-D58114445057}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D38F0A4B-280D-4228-AF99-D58114445057}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D38F0A4B-280D-4228-AF99-D58114445057}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD956587-9011-452B-90B0-4043C820FC6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD956587-9011-452B-90B0-4043C820FC6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD956587-9011-452B-90B0-4043C820FC6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD956587-9011-452B-90B0-4043C820FC6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7840801-7359-4BD2-9C22-1CABAEB062FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7840801-7359-4BD2-9C22-1CABAEB062FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7840801-7359-4BD2-9C22-1CABAEB062FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7840801-7359-4BD2-9C22-1CABAEB062FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
