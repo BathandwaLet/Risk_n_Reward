@@ -1,4 +1,4 @@
-namespace Risk_n_Reward.Games.HighLow;
+namespace Risk_n_Reward.Core.Models.HighLowModels.BetTypes;
 
 public enum HL
 {

@@ -1,4 +1,4 @@
-namespace Risk_n_Reward;
+namespace Risk_n_Reward.Core;
 
 public interface IGameEngine<TInput, TResult>
 {

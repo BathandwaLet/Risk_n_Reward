@@ -1,7 +1,8 @@
 using Risk_n_Reward.Core.Models.CardDeck;
-using Risk_n_Reward.Games.HighLow;
+//using Risk_n_Reward.Games.HighLow;
 using Risk_n_Reward.Core.Models.HighLowModels.Outcomes;
 using Risk_n_Reward.Core.Models.HighLowModels.Results;
+using Risk_n_Reward.Core.Models.HighLowModels.BetTypes;
 
 namespace Risk_n_Reward.Core.Engines.HighLowEngine;
 

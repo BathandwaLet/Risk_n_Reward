@@ -9,8 +9,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Core\Models\LuckyDiceModels\Outcomes\" />
-      <Folder Include="Core\Models\PickFiveModels\Outcomes\" />
       <Folder Include="User_Interface\" />
     </ItemGroup>
 
