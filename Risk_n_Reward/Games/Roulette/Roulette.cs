@@ -1,5 +1,5 @@
 using Risk_n_Reward.Core.Engines.RouletteEngine;
-using Risk_n_Reward.Wallet;
+using Risk_n_Reward.Core.Wallet;
 using Risk_n_Reward.Core.Models.RouletteModels.BetTypes;
 using Risk_n_Reward.Core.Models.RouletteModels.Outcomes;
 
