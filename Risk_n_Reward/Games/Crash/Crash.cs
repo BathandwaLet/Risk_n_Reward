@@ -1,7 +1,6 @@
 using Risk_n_Reward.Core.Wallet;
 using Risk_n_Reward.Core.Engines.CrashEngine;
 using Risk_n_Reward.Core.Models.CrashModels.GameOutcomes;
-using Risk_n_Reward.Core.Models.TexasHoldemModels.Outcomes.GameResult;
 
 namespace Risk_n_Reward.Games.Crash;
 
