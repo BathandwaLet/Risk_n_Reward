@@ -1,6 +1,7 @@
-using Risk_n_Reward.Wallet;
+using Risk_n_Reward.Core.Wallet;
 using Risk_n_Reward.Core.Engines.SlotsEngine;
 using Risk_n_Reward.Core.Models.SlotsModel.Results;
+
 namespace Risk_n_Reward.Games.Slots;
 
 public class Slots : IGame
