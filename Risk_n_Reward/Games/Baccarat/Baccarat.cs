@@ -1,5 +1,5 @@
 using Risk_n_Reward.Core.Engines.BaccaratEngine;
-using Risk_n_Reward.Wallet;
+using Risk_n_Reward.Core.Wallet;
 using Risk_n_Reward.Core.Models.CardDeck;
 using Risk_n_Reward.Core.Models.BaccaratModels.BetTypes;
 using Risk_n_Reward.Core.Models.BaccaratModels.Outcomes;
