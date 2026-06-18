@@ -1,7 +1,7 @@
 using Risk_n_Reward.Core.Engines.BlackJackEngine;
 using Risk_n_Reward.Core.Models.BlackJackModels.Outcomes;
 using Risk_n_Reward.Core.Models.CardDeck;
-using Risk_n_Reward.Wallet;
+using Risk_n_Reward.Core.Wallet;
 using static Risk_n_Reward.Core.Engines.BlackJackEngine.BlackJackEngine;
 using Risk_n_Reward.Games.BlackJack;
 
