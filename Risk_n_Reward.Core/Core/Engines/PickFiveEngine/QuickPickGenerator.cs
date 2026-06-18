@@ -1,4 +1,4 @@
-namespace Risk_n_Reward.Games.PickFive;
+namespace Risk_n_Reward.Core.Core.Engines;
 // Here lives the quick pick logic 
 public class QuickPickGenerator
 {
