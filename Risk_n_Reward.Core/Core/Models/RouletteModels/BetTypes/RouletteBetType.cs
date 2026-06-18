@@ -16,4 +16,5 @@ public enum RouletteBetType
     FirstColumn,
     SecondColumn,
     ThirdColumn,
+    Null
 }
