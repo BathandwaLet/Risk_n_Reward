@@ -13,7 +13,7 @@ public class BaccaratEngine
         
         BaccaratOutcome gameOutcome = PlayGame(player, computer, deck);
         decimal payoutMultiplier =  Payout(gameOutcome, betType);
-        BaccaratOutcome winningSelection = Winningselection(payoutMultiplier, betType, gameOutcome);
+        BaccaratOutcome winningSelection = Winningselection(betType, gameOutcome);
         
         return new  BaccaratResult()
         {
@@ -113,14 +113,17 @@ public class BaccaratEngine
         Console.WriteLine($"\nScore:{HandValue(cards)}");
     }
 
-    private BaccaratOutcome Winningselection(decimal payoutMultiplier, BaccaratBetType betType, BaccaratOutcome gameOutcome)
+    private BaccaratOutcome Winningselection(BaccaratBetType betType, BaccaratOutcome gameOutcome)
     {
-        return (payoutMultiplier, betType, gameOutcome) switch
+        return (betType, gameOutcome) switch
         {
-            (0, BaccaratBetType.Player, BaccaratOutcome.BankerWin) => BaccaratOutcome.BankerWin,
-            (0, BaccaratBetType.Banker, BaccaratOutcome.PlayerWin) => BaccaratOutcome.PlayerWin,
-            (0, BaccaratBetType.Player, BaccaratOutcome.Tie) => BaccaratOutcome.Tie,
-            (0, BaccaratBetType.Banker, BaccaratOutcome.Tie) => BaccaratOutcome.Tie,
+            (BaccaratBetType.Player, BaccaratOutcome.BankerWin) => BaccaratOutcome.BankerWin,
+            (BaccaratBetType.Player, BaccaratOutcome.PlayerWin) => BaccaratOutcome.PlayerWin,
+            (BaccaratBetType.Player, BaccaratOutcome.Tie) => BaccaratOutcome.BankerWin,
+            (BaccaratBetType.Banker, BaccaratOutcome.PlayerWin) => BaccaratOutcome.BankerWin,
+            (BaccaratBetType.Banker,BaccaratOutcome.BankerWin) => BaccaratOutcome.PlayerWin,
+            (BaccaratBetType.Banker, BaccaratOutcome.Tie) => BaccaratOutcome.BankerWin,
+            (BaccaratBetType.Tie, BaccaratOutcome.Tie) => BaccaratOutcome.PlayerWin,
         };
     }
 }
