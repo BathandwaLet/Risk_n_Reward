@@ -10,7 +10,7 @@ using Risk_n_Reward.Games.Crash;
 using Risk_n_Reward.Games.CoinToss;
 using Risk_n_Reward.Games.PickFive;
 using Risk_n_Reward.Games.LuckyDice;
-using Risk_n_Reward.Wallet;
+using Risk_n_Reward.Core.Wallet;
 
 namespace Risk_n_Reward;
 
