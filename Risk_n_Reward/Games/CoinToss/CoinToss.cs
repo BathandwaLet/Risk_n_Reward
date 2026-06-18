@@ -1,7 +1,7 @@
 using Risk_n_Reward.Core.Engines;
 using Risk_n_Reward.Core.Models;
 using Risk_n_Reward.Core.Models.CoinTossModels.Results;
-using Risk_n_Reward.Wallet;
+using Risk_n_Reward.Core.Wallet;
 using static Risk_n_Reward.Games.CoinToss.ComputerToss;
 
 namespace Risk_n_Reward.Games.CoinToss;
