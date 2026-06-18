@@ -1,4 +1,4 @@
-using Risk_n_Reward.Wallet;
+using Risk_n_Reward.Core.Wallet;
 using Risk_n_Reward.Core.Engines;
 using Risk_n_Reward.Core.Models.LuckyDiceModels;
 using Risk_n_Reward.Core.Models.LuckyDiceModels.Results;
