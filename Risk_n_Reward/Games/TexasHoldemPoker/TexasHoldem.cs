@@ -1,5 +1,5 @@
 using Risk_n_Reward.Core.Engines.TexasHoldemEngine;
-using Risk_n_Reward.Wallet;
+using Risk_n_Reward.Core.Wallet;
 using Risk_n_Reward.Core.Models.CardDeck;
 using Risk_n_Reward.Core.Models.TexasHoldemModels.Outcomes.GameResult;
 using Risk_n_Reward.Core.Models.TexasHoldemModels.Outcomes.HandType;
