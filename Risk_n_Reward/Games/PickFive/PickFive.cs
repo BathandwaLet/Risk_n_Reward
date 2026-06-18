@@ -1,3 +1,4 @@
+using Risk_n_Reward.Core.Core.Engines;
 using Risk_n_Reward.Core.Engines;
 using Risk_n_Reward.Core.Models;
 using Risk_n_Reward.Core.Models.PickFiveModels.Results;
@@ -9,6 +10,8 @@ public class PickFive : IGame
 {
     public void Start(WalletService wallet)
     {
+        Console.Clear();
+        
         Console.WriteLine("Welcome to Pick Five!");
         
         Console.WriteLine($"You currently have {wallet.Balance} VMali.");
@@ -120,7 +123,7 @@ public class PickFive : IGame
                         continue;
                     }
                     
-                    Console.WriteLine("Bet placed sucessfully!");
+                    Console.WriteLine("Bet placed successfully!");
                     return validBet;
                 }
             }

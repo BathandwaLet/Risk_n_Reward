@@ -2,8 +2,9 @@ using Risk_n_Reward.Core.Engines.BlackJackEngine;
 using Risk_n_Reward.Core.Models.BlackJackModels.Outcomes;
 using Risk_n_Reward.Core.Models.CardDeck;
 using Risk_n_Reward.Core.Wallet;
-using static Risk_n_Reward.Core.Engines.BlackJackEngine.BlackJackEngine;
+//using static Risk_n_Reward.Core.Engines.BlackJackEngine.BlackJackEngine;
 using Risk_n_Reward.Games.BlackJack;
+using Risk_n_Reward.Core.Core.Models.BlackJackModels.BetOptions;
 
 namespace Risk_n_Reward.Games.BlackJack;
 
@@ -11,6 +12,8 @@ public class BlackJack : IGame
 {
     public void Start(WalletService wallet)
     {
+        Console.Clear();
+        
         Console.WriteLine("Welcome to BlackJack!");
 
         Console.WriteLine($"You currently have {wallet.Balance} VMali.");

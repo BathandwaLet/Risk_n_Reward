@@ -8,6 +8,8 @@ public class Slots : IGame
 {
     public void Start(WalletService wallet)
     {
+        Console.Clear();
+        
         Console.WriteLine("Welcome to Slots!");
 
         Console.WriteLine($"You currently have {wallet.Balance} VMali.");

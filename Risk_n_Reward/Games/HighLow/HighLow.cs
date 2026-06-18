@@ -12,6 +12,8 @@ public class HighLow : IGame
 {
     public void Start(WalletService wallet)
     {
+        Console.Clear();
+        
         Console.WriteLine("Welcome to High Low!");
 
         Console.WriteLine($"You currently have {wallet.Balance} VMali.");

@@ -11,6 +11,8 @@ public class LuckyDice : IGame
 {
     public void Start(WalletService wallet)
     {
+        Console.Clear();
+        
         Console.WriteLine("Welcome to Lucky Dice");
         
         Console.WriteLine("Press any key to continue...");

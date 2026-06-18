@@ -10,6 +10,8 @@ public class TexasHoldem : IGame
 {
     public void Start(WalletService wallet)
     {
+        Console.Clear();
+        
         Console.WriteLine("Welcome to Texas Hold 'em Poker!");
 
         Console.WriteLine($"You currently have {wallet.Balance} VMali.");

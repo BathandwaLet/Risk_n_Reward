@@ -9,6 +9,8 @@ public class Roulette : IGame
 {
     public void Start(WalletService wallet)
     {
+        Console.Clear();
+        
         Console.WriteLine("Welcome to Roulette");
         
         Console.WriteLine($"You currently have {wallet.Balance} VMali.");

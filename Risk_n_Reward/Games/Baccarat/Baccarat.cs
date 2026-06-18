@@ -10,6 +10,8 @@ public class Baccarat : IGame
 {
     public void Start(WalletService wallet)
     {
+        Console.Clear();
+        
         Console.WriteLine("Welcome to Baccarat!");
         
         Console.WriteLine("Select the corresponding number for the bet type" +

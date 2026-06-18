@@ -9,6 +9,8 @@ public class Crash : IGame
 {
     public void Start(WalletService wallet)
     {
+        Console.Clear();
+        
         Console.WriteLine("Welcome to Crash!");
 
         Console.WriteLine($"You currently have {wallet.Balance} VMali.");
