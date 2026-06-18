@@ -12,4 +12,8 @@
       <Folder Include="User_Interface\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Risk_n_Reward.Core\Risk_n_Reward.Core.csproj" />
+    </ItemGroup>
+
 </Project>
