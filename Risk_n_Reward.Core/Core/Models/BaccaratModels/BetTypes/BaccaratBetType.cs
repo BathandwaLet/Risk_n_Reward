@@ -5,4 +5,5 @@ public enum BaccaratBetType
     Player,
     Banker,
     Tie,
+    Null
 }
