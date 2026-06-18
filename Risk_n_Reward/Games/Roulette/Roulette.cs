@@ -22,65 +22,76 @@ public class Roulette : IGame
                           "\n8. Second 12 (13-24) \n9. Third 12 (25-36) \n10. 1-18 \n 11. 19-36" +
                           "\n12. First Column \n13. Second Column \n14. Third Column");
         
-        int playerBetTypeNumber;
-        RouletteBetType playerBetType;
-        
-        if (!int.TryParse(Console.ReadLine(), out playerBetTypeNumber))
+        int playerBetTypeNumber = 0;
+        RouletteBetType playerBetType = RouletteBetType.Null;
+
+        try
         {
-            throw new ArgumentException("Invalid input!");
+            if (!int.TryParse(Console.ReadLine(), out playerBetTypeNumber))
+            {
+                throw new ArgumentException("Invalid input!");
+            }
+        }
+        catch (ArgumentException)
+        {
+            Console.WriteLine("Invalid input!");
         }
 
-        switch (playerBetTypeNumber)
+        try
         {
-            case 1:
-                playerBetType = RouletteBetType.Straight;
-                break;
-            case 2:
-                playerBetType = RouletteBetType.Green;
-                break;
-            case 3:
-                playerBetType = RouletteBetType.Red;
-                break;
-            case 4:
-                playerBetType = RouletteBetType.Black;
-                break;
-            case 5:
-                playerBetType = RouletteBetType.Odd;
-                break;
-            case 6:
-                playerBetType = RouletteBetType.Even;
-                break;
-            case 7:
-                playerBetType = RouletteBetType.First12;
-                break;
-            case 8:
-                playerBetType = RouletteBetType.Second12;
-                break;
-            case 9:
-                playerBetType = RouletteBetType.Third12;
-                break;
-            case 10:
-                playerBetType = RouletteBetType.Oneto18;
-                break;
-            case 11:
-                playerBetType = RouletteBetType.Nineteento36;
-                break;
-            case 12:
-                playerBetType = RouletteBetType.FirstColumn;
-                break;
-            case 13:
-                playerBetType = RouletteBetType.SecondColumn;
-                break;
-            case 14:
-                playerBetType = RouletteBetType.ThirdColumn;
-                break;
-            default:
-                throw new ArgumentException("Please select a number from 1 to 14");
-                break;
+            switch (playerBetTypeNumber)
+            {
+                case 1:
+                    playerBetType = RouletteBetType.Straight;
+                    break;
+                case 2:
+                    playerBetType = RouletteBetType.Green;
+                    break;
+                case 3:
+                    playerBetType = RouletteBetType.Red;
+                    break;
+                case 4:
+                    playerBetType = RouletteBetType.Black;
+                    break;
+                case 5:
+                    playerBetType = RouletteBetType.Odd;
+                    break;
+                case 6:
+                    playerBetType = RouletteBetType.Even;
+                    break;
+                case 7:
+                    playerBetType = RouletteBetType.First12;
+                    break;
+                case 8:
+                    playerBetType = RouletteBetType.Second12;
+                    break;
+                case 9:
+                    playerBetType = RouletteBetType.Third12;
+                    break;
+                case 10:
+                    playerBetType = RouletteBetType.Oneto18;
+                    break;
+                case 11:
+                    playerBetType = RouletteBetType.Nineteento36;
+                    break;
+                case 12:
+                    playerBetType = RouletteBetType.FirstColumn;
+                    break;
+                case 13:
+                    playerBetType = RouletteBetType.SecondColumn;
+                    break;
+                case 14:
+                    playerBetType = RouletteBetType.ThirdColumn;
+                    break;
+                default:
+                    throw new ArgumentException("Please select a number from 1 to 14");
+                    break;
+            }
         }
-        
-        
-        Console.WriteLine("Place your bet:");
+        catch (ArgumentException exception)
+        {
+            Console.WriteLine("Please select a number from 1 to 14");
+        }
         
         const decimal minBetAmount = 50.0m;
         decimal playerBet = TryPlaceBet(minBetAmount, wallet);
