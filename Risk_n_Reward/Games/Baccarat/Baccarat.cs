@@ -17,26 +17,41 @@ public class Baccarat : IGame
         Console.WriteLine("Select the corresponding number for the bet type" +
                           "\n1. Player \n2. Banker \n3. Tie");
         
-        int playerBetChoiceNumber;
-        BaccaratBetType betType;
-        if (!int.TryParse(Console.ReadLine(), out playerBetChoiceNumber))
+        int playerBetChoiceNumber = 0;
+        BaccaratBetType betType = BaccaratBetType.Null;
+
+        try
         {
-            throw new ArgumentException("Invalid input!");
+            if (!int.TryParse(Console.ReadLine(), out playerBetChoiceNumber))
+            {
+                throw new ArgumentException("Invalid input!");
+            }
+        }
+        catch (ArgumentException)
+        {
+            Console.WriteLine("Invalid input!");
         }
 
-        switch (playerBetChoiceNumber)
+        try
         {
-            case 1:
-                betType = BaccaratBetType.Player;
-                break;
-            case 2:
-                betType = BaccaratBetType.Banker;
-                break;
-            case 3:
-                betType = BaccaratBetType.Tie;
-                break;
-            default:
-                throw new ArgumentException("Please select a number from 1 to 3");
+            switch (playerBetChoiceNumber)
+            {
+                case 1:
+                    betType = BaccaratBetType.Player;
+                    break;
+                case 2:
+                    betType = BaccaratBetType.Banker;
+                    break;
+                case 3:
+                    betType = BaccaratBetType.Tie;
+                    break;
+                default:
+                    throw new ArgumentException("Please select a number from 1 to 3");
+            }
+        }
+        catch (ArgumentException)
+        {
+            Console.WriteLine("Please select a number from 1 to 3");
         }
         
         Console.WriteLine($"You currently have {wallet.Balance} VMali.");
@@ -56,13 +71,6 @@ public class Baccarat : IGame
         
         List<Card> player = new();
         List<Card> dealer = new();
-        
-        /*
-        player.Add(deck.Draw());
-        player.Add(deck.Draw());
-        dealer.Add(deck.Draw());
-        dealer.Add(deck.Draw());
-        */
 
         var engine = new BaccaratEngine();
         var result = engine.Result(player, dealer, betType, deck);
