@@ -19,7 +19,7 @@ public class AdminUser
     
     public AdminRole Role { get; set; }
     
-    public DateTime CreationDate { get; set; } = DateTime.UtcNow;
+    public DateTime CreationDate { get; init; } = DateTime.UtcNow;
     
     public DateTime LastActiveDate { get; set; } = DateTime.UtcNow;
 }
