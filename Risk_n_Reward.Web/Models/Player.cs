@@ -22,7 +22,7 @@ public class Player
     
     public int? FavouriteGameId { get; set; }
     
-    public DateTime JoinDate { get; set; } = DateTime.UtcNow;
+    public DateTime JoinDate { get; init; } = DateTime.UtcNow;
     
     public DateTime LastActiveDate { get; set; } = DateTime.UtcNow;
     
