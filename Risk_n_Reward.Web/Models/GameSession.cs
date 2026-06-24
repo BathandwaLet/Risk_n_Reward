@@ -32,9 +32,9 @@ public class GameSession
     
     public DateTime PlayedAt { get; set; } = DateTime.UtcNow;
 
-    [ForeignKey(nameof("PlayerId"))] 
+    [ForeignKey(nameof(PlayerId))] 
     public Player Player { get; set; } = null!;
 
-    [ForeignKey(nameof("GameId"))] 
+    [ForeignKey(nameof(GameId))] 
     public Game Game { get; set; } = null!;
 }
