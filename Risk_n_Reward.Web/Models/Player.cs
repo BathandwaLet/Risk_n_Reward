@@ -29,7 +29,7 @@ public class Player
     [ForeignKey(nameof(FavouriteGameId))]
     public Game? FavouriteGame { get; set; }
 
-    public ICollection<GameSession> GameSessions { get; set; } = new ICollection<GameSession>();
+    public ICollection<GameSession> GameSessions { get; set; } = new List<GameSession>();
 
     public ICollection<WinStreak> WinStreaks { get; set; } = new List<WinStreak>();
 
