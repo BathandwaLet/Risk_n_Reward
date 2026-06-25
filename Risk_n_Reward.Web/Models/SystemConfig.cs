@@ -15,9 +15,11 @@ public class SystemConfig
     [Required]
     public string Value { get; set; } = string.Empty;
     
-    public string Description { get; set; } = string.Empty;
+    [MaxLength(255)] 
+    public string? Description { get; set; }
     
     public DateTime LastUpdated { get; set; } = DateTime.UtcNow;
     
-    public string UpdatedBy { get; set; } = string.Empty;
+    [MaxLength(50)] 
+    public string? UpdatedBy { get; set; }
 }
