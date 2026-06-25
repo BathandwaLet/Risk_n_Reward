@@ -41,7 +41,7 @@ public class ApplicationDbContext : DbContext
             .HasConversion<string>();
         
         //Database Relationships
-        //Player
+        //Player (Player --> Game)
         modelBuilder.Entity<Player>()
             .HasOne(p => p.FavouriteGame) //Each player has one favourite game
             .WithMany(g => g.FavouritedBy) //Each game can be favourited by many players
@@ -49,7 +49,13 @@ public class ApplicationDbContext : DbContext
                 p.FavouriteGameId) //Player has a Foreign Key of FavouriteGameId which references the Games id 
             .OnDelete(DeleteBehavior.SetNull); //On delete the player but set all references to null
         
-        //
+        //GameSession (GameSession --> Player)
+        modelBuilder.Entity<GameSession>()
+            .HasOne(gs => gs.Player) //Each gamesession belongs to one player
+            .WithMany(p => p.GameSessions) //Each player can have many sessions
+            .HasForeignKey(g => g.GameId) //Gamesession has a foreign key of game id
+            .OnDelete(DeleteBehavior.Cascade); //On deletion of a GameSession delete the all the references in player as well.
         
+
     }
 }
