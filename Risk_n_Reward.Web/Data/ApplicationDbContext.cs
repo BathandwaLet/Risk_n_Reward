@@ -40,6 +40,16 @@ public class ApplicationDbContext : DbContext
             .Property(wt => wt.Type)
             .HasConversion<string>();
         
+        //Database Relationships
+        //Player
+        modelBuilder.Entity<Player>()
+            .HasOne(p => p.FavouriteGame) //Each player has one favourite game
+            .WithMany(g => g.FavouritedBy) //Each game can be favourited by many players
+            .HasForeignKey(p =>
+                p.FavouriteGameId) //Player has a Foreign Key of FavouriteGameId which references the Games id 
+            .OnDelete(DeleteBehavior.SetNull); //On delete the player but set all references to null
+        
         //
+        
     }
 }
