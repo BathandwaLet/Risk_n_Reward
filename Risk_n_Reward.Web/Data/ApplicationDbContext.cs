@@ -58,9 +58,12 @@ public class ApplicationDbContext : DbContext
         
         //GameSession (GameSession --> Game)
         modelBuilder.Entity<GameSession>()
-            .HasOne(g => g.Game)
-            .WithMany(g => g.GameSessions)
-            .HasForeignKey(g => g.GameId)
+            .HasOne(g => g.Game) //Each GameSession belongs to one game
+            .WithMany(g => g.GameSessions) //Each game has many GameSessions
+            .HasForeignKey(g => g.GameId) //GameSession has a foreign key of game id
+            .OnDelete(DeleteBehavior.Restrict); //On deletion Delete the gamesession do not delete the references in games table
+        
+        
 
     }
 }
