@@ -16,11 +16,30 @@ public class ApplicationDbContext : DbContext
     //Player
     public DbSet<Player> Players { get; set; }
     //Winstreak
-    public DbSet<WinStreak> WinStreaks { get; set; }
+    public DbSet<Models.WinStreak> WinStreaks { get; set; }
     //AdminUser
     public DbSet<AdminUser>  AdminUsers { get; set; }
     //SystemConfig
     public DbSet<SystemConfig> SystemConfigs { get; set; }
 
-    
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+        
+        
+        //Enums (convert to string)
+        modelBuilder.Entity<AdminUser>()
+            .Property(a => a.Role)
+            .HasConversion<string>();
+        
+        modelBuilder.Entity<GameSession>()
+            .Property(gs => gs.Outcome)
+            .HasConversion<string>();
+        
+        modelBuilder.Entity<WalletTransaction>()
+            .Property(wt => wt.Type)
+            .HasConversion<string>();
+        
+        //
+    }
 }
