@@ -63,7 +63,12 @@ public class ApplicationDbContext : DbContext
             .HasForeignKey(g => g.GameId) //GameSession has a foreign key of game id
             .OnDelete(DeleteBehavior.Restrict); //On deletion Delete the gamesession do not delete the references in games table
         
-        
+        //WinStreak (WinStreak --> Game)
+        modelBuilder.Entity<Models.WinStreak>()
+            .HasOne(ws => ws.Game) //Each WinStreak belongs to one Game
+            .WithMany(g => g.WinStreak) //Each Game has many WinStreaks
+            .HasForeignKey(g => g.GameId) //WinStreak has a foreign key of Game id
+            .OnDelete(DeleteBehavior.Restrict); //On deletion Delete the winstreak but keep the references in games table
 
     }
 }
