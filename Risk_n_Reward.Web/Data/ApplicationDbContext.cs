@@ -77,5 +77,19 @@ public class ApplicationDbContext : DbContext
             .HasForeignKey(p => p.PlayerId) // Winstreak has a player id foreign key
             .OnDelete(DeleteBehavior.Cascade); //On deletion (e.g player is deleted winstreaks associated should be deleted aswell
 
+        //Seed the games in games table
+        modelBuilder.Entity<Game>().HasData(
+            new Game {Id = 1, Name = "Baccarat",Description = "Baccarat is a simple card game. You have two option to bet on Player or Banker. The aim is to get as close to nine (9) as possible.", IsEnabled = true},
+            new Game {Id = 2, Name = "BlackJack",Description = "An iconic game, get closer to twenty one (21) than the dealer without going over. Everytime you hit or stand matters. Easy enough right?", IsEnabled = true},
+            new Game {Id = 3, Name = "CoinToss",Description = "Simple is an understatement. Coin Toss requires the player to call head or tails watch the coin fly and find out if you made the right call. No complex strategy needed it just 50-50 chance.", IsEnabled = true},
+            new Game {Id = 4, Name = "Crash",Description = "A multiplier grows from one and you aim to cash out before you crash. Wait longer and the reward grows but wait to long and lose it all. A game all about having courage but also knowing when to walk away.", IsEnabled = true},
+            new Game {Id = 5, Name = "HighLow",Description = "You are shown a card and you guess whether the next card is higher or lower. Simple right?", IsEnabled = true},
+            new Game {Id = 6, Name = "LuckyDice",Description = "In LuckyDice you wager on the chancee of getting a double from a dice roll(e.g two sixes). Fast, unpredictable and oddly satisfying. Roll the the dice and see.", IsEnabled = true},
+            new Game {Id = 7, Name = "PickFive",Description = "Select five (5) number or use the quick pick and find out if they match the draw. A lottery styled game played with patience and hope. The odds are low but the pay off is worth it. Pick your number and see if lady luck is on your side.", IsEnabled = true},
+            new Game {Id = 8, Name = "Roulette",Description = "A ball is spun around a numbered wheel and you a to bet on the square it will land in. Keep it simple with black, red or chase the greater rewards with specific numbers. No two spins are the same and every round is another chance.", IsEnabled = true},
+            new Game {Id = 9, Name = "Slots",Description = "Place your bet, spin the reel and see what lines up. No complex strategy needed, just set the wager and see what lines up. Each line up of symbols hold different payouts.", IsEnabled = true},
+            new Game {Id = 10, Name = "TexasHoldem",Description = "A poker game against the house. You and the dealer each get dealt the cards and the best hand wins. All the excitement of poker without having to read the room.", IsEnabled = true}
+            
+            );
     }
 }
