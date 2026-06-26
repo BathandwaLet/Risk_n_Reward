@@ -118,5 +118,17 @@ public class ApplicationDbContext : DbContext
             new SystemConfig{Id = 7, Key = "StreakBonus_Multiplier_2", Value = "1.50", Description = "Payout multiplier applied at streak tier 2", LastUpdated = new DateTime(2026,1,1,0,0,0,DateTimeKind.Utc), UpdatedBy = null},
             new SystemConfig{Id = 8, Key = "StreakBonus_Multiplier_3", Value = "2.00", Description = "Payout multiplier applied at streak tier 3", LastUpdated = new DateTime(2026,1,1,0,0,0,DateTimeKind.Utc), UpdatedBy = null}
             );
+        
+        // Seed the test accounts
+        // Fixed IDs and PublicIds keep migrations stable.
+        // PasswordHash is a placeholder for "Dev@1234".
+        // Replace with Identity-managed hashes before deploy.
+        // TODO: Remove or gate behind IsDevelopment() before
+        // deploying to production.
+        
+        // Fixed password hash
+        const string devPasswordHash = "$2a$11$DevelopmentHashPlaceholderXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+        
+        
     }
 }
