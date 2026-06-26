@@ -75,7 +75,7 @@ public class ApplicationDbContext : DbContext
             .HasOne(ws => ws.Player) //Each WinStreak belongs to one Player
             .WithMany(p => p.WinStreaks) //Each player has many winstreaks
             .HasForeignKey(p => p.PlayerId) // Winstreak has a player id foreign key
-            .OnDelete(DeleteBehavior.Cascade); //On deletion (e.g player is deleted winstreaks associated should be deleted aswell
+            .OnDelete(DeleteBehavior.Cascade); //On deletion (e.g player is deleted winstreaks associated should be deleted as well
 
         //Seed the games in games table
         modelBuilder.Entity<Game>().HasData(
@@ -89,7 +89,18 @@ public class ApplicationDbContext : DbContext
             new Game {Id = 8, Name = "Roulette",Description = "A ball is spun around a numbered wheel and you a to bet on the square it will land in. Keep it simple with black, red or chase the greater rewards with specific numbers. No two spins are the same and every round is another chance.", IsEnabled = true},
             new Game {Id = 9, Name = "Slots",Description = "Place your bet, spin the reel and see what lines up. No complex strategy needed, just set the wager and see what lines up. Each line up of symbols hold different payouts.", IsEnabled = true},
             new Game {Id = 10, Name = "TexasHoldem",Description = "A poker game against the house. You and the dealer each get dealt the cards and the best hand wins. All the excitement of poker without having to read the room.", IsEnabled = true}
-            
+            );
+        
+        //Define the system config rules and actions (Reloading wallets, and winstreaks)
+        modelBuilder.Entity<SystemConfig>().HasData(
+            new SystemConfig{Id = 1, Key = "ReloadAmount", Value = "1000", Description = "Fixed amount of VMali added to the player's wallet on reload.", LastUpdated = new DateTime(2026,1,1,0,0,0,DateTimeKind.Utc), UpdatedBy = null},
+            new SystemConfig{Id = 2, Key = "ReloadThreshold", Value = "100", Description = "Player can only reload once at or below this amount", LastUpdated = new DateTime(2026,1,1,0,0,0,DateTimeKind.Utc), UpdatedBy = null},
+            new SystemConfig{Id = 3, Key = "StreakBonus_Threshold_1", Value = "3", Description = "Minimum WinStreak to qualify for the first bonus tier", LastUpdated = new DateTime(2026,1,1,0,0,0,DateTimeKind.Utc), UpdatedBy = null},
+            new SystemConfig{Id = 4, Key = "StreakBonus_Threshold_2", Value = "5", Description = "Minimum WinStreak to qualify for the second bonus tier", LastUpdated = new DateTime(2026,1,1,0,0,0,DateTimeKind.Utc), UpdatedBy = null},
+            new SystemConfig{Id = 5, Key = "StreakBonus_Threshold_3", Value = "10", Description = "Minimum WinStreak to qualify for the third bonus tier", LastUpdated = new DateTime(2026,1,1,0,0,0,DateTimeKind.Utc), UpdatedBy = null},
+            new SystemConfig{Id = 6, Key = "StreakBonus_Multiplier_1", Value = "1.25", Description = "Payout multiplier applied at streak tier 1", LastUpdated = new DateTime(2026,1,1,0,0,0,DateTimeKind.Utc), UpdatedBy = null},
+            new SystemConfig{Id = 7, Key = "StreakBonus_Multiplier_2", Value = "1.50", Description = "Payout multiplier applied at streak tier 2", LastUpdated = new DateTime(2026,1,1,0,0,0,DateTimeKind.Utc), UpdatedBy = null},
+            new SystemConfig{Id = 8, Key = "StreakBonus_Multiplier_3", Value = "2.00", Description = "Payout multiplier applied at streak tier 3", LastUpdated = new DateTime(2026,1,1,0,0,0,DateTimeKind.Utc), UpdatedBy = null}
             );
     }
 }
