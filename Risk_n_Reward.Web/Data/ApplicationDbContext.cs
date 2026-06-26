@@ -40,6 +40,22 @@ public class ApplicationDbContext : DbContext
             .Property(wt => wt.Type)
             .HasConversion<string>();
         
+        //Indexes
+        //Whom the gamesession belongs to?  
+        modelBuilder.Entity<GameSession>().HasIndex(gs => gs.PlayerId);
+        
+        //Which game was played in the gamesession?
+        modelBuilder.Entity<GameSession>().HasIndex(gs => gs.GameId);
+        
+        //When was the gamesession started at
+        modelBuilder.Entity<GameSession>().HasIndex(gs => gs.PlayedAt);
+        
+        //Which player made a wallet transaction
+        modelBuilder.Entity<WalletTransaction>().HasIndex(wt => wt.PlayerId);
+        
+        //Whom does the winstreak belong to
+        modelBuilder.Entity<Models.WinStreak>().HasIndex(ws => ws.PlayerId);
+        
         //Database Relationships
         //Player (Player --> Game)
         modelBuilder.Entity<Player>()
