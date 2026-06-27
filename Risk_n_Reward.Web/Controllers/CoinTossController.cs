@@ -61,6 +61,10 @@ public class CoinTossController : Controller
             CreatedAt = DateTime.UtcNow,
         });
         
+        //Call engine
+        var engine = new CoinTossEngine();
+        var result = engine.Result();
+        
         
     }
 }
