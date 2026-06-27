@@ -94,6 +94,11 @@ public class CoinTossController : Controller
             PlayedAt = DateTime.UtcNow,
         });
         
+        await  _db.SaveChangesAsync();
+        
+        TempData["Win"] =  result.Win;
+        TempData["Payout"] = result.Payout;
+        TempData["BetAmount"] = betAmount;
 
         return RedirectToAction("Index");
     }
