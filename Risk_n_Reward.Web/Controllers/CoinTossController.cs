@@ -11,4 +11,9 @@ public class CoinTossController : Controller
     private readonly ApplicationDbContext _context;
     private const int PlayerId = 1;
     private const int GameId = 3;
+
+    public CoinTossController(ApplicationDbContext context)
+    {
+        _context = context;
+    }
 }
