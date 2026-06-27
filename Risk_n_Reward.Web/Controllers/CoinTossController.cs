@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Risk_n_Reward.Web.Models;
 using Risk_n_Reward.Core;
+using Risk_n_Reward.Core.Engines;
 using Risk_n_Reward.Web.Data;
 
 namespace Risk_n_Reward.Web.Controllers;
@@ -23,5 +24,10 @@ public class CoinTossController : Controller
         return View(player);
     }
 
-    
+    [HttpPost]
+    public async Task<IActionResult> Play(decimal betAmount)
+    {
+        //Fetch player object from database
+        var player = await _db.Players.FindAsync(PlayerId);
+    }
 }
