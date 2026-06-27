@@ -1,0 +1,12 @@
+/Users/pauljeansartre/Desktop/Risk_n_Reward/Risk n Reward/Risk_n_Reward.Core/bin/Debug/net10.0/Risk_n_Reward.Core.deps.json
+/Users/pauljeansartre/Desktop/Risk_n_Reward/Risk n Reward/Risk_n_Reward.Core/bin/Debug/net10.0/Risk_n_Reward.Core.dll
+/Users/pauljeansartre/Desktop/Risk_n_Reward/Risk n Reward/Risk_n_Reward.Core/bin/Debug/net10.0/Risk_n_Reward.Core.pdb
+/Users/pauljeansartre/Desktop/Risk_n_Reward/Risk n Reward/Risk_n_Reward.Core/obj/Debug/net10.0/Risk_n_Reward.Core.GeneratedMSBuildEditorConfig.editorconfig
+/Users/pauljeansartre/Desktop/Risk_n_Reward/Risk n Reward/Risk_n_Reward.Core/obj/Debug/net10.0/Risk_n_Reward.Core.AssemblyInfoInputs.cache
+/Users/pauljeansartre/Desktop/Risk_n_Reward/Risk n Reward/Risk_n_Reward.Core/obj/Debug/net10.0/Risk_n_Reward.Core.AssemblyInfo.cs
+/Users/pauljeansartre/Desktop/Risk_n_Reward/Risk n Reward/Risk_n_Reward.Core/obj/Debug/net10.0/Risk_n_Reward.Core.csproj.CoreCompileInputs.cache
+/Users/pauljeansartre/Desktop/Risk_n_Reward/Risk n Reward/Risk_n_Reward.Core/obj/Debug/net10.0/Risk_n_Reward.Core.sourcelink.json
+/Users/pauljeansartre/Desktop/Risk_n_Reward/Risk n Reward/Risk_n_Reward.Core/obj/Debug/net10.0/Risk_n_Reward.Core.dll
+/Users/pauljeansartre/Desktop/Risk_n_Reward/Risk n Reward/Risk_n_Reward.Core/obj/Debug/net10.0/refint/Risk_n_Reward.Core.dll
+/Users/pauljeansartre/Desktop/Risk_n_Reward/Risk n Reward/Risk_n_Reward.Core/obj/Debug/net10.0/Risk_n_Reward.Core.pdb
+/Users/pauljeansartre/Desktop/Risk_n_Reward/Risk n Reward/Risk_n_Reward.Core/obj/Debug/net10.0/ref/Risk_n_Reward.Core.dll
