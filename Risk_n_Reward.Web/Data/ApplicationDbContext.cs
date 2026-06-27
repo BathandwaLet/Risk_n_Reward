@@ -134,7 +134,7 @@ public class ApplicationDbContext : DbContext
             new Player
             {
                 Id = 1,
-                PublicId = new Guid("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaa"),
+                PublicId = new Guid("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"),
                 Username = "DevPlayer",
                 PasswordHash = devPasswordHash,
                 WalletBalance = 50000.0m,
@@ -149,7 +149,7 @@ public class ApplicationDbContext : DbContext
             new AdminUser
             {
                 Id = 1,
-                PublicId = new Guid("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbb"),
+                PublicId = new Guid("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"),
                 UserName = "DevAdmin",
                 PasswordHash = devPasswordHash,
                 Role = AdminRole.SuperAdmin,
