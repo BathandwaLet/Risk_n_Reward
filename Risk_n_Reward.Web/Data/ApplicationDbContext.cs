@@ -128,7 +128,20 @@ public class ApplicationDbContext : DbContext
         
         // Fixed password hash
         const string devPasswordHash = "$2a$11$DevelopmentHashPlaceholderXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
-        
-        
+
+        //Seeded player test account
+        modelBuilder.Entity<Player>().HasData(
+            new Player
+            {
+                Id = 1,
+                PublicId = new Guid("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaa"),
+                Username = "DevPlayer",
+                PasswordHash = devPasswordHash,
+                WalletBalance = 50000.0m,
+                FavouriteGameId = null,
+                JoinDate = new DateTime(2026,1,1,0,0,0,DateTimeKind.Utc),
+                LastActiveDate = new DateTime(2026,1,1,0,0,0,DateTimeKind.Utc)
+            }
+            );
     }
 }
