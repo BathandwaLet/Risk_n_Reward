@@ -29,5 +29,25 @@ public class CoinTossController : Controller
     {
         //Fetch player object from database
         var player = await _db.Players.FindAsync(PlayerId);
+        
+        //if player is not in db return not found
+        if (player == null)
+        {
+            return NotFound();
+        }
+
+        //if the bet amount is less than the minimum betAmount
+        if (betAmount < 10.0m)
+        {
+            return RedirectToAction("Index");
+        }
+
+        //if the player does not have the enough money to place the bet
+        if (player.WalletBalance < betAmount)
+        {
+            return RedirectToAction("Index");
+        }
+        
+        
     }
 }
