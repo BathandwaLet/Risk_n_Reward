@@ -83,6 +83,17 @@ public class CoinTossController : Controller
                 CreatedAt = DateTime.UtcNow,
             });
         }
+        
+        //Log GameSession
+        _db.GameSessions.Add(new GameSession
+        {
+            PlayerId = PlayerId,
+            BetAmount = betAmount,
+            GameId = GameId,
+            Outcome = (result.Win)? Outcome.Win: Outcome.Loss,
+            PlayedAt = DateTime.UtcNow,
+        });
+        
 
         return RedirectToAction("Index");
     }
