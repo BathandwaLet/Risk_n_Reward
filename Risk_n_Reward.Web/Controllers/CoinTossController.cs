@@ -65,6 +65,25 @@ public class CoinTossController : Controller
         var engine = new CoinTossEngine();
         var result = engine.Result();
         
-        
+        //Payout to the wallet upon a win
+        decimal payout;
+        if (result.Win)
+        {
+            //payout = result.Payout; //Engine must return the payout multiplier Do That skhokho
+            payout = betAmount * 1.5m; // Rememeber to implement winstreak logic once winstrreak is impleemented!!!
+            player.WalletBalance += payout; 
+            
+            //Log transaction after winning
+            _db.WalletTransactions.Add(new WalletTransaction
+            {
+                PlayerId = PlayerId,
+                Type = TransactionType.Credit,
+                Amount = betAmount,
+                BalanceAfter = player.WalletBalance,
+                CreatedAt = DateTime.UtcNow,
+            });
+        }
+
+        return RedirectToAction("Index");
     }
 }
