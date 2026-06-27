@@ -143,5 +143,19 @@ public class ApplicationDbContext : DbContext
                 LastActiveDate = new DateTime(2026,1,1,0,0,0,DateTimeKind.Utc)
             }
             );
+        
+        //Seeded admin test account
+        modelBuilder.Entity<AdminUser>().HasData(
+            new AdminUser
+            {
+                Id = 1,
+                PublicId = new Guid("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbb"),
+                UserName = "DevAdmin",
+                PasswordHash = devPasswordHash,
+                Role = AdminRole.SuperAdmin,
+                CreationDate = new DateTime(2026,1,1,0,0,0,DateTimeKind.Utc),
+                LastActiveDate = new DateTime(2026,1,1,0,0,0,DateTimeKind.Utc)
+            }
+        );
     }
 }
