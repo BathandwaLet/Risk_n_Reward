@@ -48,6 +48,19 @@ public class CoinTossController : Controller
             return RedirectToAction("Index");
         }
         
+        //Debit bet amount from  player wallet
+        player.WalletBalance -= betAmount;
+        
+        //Log the transaction in the player wallet
+        _db.WalletTransactions.Add(new WalletTransaction
+        {
+            PlayerId = PlayerId,
+            Type = TransactionType.Debit, //Placed bet
+            Amount = betAmount,
+            BalanceAfter = player.WalletBalance,
+            CreatedAt = DateTime.UtcNow,
+        });
+        
         
     }
 }
