@@ -2,8 +2,8 @@ namespace Risk_n_Reward.Web.Models;
 
 public enum TransactionType
 {
-    Bet,
-    Win,
+    Debit,
+    Credit,
     Loss,
     Reload,
     AdminCredit,
