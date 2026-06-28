@@ -1,0 +1,33 @@
+@model Risk_n_Reward.Web.Models.Player
+
+@{
+    ViewData["Title"] = "Coin Toss";
+}
+
+<h1>Coin Toss</h1>
+<p>
+    Balance: @Model.WalletBalance VMali
+    @*WinStreak: @Model.WinStreaks Display the current winstreak*@
+</p>
+
+@if (TempData["Win"] != null)
+{
+    bool win = (bool)TempData["Win"];
+    decimal betAmount = (decimal)TempData["BetAmount"];
+    decimal payout = (decimal)TempData["Payout"];
+
+    if (win)
+    {
+        <p>
+            Congratulations
+            You have won @payout VMali!
+        </p>
+    }
+    else
+    {
+        <p>
+            Unfortunately
+            You have lost.
+        </p>        
+    }
+}
