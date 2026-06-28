@@ -10,7 +10,7 @@ namespace Risk_n_Reward.Web.Controllers;
 public class CoinTossController : Controller
 {
     private readonly ApplicationDbContext _db;
-    private const int PlayerId = 1;
+    private const int Id = 1;
     private const int GameId = 3;
 
     public CoinTossController(ApplicationDbContext db)
@@ -20,7 +20,7 @@ public class CoinTossController : Controller
 
     public async Task<IActionResult> Index()
     {
-        var player = await _db.Players.FindAsync(PlayerId);
+        var player = await _db.Players.FindAsync(Id);
         return View(player);
     }
 
@@ -28,7 +28,7 @@ public class CoinTossController : Controller
     public async Task<IActionResult> Play(decimal betAmount)
     {
         //Fetch player object from database
-        var player = await _db.Players.FindAsync(PlayerId);
+        var player = await _db.Players.FindAsync(Id);
         
         //if player is not in db return not found
         if (player == null)
@@ -54,7 +54,7 @@ public class CoinTossController : Controller
         //Log the transaction in the player wallet
         _db.WalletTransactions.Add(new WalletTransaction
         {
-            PlayerId = PlayerId,
+            PlayerId = Id,
             Type = TransactionType.Debit, //Placed bet
             Amount = betAmount,
             BalanceAfter = player.WalletBalance,
@@ -76,7 +76,7 @@ public class CoinTossController : Controller
             //Log transaction after winning
             _db.WalletTransactions.Add(new WalletTransaction
             {
-                PlayerId = PlayerId,
+                PlayerId = Id,
                 Type = TransactionType.Credit,
                 Amount = betAmount,
                 BalanceAfter = player.WalletBalance,
@@ -87,7 +87,7 @@ public class CoinTossController : Controller
         //Log GameSession
         _db.GameSessions.Add(new GameSession
         {
-            PlayerId = PlayerId,
+            PlayerId = Id,
             BetAmount = betAmount,
             GameId = GameId,
             Outcome = (result.Win)? Outcome.Win: Outcome.Loss,
