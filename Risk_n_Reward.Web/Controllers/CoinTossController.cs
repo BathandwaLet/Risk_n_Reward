@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Risk_n_Reward.Web.Models;
 using Risk_n_Reward.Core;
+using Risk_n_Reward.Core.Core.Models.CoinTossModels.CoinSide;
 using Risk_n_Reward.Core.Engines;
 using Risk_n_Reward.Web.Data;
 
@@ -62,6 +63,7 @@ public class CoinTossController : Controller
         });
         
         //Call engine
+        var playerChoice = coinSide == "Heads" ? CoinSide.Heads : CoinSide.Tails; 
         var engine = new CoinTossEngine();
         var result = engine.Result();
         
