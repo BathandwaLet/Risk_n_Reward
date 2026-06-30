@@ -16,4 +16,10 @@ public class CrashController : Controller
     {
         _db = db;
     }
+
+    public async Task<IActionResult> Index()
+    {
+        var player = await _db.Players.FindAsync(Id);
+        return View(player);
+    }
 }
