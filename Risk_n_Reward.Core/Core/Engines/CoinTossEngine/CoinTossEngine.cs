@@ -24,7 +24,7 @@ public class CoinTossEngine
         };
     }
 
-    public bool PlayGame(CoinSide playerChoice,CoinSide computerChoice)
+    /*public bool PlayGame(CoinSide playerChoice,CoinSide computerChoice)
     {
         PlayGameScript(1);
         do
@@ -59,7 +59,7 @@ public class CoinTossEngine
         bool result = (GameResult(playerChoice, computerChoice) == CoinTossOutcomes.Win )? true: false;
         
         return result;
-    }
+    }*/
     
     private CoinTossOutcomes GameResult(CoinSide player, CoinSide computer)
     {
@@ -91,21 +91,21 @@ public class CoinTossEngine
         return computerChoice;
     }
 
-    private void PlayGameScript(int messageNumber)
+    /*private void PlayGameScript(int messageNumber)
     {
         switch (messageNumber)
         {
             case 1: Console.WriteLine("Please select H for heads of T for Tails"); break;
             case 2: Console.WriteLine("Invalid input!\nPlease select H for heads of T for Tails"); break;
         }
-    }
+    }*/
     
-    private void PlayGameScript(int messageNumber, CoinSide playerChoice, CoinSide computerChoice)
+    /*private void PlayGameScript(int messageNumber, CoinSide playerChoice, CoinSide computerChoice)
     {
         switch (messageNumber)
         {
             case 1: Console.WriteLine($"You chose {playerChoice}"); break;
             case 2: Console.WriteLine($"The computer chose {computerChoice}"); break;
         }
-    }
+    }*/
 }
