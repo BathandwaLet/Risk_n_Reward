@@ -26,7 +26,7 @@ public class CoinTossController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> Play(decimal betAmount)
+    public async Task<IActionResult> Play(decimal betAmount, string coinSide)
     {
         //Fetch player object from database
         var player = await _db.Players.FindAsync(Id);
@@ -65,14 +65,14 @@ public class CoinTossController : Controller
         //Call engine
         var playerChoice = coinSide == "Heads" ? CoinSide.Heads : CoinSide.Tails; 
         var engine = new CoinTossEngine();
-        var result = engine.Result();
+        var result = engine.Result(playerChoice);
         
         //Payout to the wallet upon a win
         decimal payout;
         if (result.Win)
         {
             //payout = result.Payout; //Engine must return the payout multiplier Do That skhokho
-            payout = betAmount * 1.5m; // Rememeber to implement winstreak logic once winstrreak is impleemented!!!
+            payout = betAmount * 1.5m; // Rememeber to implement winstreak logic once winstreak is impleemented!!!
             player.WalletBalance += payout; 
             
             //Log transaction after winning
@@ -80,7 +80,7 @@ public class CoinTossController : Controller
             {
                 PlayerId = Id,
                 Type = TransactionType.Credit,
-                Amount = betAmount,
+                Amount = payout,
                 BalanceAfter = player.WalletBalance,
                 CreatedAt = DateTime.UtcNow,
             });
