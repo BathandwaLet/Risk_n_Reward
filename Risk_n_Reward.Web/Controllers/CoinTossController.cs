@@ -99,8 +99,8 @@ public class CoinTossController : Controller
         await  _db.SaveChangesAsync();
         
         TempData["Win"] =  result.Win;
-        TempData["Payout"] = result.Payout;
-        TempData["BetAmount"] = betAmount;
+        TempData["Payout"] = result.Payout.ToString();
+        TempData["BetAmount"] = betAmount.ToString();
 
         return RedirectToAction("Index");
     }
