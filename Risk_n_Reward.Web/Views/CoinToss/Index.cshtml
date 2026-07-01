@@ -13,8 +13,8 @@
 @if (TempData["Win"] != null)
 {
     bool win = (bool)TempData["Win"];
-    decimal betAmount = (decimal)TempData["BetAmount"];
-    decimal payout = (decimal)TempData["Payout"];
+    decimal betAmount = decimal.Parse((string)TempData["BetAmount"]);
+    decimal payout = decimal.Parse((string)TempData["Payout"]);
 
     if (win)
     {
