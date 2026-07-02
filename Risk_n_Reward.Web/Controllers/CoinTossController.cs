@@ -65,22 +65,22 @@ public class CoinTossController : Controller
         //Call engine
         var playerChoice = coinSide == "Heads" ? CoinSide.Heads : CoinSide.Tails; 
         var engine = new CoinTossEngine();
-        var result = engine.Result(playerChoice);
+        var result = engine.Result(playerChoice, betAmount);
         
         //Payout to the wallet upon a win
         decimal payout;
         if (result.Win)
         {
             //payout = result.Payout; //Engine must return the payout multiplier Do That skhokho
-            payout = betAmount * 1.5m; // Rememeber to implement winstreak logic once winstreak is impleemented!!!
-            player.WalletBalance += payout; 
+            //payout = betAmount * 1.5m; // Rememeber to implement winstreak logic once winstreak is impleemented!!!
+            player.WalletBalance += result.Payout; 
             
             //Log transaction after winning
             _db.WalletTransactions.Add(new WalletTransaction
             {
                 PlayerId = Id,
                 Type = TransactionType.Credit,
-                Amount = payout,
+                Amount = result.Payout,
                 BalanceAfter = player.WalletBalance,
                 CreatedAt = DateTime.UtcNow,
             });
