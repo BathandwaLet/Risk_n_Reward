@@ -9,17 +9,18 @@ namespace Risk_n_Reward.Core.Engines;
 
 public class CoinTossEngine
 {
-    public CoinTossResult Result(CoinSide playerChoice)
+    public CoinTossResult Result(CoinSide playerChoice, decimal betAmount)
     {
         CoinSide computerChoice = ComputerSelection();
         
         bool result = GameResult(playerChoice, computerChoice) == CoinTossOutcomes.Win ? true : false;
         decimal payoutMultiplier = Payout(result);
+        decimal payout = payoutMultiplier * betAmount;
         
         return new CoinTossResult 
         {
             Win = result,
-            Payout = payoutMultiplier,
+            Payout = payout,
         };
     }
 
