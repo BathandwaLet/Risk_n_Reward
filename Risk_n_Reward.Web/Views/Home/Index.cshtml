@@ -1,8 +1,90 @@
-﻿@{
+﻿@model Risk_n_Reward.Web.Models.Player
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="align-content-center" xmlns="http://www.w3.org/1999/html">
+    <section>
+        <h1>Games</h1>
+        <div class="home-icons-row">
+            <div class="home-icons-inline">
+                <a asp-controller="CoinToss" asp-action="Index">
+                    <img src="~/images/home-icons/coin-toss.png" class="home-icons" alt="coin-toss"/>
+                </a>
+                <span>Coin Toss</span>
+            </div>
+
+            <div class="home-icons-inline">
+                <a asp-controller="" asp-action="">
+                    <img src="~/images/home-icons/poker.png" class="home-icons" alt="texas-holdem"/>
+                </a>
+                <span>Texas Hold 'em</span>
+            </div>
+        </div>
+
+        <div class="home-icons-row">
+            <div class="home-icons-inline">
+                <a asp-controller="" asp-action="">
+                    <img src="~/images/home-icons/baccarat.png" class="home-icons" alt="baccarat"/>
+                </a>
+                <span>Baccarat</span>
+            </div>
+
+            <div class="home-icons-inline">
+                <a asp-controller="" asp-action="">
+                    <img src="~/images/home-icons/crash.png" class="home-icons" alt="crash" />
+                </a>
+                <span>Crash</span>
+            </div>
+        </div>
+
+        <div class="home-icons-row">
+            <div class="home-icons-inline">
+                <a asp-controller="" asp-action="">
+                    <img src="~/images/home-icons/roulette.png" class="home-icons" alt="roulette" />
+                </a>
+                <span>Roulette</span>
+            </div>
+
+            <div class="home-icons-inline">
+                <a asp-controller="" asp-action="">
+                    <img src="~/images/home-icons/blackjack.png" class="home-icons" alt="blackjack" />
+                </a>
+                <span>Black Jack</span>
+            </div>
+        </div>
+
+        <div class="home-icons-row">
+            <div class="home-icons-inline">
+                <a asp-controller="" asp-action="">
+                    <img src="~/images/home-icons/slots.png" class="home-icons" />
+                </a>
+                <span>Slots</span>
+            </div>
+
+            <div class="home-icons-inline">
+                <a asp-controller="" asp-action="">
+                    <img src="~/images/home-icons/pick-five.png" class="home-icons" />
+                </a>
+                <span>Pick Five</span>
+            </div>
+        </div>
+
+        <div class="home-icons-row">
+            <div class="home-icons-inline">
+                <a asp-controller="" asp-action="">
+                    <img src="~/images/home-icons/lucky-dice.png" class="home-icons" />
+                </a>
+                <span>Lucky Dice</span>
+            </div>
+
+            <div class="home-icons-inline">
+                <a asp-controller="" asp-action="">
+                    <img src="~/images/home-icons/high-low.png" class="home-icons" />
+                </a>
+                <span>High Low</span>
+            </div>
+        </div>
+    </section>
 </div>
