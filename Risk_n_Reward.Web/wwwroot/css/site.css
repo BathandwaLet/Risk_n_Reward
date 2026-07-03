@@ -29,3 +29,29 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+
+.home-icons{
+    position: relative;
+    display: inline-block;
+    max-height: 150px;
+    max-width: 150px;
+}
+
+.home-icons:hover{
+    cursor: pointer;
+    max-width: 200px;
+    max-height: 200px;
+}
+
+.home-icons-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-bottom: 16px;
+}
+
+.home-icons-inline {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
