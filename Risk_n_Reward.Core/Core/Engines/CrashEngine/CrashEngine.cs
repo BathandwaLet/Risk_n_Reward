@@ -6,22 +6,22 @@ namespace Risk_n_Reward.Core.Engines.CrashEngine;
 
 public class CrashEngine
 {
-    public CrashResult Result()
+    public CrashResult Result(decimal multiplier)
     {
         decimal crashPoint = CrashPoint();
-        decimal multiplier = PlayGame(crashPoint);
+        //decimal multiplier = 1.00m;//PlayGame(crashPoint);
         decimal payoutMultiplier = PayoutMultiplier(multiplier);
-        var outcome = EvaluateGame(payoutMultiplier);
+        var win = EvaluateGame(payoutMultiplier) == CrashOutcomes.Win? true : false;
         
         return new CrashResult()
         {
-            Outcome = outcome,
+            Win = win,
             CrashPointMultiplier = crashPoint,
             PayoutMultiplier = payoutMultiplier,
         };
     }
 
-    public decimal PlayGame(decimal crashPoint)
+    /*public decimal PlayGame(decimal crashPoint)
     {
         decimal multiplier = 1m;
         
@@ -56,9 +56,9 @@ public class CrashEngine
 
         return multiplier;
 
-    }
+    }*/
     
-    private decimal CrashPoint()
+    public decimal CrashPoint()
     {
         const decimal houseEdge = 0.05m;
         
