@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>@ViewData["Title"] - Risk_n_Reward.Web</title>
     <script type="importmap"></script>
+    <link rel="icon" href="~/images/favicon/favicon.ico" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
     <link rel="stylesheet" href="~/Risk_n_Reward.Web.styles.css" asp-append-version="true"/>
@@ -45,7 +46,7 @@
 
 <footer class="border-top footer text-muted">
     <div class="container">
-        &copy; 2026 - Risk_n_Reward.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        &copy; @DateTime.Now.Year - Risk n Reward - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
     </div>
 </footer>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
