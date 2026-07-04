@@ -1,0 +1,42 @@
+@model Risk_n_Reward.Web.Models.Player
+
+@{
+    ViewData["Title"] = "Crash";
+}
+
+<h1>Crash</h1>
+<p>
+    Balance: @Model.WalletBalance VMali
+</p>
+
+@if (TempData["Win"] != null)
+{
+    bool win = (bool)TempData["Win"];
+    decimal betAmount = decimal.Parse((string)TempData["BetAmount"]);
+    decimal crashPoint = decimal.Parse((string)TempData["CrashPoint"]);
+    decimal finalMultiplier = decimal.Parse((string)TempData["FinalMultiplier"]);
+    decimal payout = betAmount * finalMultiplier;
+    
+    if (win)
+    {
+        <p>
+            Congratulations
+            You cashed out at @finalMultiplier x and won @payout VMali!
+        </p>
+    }
+    else
+    {
+        <p>
+            CRASH!!!
+            You crashed at @crashPoint x.
+        </p>        
+    }
+}
+
+
+<form method="post" asp-action="Play">
+    <label for="betAmount">Bet Amount:</label>
+    <input type="number" name="betAmount" min="0.01" step="0.01"/>
+    <button type="submit" name="" >Start</button>
+    <button type="submit" name="cashout" value="true">Cash Out</button>
+</form>
