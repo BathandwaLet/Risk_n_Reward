@@ -1,0 +1,16 @@
+@model Risk_n_Reward.Web.Models.SystemConfig
+
+@{
+    ViewData["Settings"] = "Settings";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    All the sites setting to go here.
+</p>
+
+@*Tile to player Hub*@
+<div>
+    <a asp-controller="Settings" asp-action="PlayerHub">Player Hub</a>    
+</div>
