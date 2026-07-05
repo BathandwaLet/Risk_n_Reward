@@ -17,6 +17,11 @@ html {
   min-height: 100%;
 }
 
+.navbar-brand {
+    font-weight: bold;
+    color: var(--gold);
+}
+
 body {
   margin-bottom: 60px;
 }
@@ -33,25 +38,63 @@ body {
 .home-icons{
     position: relative;
     display: inline-block;
-    max-height: 150px;
-    max-width: 150px;
+    max-height: 120px;
+    max-width: 120px;
 }
 
 .home-icons:hover{
     cursor: pointer;
-    max-width: 200px;
-    max-height: 200px;
+    max-height: 140px;
+    max-width: 140px;
+    border: 1px solid var(--gold);
+}
+
+.home-icons img{
+    max-width: 80%;
+    border: 1px solid var(--gold);
+    border-radius: 6%;
+}
+
+.home-icons span{
+    text-decoration: none;
+    text-align: center;
 }
 
 .home-icons-row {
     display: flex;
     flex-wrap: wrap;
-    gap: 24px;
-    margin-bottom: 16px;
+    gap: 40px;
+    margin-bottom: 30px;
 }
 
 .home-icons-inline {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 40px;
+}
+
+.contact-icons{
+    max-height: 50px;
+    max-width: 50px;
+}
+
+.contact-icons:hover{
+    cursor: pointer;
+    max-height: 55px;
+    max-width: 55px;
+}
+
+.root {
+    --alice-blue: #edf5fc;
+    --gold: #b8860b;
+    --jet-black: #272d2d;
+    --lilac-ash: #a39ba8;
+    --powder-blue: #b8c5d6;
+    --gray: #6b7280;
+}
+
+.theme {
+    --bg: var(--powder-blue);
+    --titleFontColor: var(--gold);
+    --bodyFontColor: var(--jet-black);
 }
