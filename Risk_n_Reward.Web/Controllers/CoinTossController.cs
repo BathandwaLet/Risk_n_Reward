@@ -104,4 +104,9 @@ public class CoinTossController : Controller
 
         return RedirectToAction("Index");
     }
+
+    public async Task<IActionResult> Info()
+    {
+        return View();
+    }
 }
