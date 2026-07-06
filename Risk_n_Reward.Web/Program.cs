@@ -1,5 +1,6 @@
 using Risk_n_Reward.Web.Data;
 using Microsoft.EntityFrameworkCore;
+using Risk_n_Reward.Web.Hub;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options => 
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnectionString")));
+builder.Services.AddSignalR();
 
 var app = builder.Build();
 
@@ -24,7 +26,7 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapStaticAssets();
-
+app.MapHub<MultiplierHub>("/multiplierHub");
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
