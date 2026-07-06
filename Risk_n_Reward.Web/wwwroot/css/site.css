@@ -22,6 +22,11 @@ html {
     color: var(--gold);
 }
 
+.navbar-brand:hover {
+    color: var(--gold);
+    font-size: 21px;
+}
+
 body {
   margin-bottom: 60px;
 }
