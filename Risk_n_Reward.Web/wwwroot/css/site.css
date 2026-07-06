@@ -84,7 +84,7 @@ body {
     max-width: 55px;
 }
 
-.root {
+:root {
     --alice-blue: #edf5fc;
     --gold: #b8860b;
     --jet-black: #272d2d;
@@ -102,10 +102,10 @@ body {
 .info-badge {
     display: inline-flex;
     align-items: center;
-    color: var(--powder-blue);
+    color: var(--jet-black);
     gap: 6px;
     padding: 4px 10px;
-    background-color: var(--jet-black);
+    background-color: var(--powder-blue);
     border: 1px solid var(--powder-blue);
     border-radius: 20px;
 }
