@@ -40,23 +40,23 @@ body {
     display: inline-block;
     max-height: 120px;
     max-width: 120px;
+    background-color: var(--jet-black);
+    border-radius: 6%;
+    color: var(--alice-blue);
+    text-decoration: none !important;
+    text-align: center;
 }
 
 .home-icons:hover{
     cursor: pointer;
     max-height: 140px;
     max-width: 140px;
-    border: 1px solid var(--gold);
+    border: 2px solid var(--gold);
 }
 
 .home-icons img{
     max-width: 80%;
     border-radius: 6%;
-}
-
-.home-icons span{
-    text-decoration: none;
-    text-align: center;
 }
 
 .home-icons-row {
