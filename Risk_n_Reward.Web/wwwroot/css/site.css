@@ -98,3 +98,35 @@ body {
     --titleFontColor: var(--gold);
     --bodyFontColor: var(--jet-black);
 }
+
+.info-badge {
+    display: inline-flex;
+    align-items: center;
+    color: var(--powder-blue);
+    gap: 6px;
+    padding: 4px 10px;
+    background-color: var(--jet-black);
+    border: 1px solid var(--powder-blue);
+    border-radius: 20px;
+}
+
+.info-badge img {
+    height: 40px;
+    width: 40px;
+    object-fit: contain;
+}
+
+.btn-coin-toss-icons{
+    max-height: 80px;
+    max-width: 80px;
+    border: 1px solid var(--lilac-ash);
+    border-radius: 8%;
+}
+
+.btn-coin-toss-icons img {
+    max-width: 80%;
+}
+
+.btn-coin-toss-icons span{
+    text-align: center;
+}
