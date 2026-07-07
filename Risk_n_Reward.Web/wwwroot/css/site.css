@@ -98,9 +98,8 @@ body {
 }
 
 .theme {
-    --bg: var(--powder-blue);
-    --titleFontColor: var(--gold);
-    --bodyFontColor: var(--jet-black);
+    background: var(--alice-blue);
+    color: var(--jet-black);
 }
 
 .info-badge {
