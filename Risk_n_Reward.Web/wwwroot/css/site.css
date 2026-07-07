@@ -93,11 +93,18 @@ body {
     --gold: #b8860b;
     --jet-black: #272d2d;
     --lilac-ash: #a39ba8;
+    --light-gray: #e5e5e5;
     --powder-blue: #b8c5d6;
     --gray: #6b7280;
+    --felt-green: #1a3a2a;
+    --deep-navy: #0d1b2a;
+    --casino-gold: #c9a227;
+    --card-white: #f5f0e8;
+    --win-green: #2ecc71;
+    --loss-red: #e74c3c;
 }
 
-.theme {
+body {
     background: var(--alice-blue);
     color: var(--jet-black);
 }
