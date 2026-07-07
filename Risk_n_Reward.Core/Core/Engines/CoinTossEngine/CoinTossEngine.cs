@@ -21,6 +21,8 @@ public class CoinTossEngine
         {
             Win = result,
             Payout = payout,
+            Computer = computerChoice,
+            Player = playerChoice
         };
     }
 
