@@ -98,10 +98,15 @@ public class CoinTossController : Controller
         
         await  _db.SaveChangesAsync();
         
+        var playerSide = Enum.GetName(result.Player);
+        var computerSide = Enum.GetName(result.Computer);
+        
         TempData["Win"] =  result.Win;
         TempData["Payout"] = result.Payout.ToString();
         TempData["BetAmount"] = betAmount.ToString();
-
+        TempData["Player"] = playerSide;
+        TempData["Computer"] = computerSide;
+        
         return RedirectToAction("Index");
     }
 
