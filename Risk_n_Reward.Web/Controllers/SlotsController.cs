@@ -45,5 +45,34 @@ public class SlotsController : Controller
         }
 
         player.WalletBalance -= betAmount;
+        
+        //Log WalletTransaction
+        _db.WalletTransactions.Add(new WalletTransaction
+        {
+            PlayerId = Id,
+            Type = TransactionType.Debit, //Placed bet
+            Amount = betAmount,
+            BalanceAfter = player.WalletBalance,
+            CreatedAt = DateTime.UtcNow,
+        });
+
+        var engine = new SlotsEngine();
+        var result = engine.Result();
+
+        if (result.IsWin)
+        {
+            decimal payout = betAmount * result.PayoutMultiplier;
+            player.WalletBalance += payout; 
+            
+            //Log transaction after winning
+            _db.WalletTransactions.Add(new WalletTransaction
+            {
+                PlayerId = Id,
+                Type = TransactionType.Credit,
+                Amount = payout,
+                BalanceAfter = player.WalletBalance,
+                CreatedAt = DateTime.UtcNow,
+            });     
+        }
     }
 }
