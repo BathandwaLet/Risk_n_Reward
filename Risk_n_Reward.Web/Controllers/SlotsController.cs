@@ -74,5 +74,17 @@ public class SlotsController : Controller
                 CreatedAt = DateTime.UtcNow,
             });     
         }
+        
+        //Log GameSession
+        _db.GameSessions.Add(new GameSession
+        {
+            PlayerId = Id,
+            BetAmount = betAmount,
+            GameId = GameId,
+            Outcome = (result.IsWin)? Outcome.Win: Outcome.Loss,
+            PlayedAt = DateTime.UtcNow,
+        });
+        
+        await  _db.SaveChangesAsync();
     }
 }
