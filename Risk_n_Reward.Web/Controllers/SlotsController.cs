@@ -24,4 +24,26 @@ public class SlotsController : Controller
         return View(player);
     }
 
+    public async Task<IActionResult> Play(decimal betAmount)
+    {
+        var player = await _db.Players.FindAsync(Id);
+        
+        //Validation block for player
+        if (player == null)
+        {
+            return NotFound();
+        }
+
+        if (betAmount < 0.01m)
+        {
+            return Redirect("Index");
+        }
+
+        if (player.WalletBalance < betAmount)
+        {
+            return Redirect("Index");
+        }
+
+        player.WalletBalance -= betAmount;
+    }
 }
