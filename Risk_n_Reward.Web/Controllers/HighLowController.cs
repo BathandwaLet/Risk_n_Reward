@@ -21,4 +21,9 @@ public class HighLowController : Controller
         var player = await _db.Players.FindAsync(Id);
         return View(player);
     }
+
+    public async Task<IActionResult> Info()
+    {
+        return View();
+    }
 }
