@@ -3,7 +3,7 @@ using Risk_n_Reward.Core.Models.SlotsModel;
 using Risk_n_Reward.Core.Models.SlotsModel.Results;
 using Risk_n_Reward.Core.Models.SlotsModel.Symbols;
 
-namespace Risk_n_Reward.Core.Engines.SlotsEngine;
+namespace Risk_n_Reward.Core.Core.Engines.SlotsEngine;
 
 public class SlotsEngine
 {
@@ -25,7 +25,6 @@ public class SlotsEngine
         return new SlotsResult()
         {
             ReelsOutcome = reels,
-            Result = result,
             PayoutMultiplier = payout,
         };
     }
