@@ -8,7 +8,7 @@
 <h1>@ViewData["Title"]</h1>
 <span class="info-badge">
     <img src="~/images/site-icons/wallet.png" class="info-img"/> @Model.WalletBalance VMali
-    <a asp-controller="CoinToss" asp-action="Info"><img src="~/images/site-icons/information.png" class="info-img"/></a>
+    <a asp-controller="CoinToss" asp-action="Info"><img src="~/images/site-icons/information.png" class="info-img" alt="information"/></a>
 </span>
 
 @if (TempData["Win"] != null)
