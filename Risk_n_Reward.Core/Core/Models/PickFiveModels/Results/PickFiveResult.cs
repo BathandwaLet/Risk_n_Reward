@@ -7,4 +7,8 @@ public class PickFiveResult
     public decimal Payout { get; init; }
     
     public bool IsWin => Payout > 0;
+    
+    public int[] PlayerSelection { get; init; }
+    
+    public int[] ComputerDraw { get; init; }
 }
