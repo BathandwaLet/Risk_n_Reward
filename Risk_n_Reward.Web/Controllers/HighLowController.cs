@@ -22,6 +22,26 @@ public class HighLowController : Controller
         return View(player);
     }
 
+    [HttpPost]
+    public async Task<IActionResult> Play(decimal betAmount)
+    {
+        var player = await _db.Players.FindAsync(Id);
+
+        if (player.Id == null)
+        {
+            return NotFound();
+        }
+
+        if (betAmount < 10.00m)
+        {
+            return RedirectToAction(nameof(Index));
+        }
+        
+        if (player.WalletBalance < betAmount)
+        {
+            return RedirectToAction(nameof(Index));
+        }
+    }
     public async Task<IActionResult> Info()
     {
         return View();
