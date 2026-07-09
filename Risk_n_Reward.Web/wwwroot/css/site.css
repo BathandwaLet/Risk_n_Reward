@@ -140,3 +140,22 @@ body {
 .btn-coin-toss-icons span{
     text-align: center;
 }
+
+.slots-icons {
+    max-height: 80px;
+    max-width: 80px;
+    border: 1px solid var(--casino-gold);
+    transition: ease-in 1s;
+}
+
+.slots-btn {
+    height: 50px;
+    width: 90px;
+    background-color: var(--casino-gold);
+    border: 1px solid var(--casino-gold);
+    border-radius: 8%;
+    color: var(--light-gray);
+    text-align: center;
+    font-weight: bold;
+    font-size: 25px;
+}
