@@ -1,0 +1,63 @@
+@model Risk_n_Reward.Web.Models.Player
+
+@{
+    ViewData["Title"] = "Slots";
+}
+
+<h1>@ViewData["Title"]</h1>
+<span class="info-badge">
+    <img src="~/images/site-icons/wallet.png" class="info-img"/> @Model.WalletBalance VMali
+    <a asp-controller="Slots" asp-action="Info"><img src="~/images/site-icons/information.png" class="info-img" alt="information"/></a>
+</span>
+
+@if (TempData["Win"] != null)
+{
+
+    decimal payout = decimal.Parse((string)TempData["Payout"]);
+    bool win = bool.Parse((string)TempData["Win"]);
+    var reels = System.Text.Json.JsonSerializer.Deserialize<string[]>((string)TempData["Reels"]);
+
+    <div>
+        @foreach (var reel in (reels))
+        {
+            @switch (reel)
+            {
+                case "Cherry": <img src="images/gameassets/slots/cherries.png" class="slots-icons" alt="slots-cherry"/>; break;
+                case "ThreeCherries": <img src="images/gameassets/slots/three-cherries.png" class="slots-icons" alt="slots-threecherries"/>; break;
+                case "Seven": <img src="images/gameassets/slots/seven.png" class="slots-icons" alt="slots-seven"/> ;break;
+                case "Clover": <img src="images/gameassets/slots/clover.png" class="slots-icons" alt="slots-clover"/>; break;
+                case "Lemon": <img src="images/gameassets/slots/lemon.png" class="slots-icons" alt="slots-lemon"/>; break;
+                case "Bell": <img src="images/gameassets/slots/bell.png" class="slots-icons" alt="slots-bell"/>; break;
+                case "Wild": <img src="images/gameassets/slots/wild.png" class="slots-icons" alt="slots-wild"/>; break;
+            }
+        
+        }
+    </div>
+
+    @if (win)
+    {
+
+        <p>
+            Congratulations @Model.Username
+            You have won @payout VMali!
+        </p>
+    }
+    else
+    {
+        <p>
+            Unfortunately
+            You have lost.
+        </p>
+    }
+}
+
+
+
+
+<form method="post" asp-action="Play">
+    <label for="betAmount">Bet Amount:</label>
+    <input type="number" name="betAmount" min="1.00" step="1.00" placeholder="1.00"/>
+    <div>
+        <button type="submit" class="slots-btn">Spin</button>
+    </div>
+</form>
