@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Risk_n_Reward.Web.Models;
 using Risk_n_Reward.Web.Data;
-using Risk_n_Reward.Core.Engines.SlotsEngine;
+using Risk_n_Reward.Core.Core.Engines.SlotsEngine;
 using Risk_n_Reward.Core.Models.SlotsModel.Outcomes;
 using Risk_n_Reward.Core.Models.SlotsModel.Symbols;
 
@@ -24,6 +24,7 @@ public class SlotsController : Controller
         return View(player);
     }
 
+    [HttpPost]
     public async Task<IActionResult> Play(decimal betAmount)
     {
         var player = await _db.Players.FindAsync(Id);
@@ -36,12 +37,12 @@ public class SlotsController : Controller
 
         if (betAmount < 0.01m)
         {
-            return Redirect("Index");
+            return RedirectToAction("Index");
         }
 
         if (player.WalletBalance < betAmount)
         {
-            return Redirect("Index");
+            return RedirectToAction("Index");
         }
 
         player.WalletBalance -= betAmount;
@@ -59,9 +60,11 @@ public class SlotsController : Controller
         var engine = new SlotsEngine();
         var result = engine.Result();
 
+        decimal payout = 0;
+
         if (result.IsWin)
         {
-            decimal payout = betAmount * result.PayoutMultiplier;
+            payout = betAmount * result.PayoutMultiplier;
             player.WalletBalance += payout; 
             
             //Log transaction after winning
@@ -86,5 +89,24 @@ public class SlotsController : Controller
         });
         
         await  _db.SaveChangesAsync();
+
+        string[] reel = new string [5];
+        var reels = result.ReelsOutcome;
+
+        for (int index = 0; index < 5; index++)
+        {
+            reel[index] = Enum.GetName(reels[index]);
+        }
+            
+        TempData["Reels"] = System.Text.Json.JsonSerializer.Serialize(reel);
+        TempData["Win"] = result.IsWin.ToString();
+        TempData["Payout"] = payout.ToString();
+        
+        return RedirectToAction("Index");
+    }
+    
+    public async Task<IActionResult> Info()
+    {
+        return View();
     }
 }
