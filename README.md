@@ -179,7 +179,7 @@ Risk_n_Reward/
  
 
 ## HIGH LEVEL ARCHITECTURE DIAGRAM
-![Risk n Reward High Level Architecture](https://github.com/user-attachments/assets/97beedf5-886d-463f-b6b3-d4367005ddb2)
+<img width="1501" height="731" alt="rnr090726highlevelarch" src="https://github.com/user-attachments/assets/c6982acf-1908-43e1-9fd3-085e9420f669" />
 
 ## ROADMAP  
 ### PHASE 1: Project Scaffold
