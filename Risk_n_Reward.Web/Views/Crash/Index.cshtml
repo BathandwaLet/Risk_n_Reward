@@ -4,10 +4,11 @@
     ViewData["Title"] = "Crash";
 }
 
-<h1>Crash</h1>
-<p>
-    Balance: @Model.WalletBalance VMali
-</p>
+<h1>@ViewData["Title"]</h1>
+<span class="info-badge">
+    <img src="~/images/site-icons/wallet.png" class="info-img"/> @Model.WalletBalance VMali
+    <a asp-controller="Crash" asp-action="Info"><img src="~/images/site-icons/information.png" class="info-img" alt="information"/></a>
+</span>
 
 @if (TempData["Win"] != null)
 {
@@ -36,7 +37,7 @@
 
 <form method="post" asp-action="Play">
     <label for="betAmount">Bet Amount:</label>
-    <input type="number" name="betAmount" min="0.01" step="0.01"/>
-    <button type="submit" name="" >Start</button>
-    <button type="submit" name="cashout" value="true">Cash Out</button>
+    <input type="number" name="betAmount" min="1.00" step="1.00"/>
+    <button type="submit" name="">Start</button>
+    <button type="submit" name="cashOut" value="true">Cash Out</button>
 </form>
