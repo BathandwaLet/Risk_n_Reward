@@ -60,8 +60,8 @@ public class HighLowController : Controller
         Deck deck = new Deck();
         Card firstCard = deck.Draw();
         Card nextCard = deck.Draw();
-        
-        var playerChoice = (playerSelection == "High") ? HL.Higher : (playerSelection == "Lower")? HL.Lower;
+
+        var playerChoice = (playerSelection == "High") ? HL.Higher : (playerSelection == "Lower") ? HL.Lower : HL.Same;
         var engine = new HighLowEngine();
         var result = engine.Result(firstCard, nextCard, playerChoice);
 
