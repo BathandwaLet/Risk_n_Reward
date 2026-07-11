@@ -4,6 +4,7 @@ using Risk_n_Reward.Web.Data;
 using Risk_n_Reward.Core.Engines.HighLowEngine;
 using Risk_n_Reward.Core.Models.CardDeck;
 using Risk_n_Reward.Core.Models.HighLowModels.BetTypes;
+using Risk_n_Reward.Core.Models.HighLowModels.Outcomes;
 
 namespace Risk_n_Reward.Web.Controllers;
 
@@ -44,16 +45,60 @@ public class HighLowController : Controller
             return RedirectToAction(nameof(Index));
         }
 
+        player.WalletBalance -= betAmount;
+        
+        //Log 
+        _db.WalletTransactions.Add(new WalletTransaction
+        {
+            PlayerId = Id,
+            Type = TransactionType.Debit, //Placed bet
+            Amount = betAmount,
+            BalanceAfter = player.WalletBalance,
+            CreatedAt = DateTime.UtcNow,
+        });
+        
         Deck deck = new Deck();
         Card firstCard = deck.Draw();
         Card nextCard = deck.Draw();
-
-        var playerChoice = (playerSelection == "High") ? HL.Higher : HL.Lower;
         
+        var playerChoice = (playerSelection == "High") ? HL.Higher : (playerSelection == "Lower")? HL.Lower;
         var engine = new HighLowEngine();
         var result = engine.Result(firstCard, nextCard, playerChoice);
+
+        var win = result.Outcome == HighLowOutcome.Win? true : false;
+        decimal payout = 0;
         
+        if (win)
+        {
+            payout = betAmount * result.PayoutMultiplier;
+            player.WalletBalance += payout; 
+            
+            //Log transaction after winning
+            _db.WalletTransactions.Add(new WalletTransaction
+            {
+                PlayerId = Id,
+                Type = TransactionType.Credit,
+                Amount = payout,
+                BalanceAfter = player.WalletBalance,
+                CreatedAt = DateTime.UtcNow,
+            });     
+        }
         
+        _db.GameSessions.Add(new GameSession
+        {
+            PlayerId = Id,
+            BetAmount = betAmount,
+            GameId = GameId,
+            Outcome = (win)? Outcome.Win: Outcome.Loss,
+            PlayedAt = DateTime.UtcNow,
+        });
+        
+        await _db.SaveChangesAsync();
+        
+        TempData["Win"] = win;
+        TempData["Payout"] = payout;
+        
+        return RedirectToAction("Index");
     }
     public async Task<IActionResult> Info()
     {
