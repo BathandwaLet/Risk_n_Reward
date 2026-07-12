@@ -6,4 +6,6 @@ public class HighLowResult
 {
     public HighLowOutcome Outcome { get; init; }
     public decimal PayoutMultiplier { get; init; }
+    
+    public string Higher { get; init; }
 }
