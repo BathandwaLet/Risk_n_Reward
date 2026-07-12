@@ -15,6 +15,8 @@ public class HighLowEngine
         var actual = Actual(firstCard, nextCard);
         var gameResult = Outcome(player, actual);
         var payout = Payout(gameResult);
+        var higher = Higher(firstCard, nextCard);
+        
         return new HighLowResult
         {
             Outcome = gameResult,
@@ -61,5 +63,10 @@ public class HighLowEngine
         }
 
         return HL.Lower;
+    }
+
+    private static string Higher(Card firstCard, Card nextCard)
+    {
+        return firstCard.CalculateCardValue() > nextCard.CalculateCardValue() ? "High" : "Low";
     }
 }
