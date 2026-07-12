@@ -4,11 +4,9 @@ namespace Risk_n_Reward.Web.Models;
 
 public class CardToImage
 {
-    public string ConvertCardToImage(Card card)
+    public static string ConvertCardToImage(string card)
     {
-        var cardString = card.ToString();
-
-        return (cardString) switch
+        return (card) switch
         {
             ("Ace of Clubs") => "~/images/gameassets/deck-of-cards/ace-of-clubs.png",
             ("Two of Clubs") => "~/images/gameassets/deck-of-cards/two-of-clubs.png",
