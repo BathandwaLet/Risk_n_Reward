@@ -1,0 +1,70 @@
+@model Risk_n_Reward.Web.Models.Player
+@using Risk_n_Reward.Web.Models
+
+@{
+    ViewData["Title"] = "High Low";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<span class="info-badge">
+    <img src="~/images/site-icons/wallet.png" class="info-img"/> @Model.WalletBalance VMali
+    <a asp-controller="HighLow" asp-action="Info"><img src="~/images/site-icons/information.png" class="info-img" alt="information"/></a>
+</span>
+
+@if (TempData["Win"] == null)
+{
+    string firstCard = (string)TempData["FirstCard"];
+    string imgPath = CardToImage.ConvertCardToImage(firstCard);
+    <img src="@imgPath" alt="@firstCard" />
+    <label>@firstCard</label>
+    <p>Is the next card higher or lower?</p>
+}
+
+@if (TempData["Win"] != null)
+{
+    var win = (bool)TempData["Win"];
+    var higher = (string)TempData["Higher"];
+
+    if (win)
+    {
+        <p>
+            Congratulations @Model.Username you have won!
+        </p>
+        string nextCard = (string)TempData["NextCard"];
+        string imgPathNext = CardToImage.ConvertCardToImage(nextCard);
+        <img src="@imgPathNext" alt="@nextCard" />
+        <label>@nextCard</label>
+        
+        string firstCard = (string)TempData["firstCard"];
+        string imgPath = CardToImage.ConvertCardToImage(firstCard);
+        <img src="@imgPath" alt="@firstCard" />
+        <label>@firstCard</label>
+    }
+    else
+    {
+        <p>
+            No win this time.
+        </p>
+        
+        string nextCard = (string)TempData["NextCard"];
+        string imgPathNext = CardToImage.ConvertCardToImage(nextCard);
+        <img src="@imgPathNext" alt="@nextCard" />
+        <label>@nextCard</label>
+        
+        string firstCard = (string)TempData["firstCard"];
+        string imgPath = CardToImage.ConvertCardToImage(firstCard);
+        <img src="@imgPath" alt="@firstCard" />
+        <label>@firstCard</label>
+    }
+}
+
+<form method="post" asp-action="Play">
+    <label for="betAmount">Bet Amount:</label>
+    <input type="number" name="betAmount" min="10" step="1.00"/>
+    <div>
+        <button type="submit" name="playerChoice" value="Higher">Higher</button>
+        <button type="submit" name="playerChoice" value="Equal">Equal</button>
+        <button type="submit" name="playerChoice" value="Lower">Lower</button>
+    </div>
+</form>
