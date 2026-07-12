@@ -1,0 +1,48 @@
+@model Risk_n_Reward.Web.Models.Player
+
+@{
+    ViewData["Title"] = "Pick Five";
+}
+
+<h1>@ViewData["Title"]</h1>
+<p>
+    Balance: @Model.WalletBalance VMali
+    @*WinStreak: @Model.WinStreaks Display the current winstreak*@
+</p>
+
+@if (TempData["Win"] != null)
+{
+    bool quickPick = (bool)TempData["QuickPick"];
+}
+
+<form method="post" asp-action="Play">
+    <label for="quickPick">Quick Pick:</label>
+    <button type="submit" name="quickPick" value="true">Yes</button>
+    <button type="submit" name="quickPick" value="false">No</button>
+    
+    @if (!(bool)TempData["QuickPick"])
+    {
+        <div>
+            <label>Select your five numbers</label>
+            @for (int i = 0; i < 6; i++)
+            {
+                @for (int j = 0; j < 10; j++)
+                {
+                    <button type="submit" name="" value="@i@j">@i@j</button>
+                }
+            }
+            
+        </div>
+        
+        <div>
+            <label>Select your bonus ball</label>
+            @for (int i = 0; i < 6; i++)
+            {
+                @for (int j = 0; j < 10; j++)
+                {
+                    <button type="submit" name="" value="@i@j">@i@j</button>
+                }
+            }
+        </div>
+    }
+</form>
