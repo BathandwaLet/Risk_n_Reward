@@ -1,4 +1,5 @@
 @model Risk_n_Reward.Web.Models.Player
+@using Risk_n_Reward.Web.Models
 
 @{
     ViewData["Title"] = "Slots";
@@ -20,17 +21,7 @@
     <div>
         @foreach (var reel in (reels))
         {
-            @switch (reel)
-            {
-                case "Cherry": <img src="images/gameassets/slots/cherries.png" class="slots-icons" alt="slots-cherry"/>; break;
-                case "ThreeCherries": <img src="images/gameassets/slots/three-cherries.png" class="slots-icons" alt="slots-threecherries"/>; break;
-                case "Seven": <img src="images/gameassets/slots/seven.png" class="slots-icons" alt="slots-seven"/> ;break;
-                case "Clover": <img src="images/gameassets/slots/clover.png" class="slots-icons" alt="slots-clover"/>; break;
-                case "Lemon": <img src="images/gameassets/slots/lemon.png" class="slots-icons" alt="slots-lemon"/>; break;
-                case "Bell": <img src="images/gameassets/slots/bell.png" class="slots-icons" alt="slots-bell"/>; break;
-                case "Wild": <img src="images/gameassets/slots/wild.png" class="slots-icons" alt="slots-wild"/>; break;
-            }
-        
+            <img src="@SlotToImage.ConvertToImage(reel)" class="slots-icons" alt="slots-@reel.ToLower()"/>
         }
     </div>
 
