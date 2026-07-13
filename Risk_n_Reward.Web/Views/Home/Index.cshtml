@@ -3,10 +3,14 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+<section>
+    <h1>Risk n Reward</h1>
+    <h4>Ten games. All virtual</h4>
+</section>
 
 <div class="align-content-center" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
     <section>
-        <h1>Games</h1>
+        <h3>Games</h3>
         <div class="home-icons-row">
             <div class="home-icons-inline">
                 <a asp-controller="CoinToss" asp-action="Index" class="home-icons">
@@ -59,7 +63,7 @@
 
         <div class="home-icons-row">
             <div class="home-icons-inline">
-                <a asp-controller="" asp-action="" class="home-icons">
+                <a asp-controller="Slots" asp-action="Index" class="home-icons">
                     <img src="~/images/home-icons/slots.png" alt="slots" />
                     <span>Slots</span>
                 </a>
@@ -82,7 +86,7 @@
             </div>
 
             <div class="home-icons-inline">
-                <a asp-controller="" asp-action="" class="home-icons">
+                <a asp-controller="HighLow" asp-action="Index" class="home-icons">
                     <img src="~/images/home-icons/high-low.png" />
                     <span>High Low</span>
                 </a>
