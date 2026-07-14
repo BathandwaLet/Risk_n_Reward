@@ -21,6 +21,7 @@ public class HighLowEngine
         {
             Outcome = gameResult,
             PayoutMultiplier = payout,
+            Higher = higher
         };
     }
 
