@@ -66,8 +66,11 @@ public class HighLowEngine
         return HL.Lower;
     }
 
-    private static bool Higher(Card firstCard, Card nextCard)
+    private static string Higher(Card firstCard, Card nextCard)
     {
-        return firstCard.CalculateCardValue() > nextCard.CalculateCardValue();
+        int firstCardValue = firstCard.CalculateCardValue();
+        int nextCardValue = nextCard.CalculateCardValue();
+        
+        return firstCardValue > nextCardValue ? "higher": (firstCardValue ==  nextCardValue ? "equal" : "lower");
     }
 }
